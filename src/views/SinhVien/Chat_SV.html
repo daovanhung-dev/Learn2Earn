@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trò chuyện - Learn2Earn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <style>
+    body {
+      background: #f3f6fb;
+      font-size: 0.95rem;
+      margin: 0; /* bỏ khoảng trắng trên cùng */
+    }
+    .card-soft {
+      border-radius: 14px;
+      border: 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+    }
+    .link-muted {
+      text-decoration: none;
+      color: #6b7280;
+    }
+    .link-muted:hover {
+      color: #111827;
+    }
+
+    /* DANH SÁCH CHAT */
+    .chat-item {
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 4px;
+    }
+    .chat-item.active {
+      background: #e0ecff;
+    }
+    .chat-item:hover {
+      background: #eef2ff;
+    }
+    .company-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #4b5563;
+      margin-right: 8px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 4px;
+    }
+    .status-online {
+      background: #22c55e;
+    }
+    .status-offline {
+      background: #9ca3af;
+    }
+
+    /* KHUNG CHAT */
+    .chat-window {
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 14px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+    .chat-header {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .chat-body {
+      flex: 1;
+      padding: 12px 16px;
+      overflow-y: auto;
+      background: #f9fafb;
+    }
+    .chat-footer {
+      padding: 10px 12px;
+      border-top: 1px solid #e5e7eb;
+      background: #ffffff;
+    }
+
+    .msg-row {
+      display: flex;
+      margin-bottom: 8px;
+    }
+    .msg-row.me {
+      justify-content: flex-end;
+    }
+    .msg-bubble {
+      max-width: 75%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+    }
+    .msg-bubble.me {
+      background: #1e6ee9;
+      color: #ffffff;
+      border-bottom-right-radius: 4px;
+    }
+    .msg-bubble.them {
+      background: #e5e7eb;
+      color: #111827;
+      border-bottom-left-radius: 4px;
+    }
+    .msg-time {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR SINH VIÊN -->
+<nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
+  <div class="container-fluid">
+
+    <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="TrangChu.html">
+      <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
+           style="width:32px;height:32px;font-size:0.85rem;">L2E</div>
+      Learn2Earn
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navMain" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="HoSo.html" class="nav-link">Hồ sơ</a></li>
+        <li class="nav-item"><a href="TaoCV.html" class="nav-link">Tạo CV</a></li>
+        <li class="nav-item"><a href="CapNhatCV.html" class="nav-link">Cập nhật CV</a></li>
+        <li class="nav-item"><a href="XemTopCV.html" class="nav-link">TopCV</a></li>
+        <li class="nav-item"><a href="TinTuyenDung.html" class="nav-link">Tin tuyển dụng</a></li>
+        <li class="nav-item">
+          <a href="Chat_SV.html" class="nav-link active text-primary fw-semibold">Trò chuyện</a>
+        </li>
+        <li class="nav-item"><a href="ThongBao.html" class="nav-link">Thông báo</a></li>
+        <li class="nav-item"><a href="CaiDatSV.html" class="nav-link">Cài đặt</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container py-4">
+
+  <!-- TIÊU ĐỀ -->
+  <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+    <div>
+      <h4 class="mb-0 fw-bold text-primary">Trò chuyện với doanh nghiệp</h4>
+      <div class="text-muted small">
+        Trao đổi trực tiếp với nhà tuyển dụng về tin tuyển dụng, phỏng vấn, thực tập...
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <!-- DANH SÁCH CUỘC TRÒ CHUYỆN -->
+    <div class="col-lg-4">
+      <div class="card card-soft">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="fw-semibold">Danh sách cuộc trò chuyện</span>
+            <span class="badge bg-primary-subtle text-primary rounded-pill small">3</span>
+          </div>
+
+          <input type="text" class="form-control form-control-sm mb-3"
+                 placeholder="Tìm theo tên công ty, vị trí..." id="chatSearch">
+
+          <div id="chatList">
+            <!-- Chat 1 -->
+            <div class="chat-item active"
+                 data-company="ABC Software"
+                 data-logo="A"
+                 data-position="Thực tập sinh Java"
+                 data-status="online">
+              <div class="d-flex">
+                <div class="company-logo">A</div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span class="fw-semibold small">ABC Software</span>
+                    <span class="small text-muted">09:20</span>
+                  </div>
+                  <div class="small text-muted">HR: Hẹn em 9h thứ 2...</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat 2 -->
+            <div class="chat-item"
+                 data-company="XYZ Tech"
+                 data-logo="X"
+                 data-position="Frontend Fresher"
+                 data-status="offline">
+              <div class="d-flex">
+                <div class="company-logo">X</div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span class="fw-semibold small">XYZ Tech</span>
+                    <span class="small text-muted">Hôm qua</span>
+                  </div>
+                  <div class="small text-muted">HR: Em gửi giúp chị link...</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat 3 -->
+            <div class="chat-item"
+                 data-company="123 Labs"
+                 data-logo="1"
+                 data-position="Thực tập Mobile Flutter"
+                 data-status="online">
+              <div class="d-flex">
+                <div class="company-logo">1</div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between">
+                    <span class="fw-semibold small">123 Labs</span>
+                    <span class="small text-muted">2 ngày trước</span>
+                  </div>
+                  <div class="small text-muted">HR: Cảm ơn em đã ứng tuyển...</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- KHUNG CHAT CHÍNH -->
+    <div class="col-lg-8">
+      <div class="chat-window">
+        <!-- HEADER -->
+        <div class="chat-header d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <div class="company-logo me-2" id="currentLogo">A</div>
+            <div>
+              <div class="fw-semibold" id="currentCompany">ABC Software</div>
+              <div class="small text-muted">
+                Vị trí: <span id="currentPosition">Thực tập sinh Java</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-end small">
+            <span class="status-dot status-online" id="currentStatusDot"></span>
+            <span id="currentStatusText">Đang online</span>
+          </div>
+        </div>
+
+        <!-- BODY -->
+        <div class="chat-body" id="chatBody">
+          <!-- Tin nhắn mẫu demo -->
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Chào em, cảm ơn em đã ứng tuyển vị trí Thực tập sinh Java tại ABC Software.
+              </div>
+              <div class="msg-time">HR · 09:10</div>
+            </div>
+          </div>
+
+          <div class="msg-row me">
+            <div>
+              <div class="msg-bubble me">
+                Em chào anh/chị ạ. Em rất quan tâm vị trí này.
+              </div>
+              <div class="msg-time">Bạn · 09:12</div>
+            </div>
+          </div>
+
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Thứ 2 tuần tới em có thể tới phỏng vấn lúc 9h sáng được không?
+              </div>
+              <div class="msg-time">HR · 09:15</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="chat-footer">
+          <div class="input-group">
+            <input type="text" class="form-control" id="chatInput"
+                   placeholder="Nhập tin nhắn...">
+            <button class="btn btn-primary" type="button" id="btnSend">
+              <i class="bi bi-send-fill"></i>
+            </button>
+          </div>
+          <div class="small text-muted mt-1">
+            Lưu ý: Đây là giao diện tĩnh demo, tin nhắn không được lưu lên server.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Gửi tin nhắn (client-side demo)
+  function sendMessage() {
+    const input = document.getElementById("chatInput");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const chatBody = document.getElementById("chatBody");
+
+    const row = document.createElement("div");
+    row.className = "msg-row me";
+    row.innerHTML = `
+      <div>
+        <div class="msg-bubble me">${text}</div>
+        <div class="msg-time">Bạn · vừa xong</div>
+      </div>
+    `;
+    chatBody.appendChild(row);
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+    input.value = "";
+    input.focus();
+  }
+
+  document.getElementById("btnSend").addEventListener("click", sendMessage);
+  document.getElementById("chatInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // Chọn cuộc trò chuyện
+  const chatItems = document.querySelectorAll(".chat-item");
+  chatItems.forEach(item => {
+    item.addEventListener("click", function () {
+      chatItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+
+      const company  = item.getAttribute("data-company");
+      const logo     = item.getAttribute("data-logo");
+      const position = item.getAttribute("data-position");
+      const status   = item.getAttribute("data-status");
+
+      document.getElementById("currentCompany").textContent = company;
+      document.getElementById("currentLogo").textContent    = logo;
+      document.getElementById("currentPosition").textContent = position;
+
+      const statusDot  = document.getElementById("currentStatusDot");
+      const statusText = document.getElementById("currentStatusText");
+
+      if (status === "online") {
+        statusDot.className = "status-dot status-online";
+        statusText.textContent = "Đang online";
+      } else {
+        statusDot.className = "status-dot status-offline";
+        statusText.textContent = "Ngoại tuyến gần đây";
+      }
+
+      const chatBody = document.getElementById("chatBody");
+      chatBody.innerHTML = "";
+
+      if (company === "ABC Software") {
+        chatBody.innerHTML = `
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Chào em, cảm ơn em đã ứng tuyển vị trí Thực tập sinh Java tại ABC Software.
+              </div>
+              <div class="msg-time">HR · 09:10</div>
+            </div>
+          </div>
+          <div class="msg-row me">
+            <div>
+              <div class="msg-bubble me">
+                Em chào anh/chị ạ. Em rất quan tâm vị trí này.
+              </div>
+              <div class="msg-time">Bạn · 09:12</div>
+            </div>
+          </div>
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Thứ 2 tuần tới em có thể tới phỏng vấn lúc 9h sáng được không?
+              </div>
+              <div class="msg-time">HR · 09:15</div>
+            </div>
+          </div>
+        `;
+      } else if (company === "XYZ Tech") {
+        chatBody.innerHTML = `
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Chào em, chị đã xem CV vị trí Frontend Fresher của em.
+              </div>
+              <div class="msg-time">HR · Hôm qua</div>
+            </div>
+          </div>
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Em gửi giúp chị link portfolio hoặc demo giao diện web nhé.
+              </div>
+              <div class="msg-time">HR · Hôm qua</div>
+            </div>
+          </div>
+        `;
+      } else if (company === "123 Labs") {
+        chatBody.innerHTML = `
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Cảm ơn em đã ứng tuyển vị trí Thực tập Mobile Flutter tại 123 Labs.
+              </div>
+              <div class="msg-time">HR · 2 ngày trước</div>
+            </div>
+          </div>
+          <div class="msg-row">
+            <div>
+              <div class="msg-bubble them">
+                Em gửi giúp anh APK hoặc video demo ứng dụng Flutter em đã làm nhé.
+              </div>
+              <div class="msg-time">HR · 2 ngày trước</div>
+            </div>
+          </div>
+        `;
+      }
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+  });
+
+  // Tìm kiếm trong danh sách chat (demo đơn giản)
+  document.getElementById("chatSearch").addEventListener("input", function () {
+    const q = this.value.toLowerCase();
+    chatItems.forEach(item => {
+      const txt = item.getAttribute("data-company").toLowerCase() + " " +
+                  item.getAttribute("data-position").toLowerCase();
+      item.style.display = txt.includes(q) ? "" : "none";
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tạo CV - Learn2Earn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <style>
+    body { background: #f3f6fb; }
+    .cv-preview {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      min-height: 100%;
+    }
+    .avatar-box {
+      width: 130px;
+      height: 130px;
+      background: #e8eef8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
+  <div class="container-fluid">
+
+    <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="TrangChu.html">
+      <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
+           style="width:32px;height:32px;font-size:0.85rem;">L2E</div>
+      Learn2Earn
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navMain" class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <!-- Trang hồ sơ: đang ở trang này thì để active -->
+        <li class="nav-item"><a href="HoSo.html" class="nav-link ">Hồ sơ</a></li>
+        <li class="nav-item">
+          <a href="TaoCV.html" class="nav-link active text-primary fw-semibold">Tạo CV
+          </a></li>
+        <li class="nav-item"><a href="CapNhatCV.html" class="nav-link">Cập nhật CV</a></li>
+        <li class="nav-item"><a href="XemTopCV.html" class="nav-link">TopCV</a></li>
+        <li class="nav-item"><a href="TinTuyenDung.html" class="nav-link">Tin tuyển dụng</a></li>
+        <li class="nav-item"><a href="Chat_SV.html" class="nav-link">Trò chuyện</a></li>
+        <li class="nav-item"><a href="ThongBao.html" class="nav-link">Thông báo</a></li>
+        <li class="nav-item"><a href="CaiDatSV.html" class="nav-link">Cài đặt</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<div class="container py-4">
+
+  <h3 class="fw-bold text-primary mb-4">
+    <i class="bi bi-file-earmark-plus"></i> Tạo CV sinh viên
+  </h3>
+
+  <div class="row g-4">
+
+    <!-- FORM -->
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+
+          <form id="cvForm" class="needs-validation" novalidate>
+
+            <!-- Avatar -->
+            <div class="text-center mb-4">
+              <div class="avatar-box mx-auto" id="avatarPreview">
+                <i class="bi bi-person-circle" style="font-size:60px;color:#6b7280;"></i>
+              </div>
+              <input type="file" id="avatarInput" class="form-control mt-3" accept="image/*">
+              <div class="form-text">Không bắt buộc – nên dùng ảnh chân dung</div>
+            </div>
+
+            <h5 class="fw-bold text-secondary">Thông tin cá nhân</h5>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <label class="form-label">Họ tên <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">Vui lòng nhập họ tên.</div>
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label">Vị trí mong muốn <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="position" required>
+                <div class="invalid-feedback">Vui lòng nhập vị trí.</div>
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="invalid-feedback">Email không hợp lệ.</div>
+              </div>
+              <div class="col-6 mb-3">
+                <label class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="phone" required pattern="^[0-9]{9,11}$">
+                <div class="invalid-feedback">SĐT chỉ gồm số, 9–11 ký tự.</div>
+              </div>
+            </div>
+
+            <h5 class="fw-bold text-secondary mt-4">Học vấn <span class="text-danger">*</span></h5>
+            <textarea class="form-control mb-3" id="education" rows="2" required
+              placeholder="- Đại học Nông nghiệp VN (VNUA)
+- Ngành: CNTT · GPA: 3.0/4.0"></textarea>
+            <div class="invalid-feedback">Vui lòng nhập học vấn.</div>
+
+            <h5 class="fw-bold text-secondary mt-4">Kinh nghiệm</h5>
+            <textarea class="form-control mb-3" id="experience" rows="3"
+              placeholder="- Thực tập sinh Java (3 tháng)
+- Hỗ trợ CRUD, API, ReactJS"></textarea>
+
+            <h5 class="fw-bold text-secondary mt-4">Kỹ năng</h5>
+            <textarea class="form-control mb-3" id="skills" rows="3"
+              placeholder="- Java, Spring Boot
+- Flutter · Dart
+- SQL, Git"></textarea>
+
+            <h5 class="fw-bold text-secondary mt-4">Dự án</h5>
+            <textarea class="form-control mb-3" id="projects" rows="3"
+              placeholder="- Learn2Earn (Kết nối SV – DN)
+- Todo App (Flutter)"></textarea>
+
+            <!-- Upload PDF -->
+            <h5 class="fw-bold text-secondary mt-4">Tải CV PDF (nếu đã có)</h5>
+            <input type="file" id="pdfFile" class="form-control mb-3" accept="application/pdf">
+
+            <button class="btn btn-primary w-100" type="submit">
+              <i class="bi bi-eye"></i> Xem CV Preview
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- CV PREVIEW -->
+    <div class="col-lg-6">
+      <div class="cv-preview">
+        <h4 class="fw-bold text-center mb-3">CV CỦA SINH VIÊN</h4>
+
+        <div class="text-center mb-3">
+          <div class="avatar-box mx-auto" style="width:110px;height:110px;">
+            <img id="previewAvatarImg" src="" style="display:none;">
+          </div>
+        </div>
+
+        <h5 class="fw-bold">Thông tin cá nhân</h5>
+        <p><strong>Họ tên:</strong> <span id="pName"></span></p>
+        <p><strong>Vị trí:</strong> <span id="pPosition"></span></p>
+        <p><strong>Email:</strong> <span id="pEmail"></span></p>
+        <p><strong>SĐT:</strong> <span id="pPhone"></span></p>
+
+        <h5 class="fw-bold mt-4">Học vấn</h5>
+        <pre id="pEducation"></pre>
+
+        <h5 class="fw-bold mt-4">Kinh nghiệm</h5>
+        <pre id="pExperience"></pre>
+
+        <h5 class="fw-bold mt-4">Kỹ năng</h5>
+        <pre id="pSkills"></pre>
+
+        <h5 class="fw-bold mt-4">Dự án</h5>
+        <pre id="pProjects"></pre>
+
+        <button class="btn btn-success w-100 mt-4">
+          <i class="bi bi-download"></i> Tải CV PDF
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Avatar preview
+  document.getElementById("avatarInput").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Vui lòng chọn file ảnh.");
+      e.target.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (ev) {
+      const img = document.getElementById("previewAvatarImg");
+      img.src = ev.target.result;
+      img.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Update preview
+  function updatePreview() {
+    pName.textContent = name.value;
+    pPosition.textContent = position.value;
+    pEmail.textContent = email.value;
+    pPhone.textContent = phone.value;
+
+    pEducation.textContent = education.value;
+    pExperience.textContent = experience.value;
+    pSkills.textContent = skills.value;
+    pProjects.textContent = projects.value;
+  }
+
+  // Validate + show preview
+  (function () {
+    const form = document.getElementById("cvForm");
+
+    form.addEventListener("submit", function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+        form.classList.add("was-validated");
+        const firstInvalid = form.querySelector(":invalid");
+        if (firstInvalid) firstInvalid.focus();
+      } else {
+        event.preventDefault();
+        form.classList.add("was-validated");
+        updatePreview();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

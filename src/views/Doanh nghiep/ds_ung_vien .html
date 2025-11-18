@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách ứng viên - Learn2Earn Business</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+<style>
+  body {
+    background: #eef2f7;
+    font-family: "Inter", sans-serif;
+  }
+
+  .page-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #1e2a44;
+  }
+
+  .candidate-card {
+    border-radius: 14px;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .candidate-card:hover {
+    background: #f3f7ff;
+    border-color: #cbd5e1;
+  }
+
+  .candidate-card.active {
+    border: 2px solid #1e2a44;
+    background: #e8eefc;
+  }
+
+  .avatar-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #1e2a44;
+    color: white;
+    display: flex;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .info-box {
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .badge-status {
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .st-new { background: #dbeafe; color: #1d4ed8; }
+  .st-viewed { background: #fef3c7; color: #b45309; }
+  .st-contacted { background: #dcfce7; color: #166534; }
+</style>
+</head>
+
+<body>
+
+<div class="container py-4">
+
+  <!-- TITLE -->
+  <h4 class="page-title mb-2">Danh sách ứng viên</h4>
+  <div class="text-muted small mb-3">Danh sách toàn bộ ứng viên đã ứng tuyển vào bài đăng của doanh nghiệp.</div>
+
+  <!-- FILTER + SEARCH -->
+  <div class="card p-3 mb-4">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <input type="text" id="searchInput" class="form-control" placeholder="Tìm theo tên ứng viên...">
+      </div>
+
+      <div class="col-md-4">
+        <select id="filterPosition" class="form-select">
+          <option value="">Lọc theo vị trí ứng tuyển</option>
+          <option>Frontend Intern</option>
+          <option>Backend Intern</option>
+          <option>Thực tập Marketing</option>
+          <option>Mobile Flutter Intern</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <select id="filterStatus" class="form-select">
+          <option value="">Lọc theo trạng thái</option>
+          <option value="new">Mới ứng tuyển</option>
+          <option value="viewed">Đã xem CV</option>
+          <option value="contacted">Đã liên hệ</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="row g-4">
+
+    <!-- DANH SÁCH ỨNG VIÊN -->
+    <div class="col-lg-5">
+      <div class="d-flex flex-column gap-3" id="candidateList">
+
+        <!-- TEMPLATE -->
+        <div class="candidate-card active"
+             data-name="Nguyễn Thành Tùng"
+             data-avatar="T"
+             data-position="Thực tập Marketing"
+             data-status="new"
+             data-email="tung@example.com"
+             data-phone="0987123456"
+             data-about="Sinh viên năm 3 ngành Marketing. Có kinh nghiệm thực hiện Minigame, Content FB.">
+          <div class="d-flex align-items-center">
+            <div class="avatar-box me-3">T</div>
+            <div class="flex-grow-1">
+              <div class="fw-semibold">Nguyễn Thành Tùng</div>
+              <div class="small text-muted">Thực tập Marketing</div>
+              <span class="badge-status st-new mt-1">Mới ứng tuyển</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="candidate-card"
+             data-name="Lê Thu Hà"
+             data-avatar="H"
+             data-position="Frontend Intern"
+             data-status="viewed"
+             data-email="ha.frontend@example.com"
+             data-phone="0904567890"
+             data-about="Sinh viên IT K18. Thành thạo HTML/CSS/JS, biết React cơ bản.">
+          <div class="d-flex align-items-center">
+            <div class="avatar-box me-3">H</div>
+            <div class="flex-grow-1">
+              <div class="fw-semibold">Lê Thu Hà</div>
+              <div class="small text-muted">Frontend Intern</div>
+              <span class="badge-status st-viewed mt-1">Đã xem CV</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="candidate-card"
+             data-name="Vũ Quốc Nhật"
+             data-avatar="N"
+             data-position="Backend Intern"
+             data-status="contacted"
+             data-email="nhat.backend@example.com"
+             data-phone="0912345678"
+             data-about="Sinh viên năm cuối ngành CNTT. Có kinh nghiệm Java, MySQL, API.">
+          <div class="d-flex align-items-center">
+            <div class="avatar-box me-3">N</div>
+            <div class="flex-grow-1">
+              <div class="fw-semibold">Vũ Quốc Nhật</div>
+              <div class="small text-muted">Backend Intern</div>
+              <span class="badge-status st-contacted mt-1">Đã liên hệ</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- THÔNG TIN CHI TIẾT -->
+    <div class="col-lg-7">
+      <div class="info-box p-4" id="detailBox">
+
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-box me-3" id="detailAvatar">T</div>
+          <div>
+            <h5 class="fw-bold mb-0" id="detailName">Nguyễn Thành Tùng</h5>
+            <div class="small text-muted">Ứng tuyển: <span id="detailPosition">Thực tập Marketing</span></div>
+          </div>
+        </div>
+
+        <hr>
+
+        <p><strong>Email:</strong> <span id="detailEmail">tung@example.com</span></p>
+        <p><strong>Số điện thoại:</strong> <span id="detailPhone">0987123456</span></p>
+
+        <p class="mt-3"><strong>Giới thiệu:</strong></p>
+        <p id="detailAbout">
+          Sinh viên năm 3 ngành Marketing. Có kinh nghiệm thực hiện Minigame, Content FB.
+        </p>
+
+        <hr>
+
+        <div>
+          <button class="btn btn-dark me-2"><i class="bi bi-eye-fill"></i> Xem CV</button>
+          <button class="btn btn-outline-dark"><i class="bi bi-chat-left-text"></i> Nhắn tin</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script>
+  const cards = document.querySelectorAll(".candidate-card");
+
+  cards.forEach(card => {
+    card.addEventListener("click", () => {
+      cards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+
+      // cập nhật box chi tiết
+      document.getElementById("detailAvatar").textContent = card.dataset.avatar;
+      document.getElementById("detailName").textContent   = card.dataset.name;
+      document.getElementById("detailPosition").textContent = card.dataset.position;
+      document.getElementById("detailEmail").textContent  = card.dataset.email;
+      document.getElementById("detailPhone").textContent  = card.dataset.phone;
+      document.getElementById("detailAbout").textContent  = card.dataset.about;
+    });
+  });
+
+  // Search đơn giản
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const q = this.value.toLowerCase();
+    cards.forEach(card => {
+      const name = card.dataset.name.toLowerCase();
+      card.style.display = name.includes(q) ? "" : "none";
+    });
+  });
+
+  // Filter vị trí
+  document.getElementById("filterPosition").addEventListener("change", function () {
+    const pos = this.value;
+    cards.forEach(card => {
+      if (!pos || card.dataset.position === pos) card.style.display = "";
+      else card.style.display = "none";
+    });
+  });
+
+  // Filter trạng thái
+  document.getElementById("filterStatus").addEventListener("change", function () {
+    const st = this.value;
+    cards.forEach(card => {
+      if (!st || card.dataset.status === st) card.style.display = "";
+      else card.style.display = "none";
+    });
+  });
+</script>
+
+</body>
+</html>

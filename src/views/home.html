@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Learn2Earn – Tìm Việc Làm Nhanh Chóng & Hiệu Quả</title>
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== VARIABLES & RESET ====== */
+    :root {
+      --primary-50: #EFF6FF;
+      --primary-100: #DBEAFE;
+      --primary-200: #BFDBFE;
+      --primary-300: #93C5FD;
+      --primary-400: #60A5FA;
+      --primary-500: #3B82F6;
+      --primary-600: #2563EB;
+      --primary-700: #1D4ED8;
+      --primary-800: #1E40AF;
+      --primary-900: #1E3A8A;
+      
+      --neutral-50: #F8FAFC;
+      --neutral-100: #F1F5F9;
+      --neutral-200: #E2E8F0;
+      --neutral-300: #CBD5E1;
+      --neutral-400: #94A3B8;
+      --neutral-500: #64748B;
+      --neutral-600: #475569;
+      --neutral-700: #334155;
+      --neutral-800: #1E293B;
+      --neutral-900: #0F172A;
+      
+      --accent-400: #FB923C;
+      --accent-500: #F97316;
+      --accent-600: #EA580C;
+      
+      --primary-gradient: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+      --primary-gradient-hover: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+      --light-gradient: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+      
+      --card-shadow: 0 10px 25px rgba(59, 130, 246, 0.08);
+      --card-shadow-hover: 0 20px 40px rgba(59, 130, 246, 0.15);
+      --input-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--neutral-50);
+      color: var(--neutral-800);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    
+    /* ====== HEADER & NAVIGATION ====== */
+    .header {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--primary-600);
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: var(--neutral-700);
+      padding: 8px 16px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--primary-600);
+    }
+    
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--primary-500);
+    }
+    
+    .btn-auth {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 8px 20px;
+      transition: all 0.3s;
+    }
+    
+    .btn-login {
+      color: var(--primary-600);
+      border: 1px solid var(--primary-600);
+      background: transparent;
+    }
+    
+    .btn-login:hover {
+      background: var(--primary-50);
+    }
+    
+    .btn-signup {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+    }
+    
+    .btn-signup:hover {
+      background: var(--primary-gradient-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* ====== HERO SECTION ====== */
+    .hero-section {
+      background: var(--light-gradient);
+      padding: 80px 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.05);
+    }
+    
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(59, 130, 246, 0.03);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--neutral-800);
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--neutral-600);
+      margin-bottom: 40px;
+    }
+    
+    /* ====== SEARCH SECTION ====== */
+    .search-section {
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .search-box {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--neutral-200);
+    }
+    
+    .search-form .form-control {
+      border-radius: 10px;
+      border: 1px solid var(--neutral-200);
+      padding: 12px 16px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+    
+    .search-form .form-control:focus {
+      border-color: var(--primary-400);
+      box-shadow: var(--input-shadow);
+    }
+    
+    .search-form .input-group-text {
+      background: var(--neutral-50);
+      border: 1px solid var(--neutral-200);
+      border-right: none;
+      border-radius: 10px 0 0 10px;
+      color: var(--neutral-500);
+    }
+    
+    .search-form .input-group .form-control {
+      border-left: none;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .btn-search {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .btn-search:hover {
+      background: var(--primary-gradient-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* ====== FILTER TABS ====== */
+    .filter-tabs {
+      margin: 40px 0 30px;
+    }
+    
+    .nav-chips .nav-link {
+      background: var(--neutral-100);
+      color: var(--neutral-700);
+      border: 1px solid var(--neutral-200);
+      border-radius: 999px;
+      padding: 8px 20px;
+      font-weight: 500;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      transition: all 0.3s;
+    }
+    
+    .nav-chips .nav-link:hover {
+      background: var(--neutral-200);
+      color: var(--primary-600);
+    }
+    
+    .nav-chips .nav-link.active {
+      background: var(--primary-100);
+      color: var(--primary-600);
+      border-color: var(--primary-300);
+    }
+    
+    /* ====== SIDEBAR FILTER ====== */
+    .sidebar-card {
+      border: 0;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      background: white;
+      margin-bottom: 24px;
+    }
+    
+    .sidebar-card .card-header {
+      background: white;
+      border-bottom: 1px solid var(--neutral-200);
+      padding: 20px;
+      font-weight: 600;
+      color: var(--neutral-800);
+      font-size: 18px;
+    }
+    
+    .sidebar-card .card-body {
+      padding: 20px;
+    }
+    
+    .filter-group {
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--neutral-200);
+    }
+    
+    .filter-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .filter-label {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--neutral-700);
+      margin-bottom: 15px;
+    }
+    
+    .form-check {
+      margin-bottom: 12px;
+    }
+    
+    .form-check-input {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      border: 1px solid var(--neutral-300);
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary-500);
+      border-color: var(--primary-500);
+    }
+    
+    .form-check-label {
+      font-size: 14px;
+      color: var(--neutral-600);
+    }
+    
+    .btn-clear {
+      background: var(--neutral-100);
+      color: var(--neutral-700);
+      border: 1px solid var(--neutral-200);
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 500;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .btn-clear:hover {
+      background: var(--neutral-200);
+    }
+    
+    /* ====== JOB CARDS ====== */
+    .job-card {
+      border: 0;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s;
+      margin-bottom: 20px;
+      background: white;
+      overflow: hidden;
+    }
+    
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+    }
+    
+    .job-card .card-body {
+      padding: 24px;
+    }
+    
+    .job-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: var(--primary-50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-500);
+      font-size: 24px;
+      margin-right: 16px;
+    }
+    
+    .job-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--neutral-800);
+      margin-bottom: 8px;
+    }
+    
+    .job-company {
+      font-size: 16px;
+      color: var(--neutral-600);
+      margin-bottom: 12px;
+    }
+    
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+    
+    .job-meta-item {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: var(--neutral-600);
+    }
+    
+    .job-meta-item i {
+      margin-right: 8px;
+      color: var(--primary-500);
+    }
+    
+    .job-salary {
+      font-weight: 600;
+      color: var(--accent-500);
+    }
+    
+    .job-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .job-tag {
+      background: var(--primary-50);
+      color: var(--primary-600);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .btn-apply {
+      background: var(--primary-gradient);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 500;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .btn-apply:hover {
+      background: var(--primary-gradient-hover);
+      transform: translateY(-2px);
+    }
+    
+    .btn-quick-view {
+      background: transparent;
+      color: var(--primary-600);
+      border: 1px solid var(--primary-600);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 500;
+      transition: all 0.3s;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .btn-quick-view:hover {
+      background: var(--primary-50);
+    }
+    
+    /* ====== PAGINATION ====== */
+    .pagination {
+      margin-top: 40px;
+      justify-content: center;
+    }
+    
+    .page-link {
+      border: 1px solid var(--neutral-200);
+      color: var(--neutral-600);
+      padding: 8px 16px;
+      margin: 0 4px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    
+    .page-link:hover {
+      background: var(--primary-50);
+      color: var(--primary-600);
+      border-color: var(--primary-300);
+    }
+    
+    .page-item.active .page-link {
+      background: var(--primary-500);
+      border-color: var(--primary-500);
+      color: white;
+    }
+    
+    /* ====== FOOTER ====== */
+    .footer {
+      background: var(--neutral-800);
+      color: white;
+      padding: 60px 0 30px;
+      margin-top: 80px;
+    }
+    
+    .footer-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: var(--neutral-300);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid var(--neutral-700);
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      color: var(--neutral-400);
+    }
+    
+    /* ====== RESPONSIVE ADJUSTMENTS ====== */
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 36px;
+      }
+      
+      .search-box {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 32px;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px;
+      }
+      
+      .search-form .btn-search {
+        margin-top: 10px;
+      }
+      
+      .job-card .card-body {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-section {
+        padding: 60px 0 30px;
+      }
+      
+      .search-section {
+        margin-top: -20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <!-- Logo đã tách nền - thay thế bằng logo thực tế khi có -->
+          <div class="logo-img">
+            <!-- <div style="width: 40px; height: 40px; background: var(--primary-gradient); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">L2E</div> -->
+            
+          </div>
+          
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Việc làm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Công cụ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Lịch phỏng vấn</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tạo CV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-3">
+            <a href="SignIn.html" class="btn btn-auth btn-login">Đăng nhập</a>
+            <a href="SignUp.html" class="btn btn-auth btn-signup">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="hero-content">
+            <h1 class="hero-title">Tìm Việc Làm Phù Hợp Với Bạn</h1>
+            <p class="hero-subtitle">Kết nối với hàng ngàn cơ hội việc làm từ các doanh nghiệp hàng đầu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEARCH SECTION ================= -->
+  <section class="search-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="search-box">
+            <form class="search-form">
+              <div class="row g-3">
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                    <input type="text" class="form-control" placeholder="Vị trí tuyển dụng">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                    <input type="text" class="form-control" placeholder="Địa điểm">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                    <select class="form-control">
+                      <option selected>Danh mục nghề</option>
+                      <option>Công nghệ thông tin</option>
+                      <option>Kinh doanh / Bán hàng</option>
+                      <option>Marketing</option>
+                      <option>Kế toán / Tài chính</option>
+                      <option>Nhân sự</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-search">
+                    <i class="fas fa-search me-2"></i>Tìm kiếm
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FILTER TABS ================= -->
+  <section class="filter-tabs">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between flex-wrap">
+        <div class="d-flex align-items-center flex-wrap">
+          <span class="text-muted me-3">Tìm kiếm theo:</span>
+          <ul class="nav nav-pills nav-chips">
+            <li class="nav-item"><a class="nav-link" href="#">Tên việc làm</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Tên công ty</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">Cả hai</a></li>
+          </ul>
+        </div>
+        <div class="d-inline-flex align-items-center gap-2">
+          <span class="text-muted small">Ưu tiên hiển thị theo:</span>
+          <select class="form-select form-select-sm w-auto rounded-3">
+            <option>Mới nhất</option>
+            <option>Lương cao</option>
+            <option>Gần bạn</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="container my-5">
+    <div class="row g-4">
+      <!-- ========== SIDEBAR FILTER ========== -->
+      <aside class="col-lg-3">
+        <div class="sidebar-card">
+          <div class="card-header">
+            <i class="fas fa-filter me-2"></i>Lọc nâng cao
+          </div>
+          <div class="card-body">
+            <!-- Theo danh mục nghề -->
+            <div class="filter-group">
+              <div class="filter-label">Theo danh mục nghề</div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm1"><label class="form-check-label" for="dm1">Quản lý kinh doanh</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm2"><label class="form-check-label" for="dm2">Marketing</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm3"><label class="form-check-label" for="dm3">Kế toán</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm4"><label class="form-check-label" for="dm4">Sales Bán lẻ</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm5"><label class="form-check-label" for="dm5">Kinh doanh/Bán hàng</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm6"><label class="form-check-label" for="dm6">Nhân sự</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm7"><label class="form-check-label" for="dm7">Quảng cáo/Sáng tạo</label></div>
+            </div>
+
+            <!-- Cấp bậc -->
+            <div class="filter-group">
+              <div class="filter-label">Cấp bậc</div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb0" checked><label class="form-check-label" for="cb0">Tất cả</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb1"><label class="form-check-label" for="cb1">Nhân viên</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb2"><label class="form-check-label" for="cb2">Trưởng nhóm</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb3"><label class="form-check-label" for="cb3">Trưởng phòng</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb4"><label class="form-check-label" for="cb4">Giám đốc</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb5"><label class="form-check-label" for="cb5">Thực tập sinh</label></div>
+            </div>
+
+            <!-- Mức lương -->
+            <div class="filter-group">
+              <div class="filter-label">Mức lương</div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu0" checked><label class="form-check-label" for="lu0">Tất cả</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu1"><label class="form-check-label" for="lu1">Dưới 10 triệu</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu2"><label class="form-check-label" for="lu2">10 – 15 triệu</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu3"><label class="form-check-label" for="lu3">15 – 20 triệu</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu4"><label class="form-check-label" for="lu4">20 – 25 triệu</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu5"><label class="form-check-label" for="lu5">Trên 25 triệu</label></div>
+            </div>
+
+            <!-- Hình thức làm việc -->
+            <div class="filter-group">
+              <div class="filter-label">Hình thức làm việc</div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht0" checked><label class="form-check-label" for="ht0">Tất cả</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht1"><label class="form-check-label" for="ht1">Toàn thời gian</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht2"><label class="form-check-label" for="ht2">Bán thời gian</label></div>
+              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht3"><label class="form-check-label" for="ht3">Thực tập</label></div>
+            </div>
+
+            <!-- Nút Xóa lọc -->
+            <button class="btn btn-clear">Xóa lọc</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ========== DANH SÁCH VIỆC LÀM ========== -->
+      <section class="col-lg-9">
+        <!-- Job 1 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-building"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Thực Tập Sinh Content Marketing</h3>
+                    <p class="job-company">CÔNG TY TNHH AVE FACTORY · Đà Nẵng</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Đà Nẵng</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Toàn thời gian</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>1–2 triệu</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Intern</span>
+                      <span class="job-tag">Marketing</span>
+                      <span class="job-tag">Content</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Trưởng Phòng Marketing / Marketing Manager</h3>
+                    <p class="job-company">DN TƯ NHÂN ÂM SẮC MỘC · Hồ Chí Minh</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hồ Chí Minh</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Toàn thời gian</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Thỏa thuận</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Manager</span>
+                      <span class="job-tag">Marketing</span>
+                      <span class="job-tag">3+ năm kinh nghiệm</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Marketing Leader</h3>
+                    <p class="job-company">CÔNG TY TNHH KNS INTERNATIONAL · Hồ Chí Minh</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hồ Chí Minh</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Toàn thời gian</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Thỏa thuận</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Leader</span>
+                      <span class="job-tag">Marketing</span>
+                      <span class="job-tag">3+ năm kinh nghiệm</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Marketing Moderator Intern (Blockchain)</h3>
+                    <p class="job-company">Cycless Technology · Hà Nội</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hà Nội</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Remote</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>2–5 triệu</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Intern</span>
+                      <span class="job-tag">Remote</span>
+                      <span class="job-tag">Blockchain</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 5 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Cộng Tác Viên Marketing</h3>
+                    <p class="job-company">IMAP Việt Nam · Hà Nội</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hà Nội</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Bán thời gian</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>2–5 triệu</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Part-time</span>
+                      <span class="job-tag">Entry Level</span>
+                      <span class="job-tag">Marketing</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 6 -->
+        <div class="card job-card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-9">
+                <div class="d-flex align-items-start mb-3">
+                  <div class="job-logo">
+                    <i class="fas fa-flask"></i>
+                  </div>
+                  <div>
+                    <h3 class="job-title">Thực Tập Sinh R&D & Marketing Y Tế</h3>
+                    <p class="job-company">FPT Smart Tech · Hồ Chí Minh</p>
+                    <div class="job-meta">
+                      <div class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Hồ Chí Minh</span>
+                      </div>
+                      <div class="job-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Toàn thời gian</span>
+                      </div>
+                      <div class="job-meta-item job-salary">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>Thỏa thuận</span>
+                      </div>
+                    </div>
+                    <div class="job-tags">
+                      <span class="job-tag">Intern</span>
+                      <span class="job-tag">R&D</span>
+                      <span class="job-tag">Y tế</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-quick-view">Xem nhanh</button>
+                <button class="btn btn-apply">Ứng tuyển</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Tiếp</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h4 class="footer-title">Learn2Earn</h4>
+          <p>Nền tảng tuyển dụng và tìm việc làm hàng đầu Việt Nam. Kết nối ứng viên với nhà tuyển dụng một cách nhanh chóng và hiệu quả.</p>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h4 class="footer-title">Về chúng tôi</h4>
+          <ul class="footer-links">
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Liên hệ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h4 class="footer-title">Dành cho ứng viên</h4>
+          <ul class="footer-links">
+            <li><a href="#">Tìm việc làm</a></li>
+            <li><a href="#">Tạo CV</a></li>
+            <li><a href="#">Tài liệu hướng dẫn</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h4 class="footer-title">Dành cho nhà tuyển dụng</h4>
+          <ul class="footer-links">
+            <li><a href="#">Đăng tuyển dụng</a></li>
+            <li><a href="#">Tìm ứng viên</a></li>
+            <li><a href="#">Gói dịch vụ</a></li>
+            <li><a href="#">Hỗ trợ</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <h4 class="footer-title">Liên hệ</h4>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-phone me-2"></i>+84 123 456 789</a></li>
+            <li><a href="#"><i class="fas fa-envelope me-2"></i>info@learn2earn.vn</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>Hà Nội, Việt Nam</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Learn2Earn. Tất cả các quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
