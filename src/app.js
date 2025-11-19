@@ -1,8 +1,13 @@
-import express from "express";
-import { router } from "./router.js";
-
+const express = require("express");
+const path = require("path");
 const app = express();
-app.use(express.json());
-app.use("/api", router);
 
-export default app;
+// phục vụ file tĩnh
+app.use(express.static(path.join(__dirname, "public")));
+
+// routes
+const homeRoute = require("./routes/homeRoute");
+app.use("/", homeRoute);
+
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server chạy http://localhost:${PORT}`));

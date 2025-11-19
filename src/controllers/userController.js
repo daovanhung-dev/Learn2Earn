@@ -1,5 +1,9 @@
-import { users } from "../models/userModel.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
-export const getUsers = (req, res) => {
-  res.json(users);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export const homePage = (req, res) => {
+  res.sendFile(path.join(__dirname, "../views/home.html"));
 };
