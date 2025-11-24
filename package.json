@@ -2,11 +2,19 @@
   "name": "learn2earn",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/main.js",
+  "main": "src/main.ts",
   "scripts": {
-    "start": "node src/main.js"
+    "l2e": "node --loader ts-node/esm src/main.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.84.0",
+    "ejs": "^3.1.10",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.0",
+    "@types/node": "22.10.7",
+    "ts-node": "^10.9.2",
+    "typescript": "5.7.3"
   }
 }

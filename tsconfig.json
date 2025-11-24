@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                  // hỗ trợ async/await, destructuring
+    "module": "NodeNext",                // phải khớp với moduleResolution NodeNext
+    "moduleResolution": "NodeNext",      // resolve ESM packages (@supabase/supabase-js)
+    "esModuleInterop": true,             // import kiểu default từ CommonJS
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                      // kiểm tra kiểu nghiêm ngặt
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

@@ -96,21 +96,21 @@
       align-items: center;
       gap: 10px;
     }
-    
-    .logo-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: var(--primary-gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 18px;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    .brand-logo {
+      height: 60px;       /* chỉnh kích thước logo ở đây: 56 / 64 / 72 tuỳ ý */
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .navbar {
+      padding-top: 0.6rem;
+      padding-bottom: 0.6rem;
     }
 
+    .navbar-brand {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
     .navbar-nav .nav-link {
       font-weight: 500;
       color: var(--neutral-600);
@@ -821,13 +821,9 @@
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
-          <div class="logo-img">
-            L2E
-          </div>
-          <span>Learn2Earn</span>
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+          <img src="../public/assets/img/logo-nobr.png" alt="Learn2Earn logo" class="brand-logo">
         </a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -845,9 +841,6 @@
               <a class="nav-link" href="#">Công cụ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Lịch phỏng vấn</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">Tạo CV</a>
             </li>
             <li class="nav-item">
@@ -855,8 +848,8 @@
             </li>
           </ul>
           <div class="d-flex gap-2">
-            <a href="SignIn.html" class="btn btn-auth btn-login">Đăng nhập</a>
-            <a href="SignUp.html" class="btn btn-auth btn-signup">Đăng ký</a>
+            <button onclick="window.location.href='/signIn'" class="btn btn-auth btn-login">Đăng nhập</button>
+            <button onclick="window.location.href='/signUp'" class="btn btn-auth btn-signup">Đăng ký</button>
           </div>
         </div>
       </div>

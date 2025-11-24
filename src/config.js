@@ -1,1 +1,0 @@
-export const CONFIG = { API_BASE_URL: "https://api.learn2earn.com", VERSION: "1.0.0" };
