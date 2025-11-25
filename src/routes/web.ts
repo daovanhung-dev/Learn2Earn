@@ -3,7 +3,7 @@ import { Router } from "express";
 import { homePage, 
     signIn, 
     signUp,
-    setting
+    business_setting
 
  } from "../controllers/userController.js"; // luôn có .js
 
@@ -18,11 +18,7 @@ router.get("/signIn", signIn);
 // Route đăng ký
 router.get("/signUp", signUp);
 
-//=================================================================SINHVIEN==========================================================================================================
+//================================================================DOANHNGHIEP========================================================================================================== 
 // Route cai dat
-router.get("/Setting",setting);
-
-
-//================================================================DOANHNGHIEP==========================================================================================================
-
+router.get("/Setting",business_setting);
 export default router;

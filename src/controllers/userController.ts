@@ -27,6 +27,10 @@ export const signUp = (req: Request, res: Response) => {
 
 //================================================================DOANHNGHIEP==========================================================================================================
 // Route cai dat 
-export const setting = (req: Request, res: Response) => {
-  res.render("DoanhNghiep/caiDat")
+export const business_setting = (req: Request, res: Response) => {
+  res.render("DoanhNghiep/business_setting")
+};
+
+export const chat = (req: Request, res: Response) => {
+  res.render("DoanhNghiep/business_setting")
 };

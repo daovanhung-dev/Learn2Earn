@@ -8,7 +8,8 @@
     "strict": true,                      // kiểm tra kiểu nghiêm ngặt
     "skipLibCheck": true,
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

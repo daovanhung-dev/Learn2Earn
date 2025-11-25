@@ -9,13 +9,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       background: #f3f6fb;
       font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
     }
-    .navbar { font-size: 0.9rem; }
 
     .card-soft {
       border-radius: 16px;
@@ -23,6 +28,7 @@
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
       background: #ffffff;
     }
+
     .badge-rank {
       width: 32px;
       height: 32px;
@@ -71,56 +77,226 @@
     .table-topcv tbody tr:hover {
       background: #eef2ff;
     }
-
-    .table-topcv tbody tr.table-active {
-      background: #e0edff;
-    }
-
     .small-muted {
       font-size: 0.85rem;
       color: #6b7280;
+    }
+
+    /* ================= HEADER ================= */
+    .header {
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand-logo {
+        height: 60px;       
+        width: auto;
+        display: block;
+        object-fit: contain;
+
+        transform: scale(2.3);
+        transform-origin: left center;
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .navbar-brand img {
+      height: 55px;
+      object-fit: contain;
+    }
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: #475569;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: 0.25s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background: #EFF6FF !important;
+      color: #2563EB !important;
+    }
+
+    .navbar-nav .nav-link.active {
+      background: #DBEAFE !important;
+      color: #1D4ED8 !important;
+    }
+
+    /* ICON THÔNG BÁO + CHAT */
+    .nav-icon {
+      width: 38px;
+      height: 38px;
+      margin-left: 8px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #475569;
+      font-size: 18px;
+      transition: 0.25s;
+    }
+
+    .nav-icon:hover {
+      background: #e2e8f0;
+      color: #2563EB;
+    }
+
+    /* ===== DROPDOWN CV (chỉ hover mới xanh, không đậm sẵn) ===== */
+    .l2e-dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu {
+      display: none;
+      background: #f8fbff;
+      border-radius: 14px;
+      border: 0;
+      padding: 8px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .dropdown-item {
+      padding: 10px 18px;
+      font-weight: 500;
+      border-radius: 10px;
+      color: #1e293b;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background: #e6edff !important;
+      color: #1e6ee9 !important;
+    }
+
+    /* Không giữ màu xanh cho mục active – chỉ hover mới đổi màu */
+    .dropdown-item.active,
+    .dropdown-item:active {
+      background: transparent !important;
+      color: #1e293b !important;
+    }
+
+    /* Nút CV không bị đậm màu sẵn */
+    .nav-link.dropdown-toggle {
+      background: transparent !important;
+      color: inherit !important;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: #0F172A;
+      color: white;
+      padding: 56px 0 26px;
+      margin-top: 70px;
+    }
+    .footer-title { font-size: 17px; font-weight: 600; margin-bottom: 18px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links a { color: #94A3B8; text-decoration: none; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid #1E293B;
+      padding-top: 18px;
+      margin-top: 32px;
+      text-align: center;
+      color: #94A3B8;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
-<div class="container-fluid px-0">
-  <!-- NAVBAR SINH VIÊN -->
-  <nav class="navbar navbar-expand-lg bg-white border-bottom shadow-sm">
-    <div class="container-fluid">
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
 
-      <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="TrangChu.html">
-        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
-             style="width:32px;height:32px;font-size:0.85rem;">L2E</div>
-        Learn2Earn
+      <!-- Logo -->
+      <a class="navbar-brand" href="Home_SV.html">
+        <img src="/img/logo-nobr.png" alt="Logo Learn2Earn" class="brand-logo">
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div id="navMain" class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a href="HoSo.html" class="nav-link">Hồ sơ</a></li>
-          <li class="nav-item"><a href="TaoCV.html" class="nav-link">Tạo CV</a></li>
-          <li class="nav-item"><a href="CapNhatCV.html" class="nav-link">Cập nhật CV</a></li>
+        <!-- MENU GIỮA -->
+        <ul class="navbar-nav mx-auto d-flex align-items-center">
 
           <li class="nav-item">
-            <a href="XemTopCV.html" class="nav-link active text-primary fw-semibold">TopCV</a>
+            <a class="nav-link" href="Home_SV.html">Trang chủ</a>
           </li>
 
-          <li class="nav-item"><a href="TinTuyenDung.html" class="nav-link">Tin tuyển dụng</a></li>
-          <li class="nav-item"><a href="Chat_SV.html" class="nav-link">Trò chuyện</a></li>
-          <li class="nav-item"><a href="ThongBao.html" class="nav-link">Thông báo</a></li>
-          <li class="nav-item"><a href="CaiDatSV.html" class="nav-link">Cài đặt</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="HoSo.html">Hồ sơ</a>
+          </li>
+
+          <!-- DROPDOWN CV -->
+          <li class="nav-item dropdown l2e-dropdown">
+            <a class="nav-link dropdown-toggle" href="#">CV</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="TaoCV.html">Tạo CV</a></li>
+              <li><a class="dropdown-item" href="CapNhatCV.html">Cập nhật CV</a></li>
+              <li><a class="dropdown-item active" href="XemTopCV.html">TopCV</a></li>
+            </ul>
+          </li>
+
+          <!-- Lịch phỏng vấn -->
+          <li class="nav-item">
+            <a class="nav-link" href="LichPhongVan.html">Lịch phỏng vấn</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="TinTuyenDung.html">Tin tuyển dụng</a>
+          </li>
+
+        </ul>
+
+        <!-- ICON BÊN PHẢI -->
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+
+          <!-- Bell -->
+          <li class="nav-item">
+            <a class="nav-icon" href="ThongBao.html">
+              <i class="bi bi-bell"></i>
+            </a>
+          </li>
+
+          <!-- Chat -->
+          <li class="nav-item">
+            <a class="nav-icon" href="Chat_SV.html">
+              <i class="bi bi-chat-dots"></i>
+            </a>
+          </li>
+
+          <!-- Cài đặt -->
+          <li class="nav-item">
+            <a class="nav-link" href="CaiDatSV.html">Cài đặt</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="NhaTuyenDung.html">Nhà tuyển dụng</a>
+          </li>
+
         </ul>
 
       </div>
     </div>
   </nav>
-</div>
+</header>
 
+<!-- ================= CONTENT ================= -->
 <div class="container py-4">
   <!-- TIÊU ĐỀ + BỘ LỌC -->
   <div class="card card-soft mb-4">
@@ -424,6 +600,61 @@
   </div>
 </div>
 
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container position-relative">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <h4 class="footer-title">Learn2Earn</h4>
+        <p>Nền tảng tuyển dụng và tìm việc làm tại Việt Nam.</p>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h4 class="footer-title">Về chúng tôi</h4>
+        <ul class="footer-links">
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h4 class="footer-title">Ứng viên</h4>
+        <ul class="footer-links">
+          <li><a href="#">Tìm việc</a></li>
+          <li><a href="#">Tạo CV</a></li>
+          <li><a href="#">Hướng dẫn</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h4 class="footer-title">Nhà tuyển dụng</h4>
+        <ul class="footer-links">
+          <li><a href="#">Đăng tin</a></li>
+          <li><a href="#">Tìm ứng viên</a></li>
+          <li><a href="#">Gói dịch vụ</a></li>
+          <li><a href="#">Hỗ trợ</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h4 class="footer-title">Liên hệ</h4>
+        <ul class="footer-links">
+          <li><a><i class="fas fa-phone me-2"></i>+84 123 456 789</a></li>
+          <li><a><i class="fas fa-envelope me-2"></i>info@learn2earn.vn</a></li>
+          <li><a><i class="fas fa-map-marker-alt me-2"></i>Hà Nội, Việt Nam</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2023 Learn2Earn. Tất cả quyền được bảo lưu.
+    </div>
+  </div>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   function getInitials(name) {
@@ -445,13 +676,13 @@
     const note     = tr.dataset.note;
     const cvfile   = tr.dataset.cvfile;
 
-    document.getElementById("detailName").textContent    = name || "";
-    document.getElementById("detailMajor").textContent   = major || "";
-    document.getElementById("detailPosition").textContent= position || "";
-    document.getElementById("detailScore").textContent   = score ? (score + "/100") : "";
-    document.getElementById("detailNote").textContent    = note || "";
-    document.getElementById("detailInitials").textContent= getInitials(name);
-    document.getElementById("detailFile").textContent    = cvfile || "";
+    document.getElementById("detailName").textContent     = name || "";
+    document.getElementById("detailMajor").textContent    = major || "";
+    document.getElementById("detailPosition").textContent = position || "";
+    document.getElementById("detailScore").textContent    = score ? (score + "/100") : "";
+    document.getElementById("detailNote").textContent     = note || "";
+    document.getElementById("detailInitials").textContent = getInitials(name);
+    document.getElementById("detailFile").textContent     = cvfile || "";
 
     const tagContainer = document.getElementById("detailTags");
     tagContainer.innerHTML = "";
@@ -464,23 +695,22 @@
       });
     }
 
-    // lưu tên file vào button dataset để dùng cho xem/tải
-    document.getElementById("btnViewPdf").dataset.cvfile = cvfile || "";
+    document.getElementById("btnViewPdf").dataset.cvfile     = cvfile || "";
     document.getElementById("btnDownloadPdf").dataset.cvfile = cvfile || "";
   }
 
   function applyFiltersAndSort() {
-    const keyword = document.getElementById("filterKeyword").value.toLowerCase();
+    const keyword     = document.getElementById("filterKeyword").value.toLowerCase();
     const majorFilter = document.getElementById("filterMajor").value;
-    const sortOption = document.getElementById("sortOption").value;
-    const tbody = document.getElementById("topCvBody");
-    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const sortOption  = document.getElementById("sortOption").value;
+    const tbody       = document.getElementById("topCvBody");
+    const rows        = Array.from(tbody.querySelectorAll("tr"));
 
-    // lọc
+    // Lọc
     rows.forEach(tr => {
-      const name = tr.dataset.name.toLowerCase();
+      const name     = tr.dataset.name.toLowerCase();
       const position = tr.dataset.position.toLowerCase();
-      const major = tr.dataset.major;
+      const major    = tr.dataset.major;
 
       const matchKeyword =
         !keyword ||
@@ -497,7 +727,7 @@
       }
     });
 
-    // sắp xếp
+    // Sắp xếp
     const visibleRows = rows.filter(tr => tr.style.display !== "none");
 
     visibleRows.sort((a, b) => {
@@ -513,12 +743,10 @@
       } else if (sortOption === "rank_asc") {
         return rankA - rankB;
       } else {
-        // mặc định: score_desc
         return scoreB - scoreA;
       }
     });
 
-    // append lại theo thứ tự mới
     visibleRows.forEach(tr => tbody.appendChild(tr));
   }
 
@@ -526,12 +754,9 @@
     const tbody = document.getElementById("topCvBody");
     const rows  = Array.from(tbody.querySelectorAll("tr"));
 
-    // click chọn dòng + nút "Xem"
+    // Hover: chỉ cần rê chuột là đổi chi tiết (không cần click)
     rows.forEach(tr => {
-      tr.addEventListener("click", function (e) {
-        if (e.target && e.target.matches("button")) return; // tránh double khi bấm nút
-        rows.forEach(r => r.classList.remove("table-active"));
-        tr.classList.add("table-active");
+      tr.addEventListener("mouseenter", function () {
         updateDetailFromRow(tr);
       });
 
@@ -539,19 +764,15 @@
       if (btn) {
         btn.addEventListener("click", function (e) {
           e.stopPropagation();
-          rows.forEach(r => r.classList.remove("table-active"));
-          tr.classList.add("table-active");
           updateDetailFromRow(tr);
         });
       }
     });
 
-    // lọc + sort
     document.getElementById("filterKeyword").addEventListener("input", applyFiltersAndSort);
     document.getElementById("filterMajor").addEventListener("change", applyFiltersAndSort);
     document.getElementById("sortOption").addEventListener("change", applyFiltersAndSort);
 
-    // nút xem / tải CV PDF (demo)
     document.getElementById("btnViewPdf").addEventListener("click", function () {
       const file = this.dataset.cvfile || "CV_khong_ro_ten.pdf";
       alert("Giả lập mở file CV: " + file + " (demo, chưa gắn link PDF thật).");
@@ -562,9 +783,8 @@
       alert("Giả lập tải file CV: " + file + " (demo).");
     });
 
-    // chọn mặc định là dòng đầu tiên
+    // Hiển thị mặc định dòng đầu tiên
     if (rows.length > 0) {
-      rows[0].classList.add("table-active");
       updateDetailFromRow(rows[0]);
     }
   });
