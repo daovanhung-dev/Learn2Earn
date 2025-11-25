@@ -97,10 +97,13 @@
       gap: 10px;
     }
     .brand-logo {
-      height: 60px;       /* chỉnh kích thước logo ở đây: 56 / 64 / 72 tuỳ ý */
-      width: auto;
-      display: block;
-      object-fit: contain;
+        height: 60px;       
+        width: auto;
+        display: block;
+        object-fit: contain;
+
+        transform: scale(2.3);
+        transform-origin: left center;
     }
     .navbar {
       padding-top: 0.6rem;
@@ -822,7 +825,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="../public/assets/img/logo-nobr.png" alt="Learn2Earn logo" class="brand-logo">
+          <img src="/img/logo-nobr.png" alt="Learn2Earn logo"  class="brand-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -848,7 +851,7 @@
             </li>
           </ul>
           <div class="d-flex gap-2">
-            <button onclick="window.location.href='/signIn'" class="btn btn-auth btn-login">Đăng nhập</button>
+            <button onclick="window.location.href='/Setting'" class="btn btn-auth btn-login">Đăng nhập</button>
             <button onclick="window.location.href='/signUp'" class="btn btn-auth btn-signup">Đăng ký</button>
           </div>
         </div>
