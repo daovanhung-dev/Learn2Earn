@@ -138,3 +138,5 @@ bower_components/
 # Vite logs
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+/src/generated/prisma

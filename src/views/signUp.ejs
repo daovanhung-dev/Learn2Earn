@@ -1,916 +1,307 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký - Learn2Earn</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Phối màu xanh dương nhạt chuyên nghiệp */
-            --primary-50: #EFF6FF;
-            --primary-100: #DBEAFE;
-            --primary-200: #BFDBFE;
-            --primary-300: #93C5FD;
-            --primary-400: #60A5FA;
-            --primary-500: #3B82F6;
-            --primary-600: #2563EB;
-            --primary-700: #1D4ED8;
-            --primary-800: #1E40AF;
-            --primary-900: #1E3A8A;
-            
-            /* Màu accent - cam nhạt để tạo điểm nhấn */
-            --accent-400: #FB923C;
-            --accent-500: #F97316;
-            --accent-600: #EA580C;
-            
-            /* Màu trung tính */
-            --neutral-50: #F8FAFC;
-            --neutral-100: #F1F5F9;
-            --neutral-200: #E2E8F0;
-            --neutral-300: #CBD5E1;
-            --neutral-400: #94A3B8;
-            --neutral-500: #64748B;
-            --neutral-600: #475569;
-            --neutral-700: #334155;
-            --neutral-800: #1E293B;
-            --neutral-900: #0F172A;
-            
-            /* Gradient chuyên nghiệp */
-            --primary-gradient: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
-            --primary-gradient-hover: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
-            --light-gradient: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
-            
-            /* Biến ứng dụng */
-            --text-dark: var(--neutral-800);
-            --text-light: var(--neutral-600);
-            --light-bg: var(--neutral-50);
-            --border-color: var(--neutral-200);
-            --card-shadow: 0 20px 40px rgba(59, 130, 246, 0.08);
-            --input-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
-            --success-color: #10B981;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--primary-50) 0%, var(--neutral-100) 100%);
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .registration-container {
-            max-width: 1200px;
-            width: 100%;
-            display: flex;
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        .registration-left {
-            flex: 1;
-            background: var(--light-gradient);
-            color: var(--neutral-800);
-            padding: 60px 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .registration-left::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.05);
-        }
-        
-        .registration-left::after {
-            content: '';
-            position: absolute;
-            bottom: -120px;
-            left: -120px;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.03);
-        }
-        
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .logo-img {
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 8px 20px rgba(59, 130, 246, 0.15));
-        }
-        
-        .logo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-        }
-        
-        .left-content h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            line-height: 1.2;
-            position: relative;
-            z-index: 2;
-            color: var(--neutral-800);
-            text-align: center;
-        }
-        
-        .left-content p {
-            font-size: 18px;
-            margin-bottom: 35px;
-            color: var(--neutral-600);
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-        
-        .features {
-            list-style: none;
-            margin-top: 50px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 22px;
-            font-size: 16px;
-            color: var(--neutral-700);
-        }
-        
-        .features li i {
-            margin-right: 15px;
-            background: var(--primary-100);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--primary-600);
-        }
-        
-        .registration-right {
-            flex: 1;
-            padding: 70px 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: white;
-        }
-        
-        .registration-header {
-            margin-bottom: 45px;
-            text-align: center;
-        }
-        
-        .registration-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--neutral-800);
-        }
-        
-        .registration-header p {
-            color: var(--neutral-600);
-            font-size: 16px;
-        }
-        
-        .social-login {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 35px;
-        }
-        
-        .social-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 500;
-            transition: all 0.3s;
-            border: 1px solid var(--border-color);
-            background: white;
-            color: var(--neutral-700);
-        }
-        
-        .social-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary-300);
-        }
-        
-        .social-btn.google:hover {
-            color: #DB4437;
-        }
-        
-        .social-btn.facebook:hover {
-            color: #1877F2;
-        }
-        
-        .social-btn.linkedin:hover {
-            color: #0A66C2;
-        }
-        
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 30px 0;
-        }
-        
-        .divider::before, .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-        }
-        
-        .divider span {
-            padding: 0 18px;
-            color: var(--neutral-500);
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .form-group {
-            margin-bottom: 28px;
-        }
-        
-        .form-label {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--neutral-700);
-            font-size: 15px;
-        }
-        
-        .form-control {
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px 18px;
-            transition: all 0.3s;
-            font-size: 15px;
-            background: var(--neutral-50);
-        }
-        
-        .form-control:focus {
-            border-color: var(--primary-400);
-            box-shadow: var(--input-shadow);
-            background: white;
-        }
-        
-        .input-group {
-            position: relative;
-        }
-        
-        .input-group-text {
-            background-color: var(--neutral-50);
-            border: 1px solid var(--border-color);
-            border-right: none;
-            border-radius: 12px 0 0 12px;
-            color: var(--neutral-500);
-        }
-        
-        .input-group .form-control {
-            border-left: none;
-            border-radius: 0 12px 12px 0;
-        }
-        
-        .password-toggle {
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--neutral-500);
-            cursor: pointer;
-            z-index: 5;
-        }
-        
-        .password-toggle:hover {
-            color: var(--primary-500);
-        }
-        
-        .form-check {
-            margin-bottom: 20px;
-        }
-        
-        .form-check-input {
-            width: 20px;
-            height: 20px;
-            margin-top: 0.25em;
-            margin-right: 12px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .form-check-input:checked {
-            background-color: var(--primary-500);
-            border-color: var(--primary-500);
-        }
-        
-        .form-check-input:focus {
-            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
-        }
-        
-        .terms-text {
-            font-size: 14px;
-            color: var(--neutral-600);
-        }
-        
-        .terms-text a {
-            color: var(--primary-600);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .terms-text a:hover {
-            text-decoration: underline;
-            color: var(--primary-700);
-        }
-        
-        .btn-register {
-            background: var(--primary-gradient);
-            border: none;
-            border-radius: 12px;
-            padding: 18px;
-            font-weight: 600;
-            font-size: 16px;
-            color: white;
-            transition: all 0.3s;
-            margin-top: 15px;
-            width: 100%;
-        }
-        
-        .btn-register:hover {
-            background: var(--primary-gradient-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-        }
-        
-        .login-link {
-            text-align: center;
-            margin-top: 35px;
-            color: var(--neutral-600);
-            font-size: 15px;
-        }
-        
-        .login-link a {
-            color: var(--primary-600);
-            font-weight: 600;
-            text-decoration: none;
-        }
-        
-        .login-link a:hover {
-            text-decoration: underline;
-            color: var(--primary-700);
-        }
-        
-        .progress-indicator {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .progress-indicator::before {
-            content: '';
-            position: absolute;
-            top: 18px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--neutral-200);
-            z-index: 1;
-        }
-        
-        .progress-step {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: white;
-            border: 3px solid var(--neutral-300);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--neutral-500);
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s;
-        }
-        
-        .progress-step.active {
-            border-color: var(--primary-500);
-            background: var(--primary-500);
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .progress-step.completed {
-            border-color: var(--primary-500);
-            background: var(--primary-500);
-            color: white;
-        }
-        
-        .step-content {
-            display: none;
-        }
-        
-        .step-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        .form-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 35px;
-        }
-        
-        .btn-prev, .btn-next {
-            padding: 14px 30px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-prev {
-            background: white;
-            border: 1px solid var(--border-color);
-            color: var(--neutral-700);
-        }
-        
-        .btn-prev:hover {
-            background: var(--neutral-50);
-            transform: translateY(-2px);
-            border-color: var(--primary-300);
-        }
-        
-        .btn-next {
-            background: var(--primary-gradient);
-            border: none;
-            color: white;
-        }
-        
-        .btn-next:hover {
-            background: var(--primary-gradient-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(59, 130, 246, 0.05);
-        }
-        
-        .shape-1 {
-            width: 120px;
-            height: 120px;
-            top: 10%;
-            right: 15%;
-        }
-        
-        .shape-2 {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            right: 25%;
-        }
-        
-        .shape-3 {
-            width: 60px;
-            height: 60px;
-            top: 40%;
-            left: 10%;
-        }
-        
-        .form-text {
-            color: var(--neutral-500);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-        
-        @media (max-width: 992px) {
-            .registration-container {
-                flex-direction: column;
-                max-width: 700px;
-            }
-            
-            .registration-left {
-                padding: 50px 40px;
-            }
-            
-            .registration-right {
-                padding: 50px 40px;
-            }
-            
-            .left-content h1 {
-                font-size: 36px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .social-login {
-                flex-direction: column;
-            }
-            
-            .registration-left, .registration-right {
-                padding: 40px 30px;
-            }
-            
-            .left-content h1 {
-                font-size: 32px;
-            }
-            
-            .registration-header h2 {
-                font-size: 30px;
-            }
-            
-            .logo-img {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .logo-text {
-                font-size: 28px;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đăng Ký - Learn2Earn</title>
+
+  <!-- Bootstrap + FontAwesome + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#3B82F6;
+      --primary-dark:#2563EB;
+      --muted:#64748B;
+      --bg:#F8FAFC;
+      --card-radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(135deg,#EFF6FF 0%, #F1F5F9 100%);
+      color:#0f172a;
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card-wrap{
+      width:100%;
+      max-width:1000px;
+      display:flex;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(59,130,246,0.08);
+      background:#fff;
+    }
+
+    .side {
+      flex:1;
+      padding:40px;
+      background:linear-gradient(180deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02));
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:18px;
+      min-width:280px;
+    }
+
+    .side h1{
+      font-family:Poppins,Inter;
+      margin:0;
+      font-size:26px;
+      color:#0f172a;
+    }
+    .side p{color:var(--muted); margin:0; font-size:14px}
+    .features{list-style:none; padding:0; margin-top:10px}
+    .features li{margin:9px 0; color:#334155; font-size:14px}
+    .features li i{width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; margin-right:10px; color:var(--primary)}
+
+    .form-side{
+      flex:1;
+      padding:36px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .brand{display:flex; gap:12px; align-items:center; margin-bottom:6px}
+    .brand img{width:56px; height:56px; object-fit:contain; border-radius:10px}
+    .brand h2{font-size:20px; margin:0; font-family:Poppins}
+
+    .small-muted{color:var(--muted); font-size:13px; margin-bottom:14px}
+
+    /* progress */
+    .progress-steps{display:flex; gap:8px; align-items:center; margin-bottom:18px}
+    .progress-steps .dot{width:36px; height:36px; border-radius:50%; background:#fff; border:2px solid #e6eefb; display:flex; align-items:center; justify-content:center; color:var(--muted); font-weight:600}
+    .progress-steps .dot.active{background:var(--primary); color:#fff; border-color:var(--primary)}
+    .progress-steps .bar{height:4px; flex:1; background:#eef2ff; border-radius:4px}
+
+    label.form-label{font-weight:600; font-size:14px; color:#334155}
+    .form-control{border-radius:10px; padding:12px 14px; border:1px solid #e6eefb; background:#fbfdff}
+    .form-control:focus{box-shadow:0 6px 18px rgba(59,130,246,0.08); border-color:var(--primary-dark); outline:none}
+
+    .input-with-icon{position:relative}
+    .input-with-icon .fa{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--muted)}
+    .input-with-icon .form-control{padding-left:38px}
+
+    .password-toggle{position:absolute; right:10px; top:50%; transform:translateY(-50%); border:none; background:none; color:var(--muted); cursor:pointer}
+
+    .btn-primary-custom{
+      background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+      border:none; color:#fff; padding:12px 18px; border-radius:10px; width:100%; font-weight:600;
+    }
+    .btn-ghost{border:1px solid #e6eefb; background:#fff; color:#334155; padding:10px 14px; border-radius:10px; width:100%}
+
+    .login-link{font-size:13px; color:var(--muted); text-align:center; margin-top:10px}
+    @media (max-width:900px){ .card-wrap{flex-direction:column} .side{order:2} .form-side{order:1} }
+  </style>
 </head>
 <body>
-    <div class="registration-container">
-        <div class="registration-left">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-            
-            <div class="logo-container">
-                <div class="logo-img">
-                    <!-- Thay thế bằng logo Larana.png thực tế -->
-                    <img src="/Media/logo.png" alt="Learn2Earn Logo" onerror="this.src='https://via.placeholder.com/150x150/3B82F6/FFFFFF?text=L2E'">
-                </div>
-                <!-- Đã bỏ phần .logo-text để chỉ hiển thị logo -->
-            </div>
-            <div class="left-content">
-                <h1>Học để kiếm tiền, Kiến thức tạo giá trị</h1>
-                <p>Tham gia cộng đồng Learn2Earn để tiếp cận những khóa học chất lượng và biến kỹ năng thành thu nhập.</p>
-                <ul class="features">
-                    <li><i class="fas fa-rocket"></i> Hàng trăm khóa học từ cơ bản đến nâng cao</li>
-                    <li><i class="fas fa-coins"></i> Cơ hội kiếm tiền ngay sau khi học</li>
-                    <li><i class="fas fa-users"></i> Kết nối với cộng đồng học tập sôi động</li>
-                    <li><i class="fas fa-headset"></i> Hỗ trợ chuyên nghiệp 24/7</li>
-                </ul>
-            </div>
+
+  <div class="card-wrap">
+    <div class="side">
+      <div class="brand">
+        <img src="/Media/logo.png" alt="L2E" onerror="this.src='https://via.placeholder.com/80/3B82F6/fff?text=L2E'">
+        <div>
+          <div style="font-weight:700">Learn2Earn</div>
+          <div style="font-size:13px;color:var(--muted)">Học để tăng thu nhập</div>
         </div>
-        
-        <div class="registration-right">
-            <div class="registration-header">
-                <h2>Bắt Đầu Hành Trình</h2>
-                <p>Tạo tài khoản để khám phá tiềm năng của bạn</p>
-            </div>
-            
-            <div class="social-login">
-                <button type="button" class="btn social-btn google">
-                    <i class="fab fa-google"></i>
-                    <span>Google</span>
-                </button>
-                <button type="button" class="btn social-btn facebook">
-                    <i class="fab fa-facebook-f"></i>
-                    <span>Facebook</span>
-                </button>
-                <button type="button" class="btn social-btn linkedin">
-                    <i class="fab fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
-                </button>
-            </div>
-            
-            <div class="divider">
-                <span>Hoặc đăng ký với email</span>
-            </div>
-            
-            <form id="registration-form">
-                <div class="progress-indicator">
-                    <div class="progress-step active">1</div>
-                    <div class="progress-step">2</div>
-                    <div class="progress-step">3</div>
-                </div>
-                
-                <!-- Step 1: Personal Information -->
-                <div class="step-content active" id="step1">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="firstName" class="form-label">Họ</label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Nhập họ của bạn" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="lastName" class="form-label">Tên</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Nhập tên của bạn" required>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" placeholder="email@example.com" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Số điện thoại</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                            <input type="tel" class="form-control" id="phone" placeholder="Nhập số điện thoại" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <div></div>
-                        <button type="button" class="btn btn-next" onclick="nextStep(1)">Tiếp theo <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Step 2: Account Security -->
-                <div class="step-content" id="step2">
-                    <div class="form-group">
-                        <label for="password" class="form-label">Mật khẩu</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="password" placeholder="Tạo mật khẩu mạnh" required>
-                            <button type="button" class="password-toggle" id="togglePassword">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <div class="form-text">Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số.</div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Lĩnh vực quan tâm (chọn tối đa 3)</label>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest1">
-                                    <label class="form-check-label" for="interest1">Lập trình & Công nghệ</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest2">
-                                    <label class="form-check-label" for="interest2">Kinh doanh & Marketing</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest3">
-                                    <label class="form-check-label" for="interest3">Thiết kế & Sáng tạo</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest4">
-                                    <label class="form-check-label" for="interest4">Tài chính & Đầu tư</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest5">
-                                    <label class="form-check-label" for="interest5">Ngoại ngữ</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="interest6">
-                                    <label class="form-check-label" for="interest6">Kỹ năng mềm</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <button type="button" class="btn btn-prev" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Quay lại</button>
-                        <button type="button" class="btn btn-next" onclick="nextStep(2)">Tiếp theo <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-                
-                <!-- Step 3: Terms & Finalize -->
-                <div class="step-content" id="step3">
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
-                        <label class="form-check-label terms-text" for="agreeTerms">
-                            Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a> của Learn2Earn
-                        </label>
-                    </div>
-                    
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="newsletter">
-                        <label class="form-check-label terms-text" for="newsletter">
-                            Tôi muốn nhận thông tin về khóa học mới và cơ hội kiếm tiền
-                        </label>
-                    </div>
-                    
-                    <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" id="ageConfirm">
-                        <label class="form-check-label terms-text" for="ageConfirm">
-                            Tôi xác nhận đã đủ 16 tuổi trở lên
-                        </label>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <button type="button" class="btn btn-prev" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Quay lại</button>
-                        <button type="submit" class="btn btn-register">Đăng ký tài khoản</button>
-                    </div>
-                </div>
-            </form>
-            
-            <div class="login-link">
-                Đã có tài khoản? <a href="signIn.html">Đăng nhập ngay</a>
-            </div>
-        </div>
+      </div>
+
+      <h1>Học để kiếm tiền — kiến thức tạo giá trị</h1>
+      <p>Tiếp cận khóa học chất lượng, làm project thực tế, và biến kỹ năng thành thu nhập.</p>
+
+      <ul class="features">
+        <li><i class="fas fa-rocket"></i> Hàng trăm khóa học thực tế</li>
+        <li><i class="fas fa-coins"></i> Cơ hội kiếm tiền sau học</li>
+        <li><i class="fas fa-users"></i> Cộng đồng hỗ trợ</li>
+      </ul>
     </div>
 
-    <!-- Bootstrap JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Password toggle functionality
-        document.getElementById('togglePassword').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('i');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
-        
-        // Multi-step form functionality
-        let currentStep = 1;
-        
-        function nextStep(step) {
-            if (validateStep(step)) {
-                document.getElementById(`step${step}`).classList.remove('active');
-                document.querySelectorAll('.progress-step')[step-1].classList.remove('active');
-                document.querySelectorAll('.progress-step')[step-1].classList.add('completed');
-                
-                currentStep = step + 1;
-                document.getElementById(`step${currentStep}`).classList.add('active');
-                document.querySelectorAll('.progress-step')[currentStep-1].classList.add('active');
-            }
+    <div class="form-side">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px">
+        <div>
+          <div style="font-size:18px; font-weight:700">Bắt đầu hành trình</div>
+          <div class="small-muted">Tạo tài khoản (gọn & nhanh)</div>
+        </div>
+        <div style="width:140px">
+          <!-- social shortcuts (non-functional) -->
+          <div style="display:flex; gap:8px">
+            <button type="button" class="btn-ghost" title="Google"><i class="fab fa-google"></i></button>
+            <button type="button" class="btn-ghost" title="Facebook"><i class="fab fa-facebook-f"></i></button>
+            <button type="button" class="btn-ghost" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-steps" aria-hidden="true">
+        <div class="dot active" id="dot1">1</div>
+        <div class="bar"></div>
+        <div class="dot" id="dot2">2</div>
+        <div class="bar"></div>
+        <div class="dot" id="dot3">3</div>
+      </div>
+
+      <!-- form (fields match table sinhvien) -->
+      <form id="registrationForm" action="/signUp" method="post" enctype="multipart/form-data" novalidate>
+        <!-- STEP 1 -->
+        <div id="step1">
+          <div class="mb-3">
+            <label class="form-label" for="hoten">Họ và tên</label>
+            <input id="hoten" name="hoten" type="text" class="form-control" required placeholder="Nhập họ tên đầy đủ">
+          </div>
+
+          <div class="mb-3 input-with-icon">
+            <i class="fa fa-envelope"></i>
+            <label class="form-label" for="email">Email</label>
+            <input id="email" name="email" type="email" class="form-control" required placeholder="email@example.com">
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="button" class="btn-primary-custom" onclick="nextStep(1)">Tiếp theo <i class="fas fa-arrow-right" style="margin-left:8px"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step2" style="display:none">
+          <div class="mb-3 input-with-icon" style="position:relative">
+            <i class="fa fa-lock"></i>
+            <label class="form-label" for="matkhau">Mật khẩu</label>
+            <input id="matkhau" name="matkhau" type="password" class="form-control" required placeholder="Ít nhất 8 ký tự">
+            <button type="button" class="password-toggle" id="toggleMatkhau" aria-label="Toggle password"><i class="fa fa-eye"></i></button>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="confirmMatkhau">Xác nhận mật khẩu</label>
+            <input id="confirmMatkhau" type="password" class="form-control" required placeholder="Nhập lại mật khẩu">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="chuyennganh">Chuyên ngành</label>
+            <select id="chuyennganh" name="chuyennganh" class="form-control" required>
+              <option value="">--- Chọn chuyên ngành ---</option>
+              <option value="CNTT">Công nghệ thông tin</option>
+              <option value="Kinh tế">Kinh tế</option>
+              <option value="Nông nghiệp">Nông nghiệp</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="button" class="btn-ghost" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Quay lại</button>
+            <button type="button" class="btn-primary-custom ms-auto" onclick="nextStep(2)">Tiếp theo <i class="fas fa-arrow-right" style="margin-left:8px"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step3" style="display:none">
+          <div class="mb-3">
+            <label class="form-label" for="avt">Ảnh đại diện (tùy chọn)</label>
+            <input id="avt" name="avt" type="file" accept="image/*" class="form-control">
+          </div>
+
+          <div class="form-check mb-3">
+            <input id="agree" class="form-check-input" type="checkbox" required>
+            <label class="form-check-label" for="agree">Tôi đồng ý với <a href="#" style="color:var(--primary)">Điều khoản</a></label>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="button" class="btn-ghost" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Quay lại</button>
+            <button type="submit" class="btn-primary-custom">Đăng ký</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="login-link">Đã có tài khoản? <a href="signIn.html" style="color:var(--primary); font-weight:600">Đăng nhập</a></div>
+    </div>
+  </div>
+
+  <script>
+    // Simple step control and validation
+    const form = document.getElementById('registrationForm');
+    let step = 1;
+
+    function showStep(n){
+      document.getElementById('step1').style.display = n===1 ? 'block' : 'none';
+      document.getElementById('step2').style.display = n===2 ? 'block' : 'none';
+      document.getElementById('step3').style.display = n===3 ? 'block' : 'none';
+      document.getElementById('dot1').classList.toggle('active', n===1);
+      document.getElementById('dot2').classList.toggle('active', n===2);
+      document.getElementById('dot3').classList.toggle('active', n===3);
+    }
+
+    function nextStep(current){
+      if (!validate(current)) return;
+      step = current + 1;
+      showStep(step);
+    }
+
+    function prevStep(current){
+      step = current - 1;
+      showStep(step);
+    }
+
+    function validate(current){
+      // step 1 validation
+      if (current === 1){
+        const hoten = document.getElementById('hoten').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!hoten){
+          alert('Vui lòng nhập họ và tên'); return false;
         }
-        
-        function prevStep(step) {
-            document.getElementById(`step${step}`).classList.remove('active');
-            document.querySelectorAll('.progress-step')[step-1].classList.remove('active');
-            
-            currentStep = step - 1;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-            document.querySelectorAll('.progress-step')[currentStep-1].classList.add('active');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+          alert('Vui lòng nhập email hợp lệ'); return false;
         }
-        
-        function validateStep(step) {
-            if (step === 1) {
-                const firstName = document.getElementById('firstName').value;
-                const lastName = document.getElementById('lastName').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                
-                if (!firstName || !lastName || !email || !phone) {
-                    alert('Vui lòng điền đầy đủ thông tin cá nhân');
-                    return false;
-                }
-                
-                if (!validateEmail(email)) {
-                    alert('Vui lòng nhập địa chỉ email hợp lệ');
-                    return false;
-                }
-            }
-            
-            if (step === 2) {
-                const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                
-                if (password.length < 8) {
-                    alert('Mật khẩu phải có ít nhất 8 ký tự');
-                    return false;
-                }
-                
-                if (password !== confirmPassword) {
-                    alert('Mật khẩu xác nhận không khớp!');
-                    return false;
-                }
-            }
-            
-            return true;
+      }
+
+      // step 2 validation
+      if (current === 2){
+        const pw = document.getElementById('matkhau').value;
+        const pw2 = document.getElementById('confirmMatkhau').value;
+        const cg = document.getElementById('chuyennganh').value;
+        if (pw.length < 8){
+          alert('Mật khẩu phải có ít nhất 8 ký tự'); return false;
         }
-        
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
+        if (pw !== pw2){
+          alert('Mật khẩu xác nhận không khớp'); return false;
         }
-        
-        // Form submission
-        document.getElementById('registration-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (!document.getElementById('agreeTerms').checked) {
-                alert('Vui lòng đồng ý với điều khoản dịch vụ');
-                return;
-            }
-            
-            if (!document.getElementById('ageConfirm').checked) {
-                alert('Bạn cần xác nhận đủ 16 tuổi trở lên để đăng ký');
-                return;
-            }
-            
-            // In a real application, you would submit the form here
-            alert('Đăng ký thành công! Chào mừng bạn đến với Learn2Earn!');
-        });
-    </script>
+        if (!cg){
+          alert('Vui lòng chọn chuyên ngành'); return false;
+        }
+      }
+      return true;
+    }
+
+    // password toggle
+    document.getElementById('toggleMatkhau').addEventListener('click', () => {
+      const inp = document.getElementById('matkhau');
+      const i = document.querySelector('#toggleMatkhau i');
+      if (inp.type === 'password'){ inp.type = 'text'; i.classList.replace('fa-eye','fa-eye-slash') }
+      else { inp.type = 'password'; i.classList.replace('fa-eye-slash','fa-eye') }
+    });
+
+    // final submit: let browser do POST after client validation
+    form.addEventListener('submit', function(e){
+      // ensure final validations (step 3)
+      if (!document.getElementById('agree').checked){
+        e.preventDefault();
+        alert('Vui lòng chấp nhận điều khoản để tiếp tục');
+        return false;
+      }
+      // everything ok — form will submit to server (no JS submit simulation)
+    });
+
+    // initialize
+    showStep(1);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

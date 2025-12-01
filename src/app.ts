@@ -1,20 +1,35 @@
-// app.ts
-import express from "express"; 
-import router from "./routes/web.js";
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import student_router from "./routes/student_route.js";
+import business_router from "./routes/business_route.js";
+import web_router from "./routes/web_routes.js";
 
 const app = express();
-const __filename = fileURLToPath(import.meta.url); // lấy đường dẫn file hiện tại
-const __dirname = path.dirname(__filename);       // lấy thư mục chứa file
 
-//config view engine
-app.set('view engine','ejs');
-app.set('views', __dirname + '/views');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-//config public
-app.use(express.static('public'));
+// set view engine
+app.set("view engine", "ejs");
 
-app.use("/", router);
+// set views folder
+app.set("views", path.join(__dirname, "views"));
+
+//set middleware
+// Parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+// Parse application/json
+app.use(express.json());
+
+//set public
+app.use(express.static(path.join(__dirname, "../public"))); 
+
+//set route
+app.use("/", web_router);
+app.use("/business", business_router);
+app.use("/student", student_router);
+
 
 export default app;

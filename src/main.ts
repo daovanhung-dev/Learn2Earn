@@ -1,6 +1,11 @@
 // main.ts
-import app from "./app.js";
+import dotenv from "dotenv";
+dotenv.config();
 
+import app from "./app.js"; // vẫn giữ .js
+import prisma  from "./config/prisma.config.js"; // nếu cần DB
 
-const PORT = 8386;
-app.listen(PORT, () => console.log(`Server chạy http://localhost:${PORT}`));
+const port = process.env.PORT!;
+app.listen(port, () => {
+  console.log(`Server chạy http://localhost:${port}`);
+});

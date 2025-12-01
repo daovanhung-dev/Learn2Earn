@@ -11,7 +11,7 @@
     .brand{ font-weight:700; }
     .form-label{ font-size:.9rem; }
     .status-badge{ font-weight:600; }
-    /* Table -> card dưới 576px */
+
     @media (max-width:575.98px){
       .table thead{ display:none; }
       .table tr{ display:block; margin-bottom:1rem; border:1px solid #e9ecef; border-radius:.5rem; }
@@ -99,7 +99,7 @@
           </tr>
         </thead>
         <tbody id="tbody">
-          <!-- dữ liệu mẫu; có thể thay bằng render từ server -->
+          <!-- dữ liệu mẫu -->
           <tr data-city="Hà Nội" data-status="connected">
             <td data-label="Tên trường">ĐH Công nghệ — VNU</td>
             <td data-label="Địa chỉ" class="text-center">Hà Nội</td>
@@ -110,10 +110,15 @@
             <td data-label="Hành động" class="text-center">
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm btn-connect" data-name="ĐH Công nghệ — VNU">Kết nối</button>
-                <button class="btn btn-outline-primary btn-sm btn-detail" data-name="ĐH Công nghệ — VNU" data-email="contact@vnu.edu.vn" data-city="Hà Nội" data-note="Đối tác chiến lược">Chi tiết</button>
+                <button class="btn btn-outline-primary btn-sm btn-detail"
+                  data-name="ĐH Công nghệ — VNU"
+                  data-email="contact@vnu.edu.vn"
+                  data-city="Hà Nội"
+                  data-note="Đối tác chiến lược">Chi tiết</button>
               </div>
             </td>
           </tr>
+
           <tr data-city="Hà Nội" data-status="pending">
             <td data-label="Tên trường">ĐH Bách Khoa</td>
             <td data-label="Địa chỉ" class="text-center">Hà Nội</td>
@@ -124,10 +129,15 @@
             <td data-label="Hành động" class="text-center">
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm btn-connect" data-name="ĐH Bách Khoa">Kết nối</button>
-                <button class="btn btn-outline-primary btn-sm btn-detail" data-name="ĐH Bách Khoa" data-email="abc@hust.edu.vn" data-city="Hà Nội" data-note="Kỹ thuật – hợp tác nghiên cứu">Chi tiết</button>
+                <button class="btn btn-outline-primary btn-sm btn-detail"
+                  data-name="ĐH Bách Khoa"
+                  data-email="abc@hust.edu.vn"
+                  data-city="Hà Nội"
+                  data-note="Kỹ thuật – hợp tác nghiên cứu">Chi tiết</button>
               </div>
             </td>
           </tr>
+
           <tr data-city="TP. HCM" data-status="not">
             <td data-label="Tên trường">ĐH Khoa học Tự nhiên</td>
             <td data-label="Địa chỉ" class="text-center">TP. HCM</td>
@@ -138,10 +148,15 @@
             <td data-label="Hành động" class="text-center">
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm btn-connect" data-name="ĐH Khoa học Tự nhiên">Kết nối</button>
-                <button class="btn btn-outline-primary btn-sm btn-detail" data-name="ĐH Khoa học Tự nhiên" data-email="info@hcmus.edu.vn" data-city="TP. HCM" data-note="Khối KHTN">Chi tiết</button>
+                <button class="btn btn-outline-primary btn-sm btn-detail"
+                  data-name="ĐH Khoa học Tự nhiên"
+                  data-email="info@hcmus.edu.vn"
+                  data-city="TP. HCM"
+                  data-note="Khối KHTN">Chi tiết</button>
               </div>
             </td>
           </tr>
+
           <tr data-city="Đà Nẵng" data-status="not">
             <td data-label="Tên trường">ĐH Bách Khoa Đà Nẵng</td>
             <td data-label="Địa chỉ" class="text-center">Đà Nẵng</td>
@@ -152,10 +167,15 @@
             <td data-label="Hành động" class="text-center">
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm btn-connect" data-name="ĐH Bách Khoa Đà Nẵng">Kết nối</button>
-                <button class="btn btn-outline-primary btn-sm btn-detail" data-name="ĐH Bách Khoa Đà Nẵng" data-email="contact@dut.udn.vn" data-city="Đà Nẵng" data-note="Kỹ thuật miền Trung">Chi tiết</button>
+                <button class="btn btn-outline-primary btn-sm btn-detail"
+                  data-name="ĐH Bách Khoa Đà Nẵng"
+                  data-email="contact@dut.udn.vn"
+                  data-city="Đà Nẵng"
+                  data-note="Kỹ thuật miền Trung">Chi tiết</button>
               </div>
             </td>
           </tr>
+
           <tr data-city="Huế" data-status="connected">
             <td data-label="Tên trường">ĐH Nông Lâm Huế</td>
             <td data-label="Địa chỉ" class="text-center">Huế</td>
@@ -166,10 +186,15 @@
             <td data-label="Hành động" class="text-center">
               <div class="btn-group">
                 <button class="btn btn-primary btn-sm btn-connect" data-name="ĐH Nông Lâm Huế">Kết nối</button>
-                <button class="btn btn-outline-primary btn-sm btn-detail" data-name="ĐH Nông Lâm Huế" data-email="partner@huaf.edu.vn" data-city="Huế" data-note="Nông nghiệp – hợp tác đào tạo">Chi tiết</button>
+                <button class="btn btn-outline-primary btn-sm btn-detail"
+                  data-name="ĐH Nông Lâm Huế"
+                  data-email="partner@huaf.edu.vn"
+                  data-city="Huế"
+                  data-note="Nông nghiệp – hợp tác đào tạo">Chi tiết</button>
               </div>
             </td>
           </tr>
+
         </tbody>
       </table>
     </div>
@@ -252,9 +277,10 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 (() => {
-  // ===== Helpers =====
+
   const q = document.getElementById('q');
   const city = document.getElementById('city');
   const status = document.getElementById('status');
@@ -263,7 +289,7 @@
   const resultCount = document.getElementById('resultCount');
   const rangeInfo = document.getElementById('rangeInfo');
   const pager = document.getElementById('pager');
-  const pageSize = 5; // số dòng / trang
+  const pageSize = 5;
 
   let filtered = rows.slice();
   let page = 1;
@@ -274,6 +300,7 @@
     const k = normalize(q.value);
     const c = city.value;
     const st = status.value;
+
     filtered = rows.filter(tr=>{
       const text = normalize(tr.innerText);
       const okK = !k || text.includes(k);
@@ -281,23 +308,26 @@
       const okS = !st || tr.dataset.status === st;
       return okK && okC && okS;
     });
+
     page = 1;
     render();
   }
 
   function render(){
-    // ẩn tất cả
     rows.forEach(tr=>tr.style.display='none');
-    // phân trang
+
     const total = filtered.length;
     const pages = Math.max(1, Math.ceil(total / pageSize));
     if(page>pages) page=pages;
+
     const start = (page-1)*pageSize;
     const end = Math.min(start+pageSize, total);
+
     filtered.slice(start, end).forEach(tr=>tr.style.display='table-row');
-    // info + pager
+
     resultCount.textContent = total;
     rangeInfo.textContent = total ? `${start+1}–${end}` : '0–0';
+
     pager.innerHTML = '';
     const makeItem = (label, p, disabled=false, active=false) => {
       const li = document.createElement('li');
@@ -315,14 +345,19 @@
   }
 
   document.getElementById('btnSearch').addEventListener('click', applyFilter);
+
   document.getElementById('btnReset').addEventListener('click', ()=>{
     q.value=''; city.value=''; status.value=''; applyFilter();
   });
-  [q, city, status].forEach(el=>el.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); applyFilter(); } }));
+
+  [q, city, status].forEach(el=>el.addEventListener('keydown', e=>{
+    if(e.key==='Enter'){ e.preventDefault(); applyFilter(); }
+  }));
 
   // ===== Modal Kết nối =====
   const connectModal = new bootstrap.Modal('#connectModal');
   let pendingSchool = '';
+
   tbody.addEventListener('click', (e)=>{
     const btn = e.target.closest('.btn-connect');
     if(btn){
@@ -331,10 +366,30 @@
       connectModal.show();
     }
   });
+
   document.getElementById('btnDoConnect').addEventListener('click', ()=>{
+
     connectModal.hide();
-    // demo: thông báo
+
     const toast = document.createElement('div');
     toast.className='toast align-items-center text-bg-primary border-0 position-fixed bottom-0 end-0 m-3';
     toast.setAttribute('role','alert');
-    toast.innerHTML=`<div class="d-flex"><div class="toast-body">Đã gửi yêu cầu kết nối tới <strong>${pendingSchool}</strong>.</div><button class="btn-close
+
+    toast.innerHTML = `
+      <div class="d-flex">
+        <div class="toast-body">
+          Đã gửi yêu cầu kết nối tới <strong>${pendingSchool}</strong>.
+        </div>
+        <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    `;
+
+    document.body.appendChild(toast);
+    new bootstrap.Toast(toast).show();
+  });
+
+})();
+</script>
+
+</body>
+</html>

@@ -3,46 +3,46 @@
 import { Router } from "express";
 import * as studentCtrl from "../controllers/student_ctrl.js"; // luôn có .js
 
-const router = Router();
+const student_router = Router();
 
 /* -------------------------  STUDENT ROUTES  ------------------------- */
 
 // Trang cài đặt
-router.get("/Setting", studentCtrl.student_setting);
+student_router.get("/Setting", studentCtrl.student_setting);
 
 // Trang hồ sơ sinh viên
-router.get("/Profile", studentCtrl.student_profile);
+student_router.get("/Profile", studentCtrl.student_profile);
 
 // Update Profile
-router.get("/UpdateProfile", studentCtrl.student_updateProfile);
+student_router.get("/UpdateProfile", studentCtrl.student_updateProfile);
 
 // Tạo CV
-router.get("/CreateCV", studentCtrl.student_createCV);
+student_router.get("/CreateCV", studentCtrl.student_createCV);
 
 // Cập nhật CV
-router.get("/UpdateCV", studentCtrl.student_updateCV);
+student_router.get("/UpdateCV", studentCtrl.student_updateCV);
 
 // Xem các job đã đăng
-router.get("/PostJobs", studentCtrl.student_posts_jobs);
+student_router.get("/PostJobs", studentCtrl.student_posts_jobs);
 
 // Apply job
-router.get("/Apply", studentCtrl.student_apply);
+student_router.get("/Apply", studentCtrl.student_apply);
 
 // Thông báo
-router.get("/Noti", studentCtrl.student_noti);
+student_router.get("/Noti", studentCtrl.student_noti);
 
 // Tin nhắn
-router.get("/Chat", studentCtrl.student_chat);
+student_router.get("/Chat", studentCtrl.student_chat);
 
 // Xem TopCV
-router.get("/TopCV", studentCtrl.student_view_topcv);
+student_router.get("/TopCV", studentCtrl.student_view_topcv);
 
 // Home Sinh Vien
-router.get("/Home", studentCtrl.student_homeSV);
+student_router.get("/Home", studentCtrl.student_homeSV);
 
 // Lich phong van
-router.get("/Interview",studentCtrl.student_interview_schedule);
+student_router.get("/Interview",studentCtrl.student_interview_schedule);
 
 /* ------------------------------------------------------------------- */
 
-export default router;
+export default student_router;
