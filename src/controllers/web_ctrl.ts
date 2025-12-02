@@ -18,9 +18,13 @@ export const homePage = async (req: Request, res: Response) => {
 };
 
 // Route Sign In ================================================================================================================================================
-export const signIn = (req: Request, res: Response) => {
-  res.render("signInStudent");
+export const signInStudentCtrl = (req: Request, res: Response) => {
+  res.render("/Student/signIn");
 };
+export const signInBusinessCtrl = (req: Request, res: Response) => {
+  res.render("/Busiess/signIn");
+}
+
 export const loginStudentCtrl = async (req: Request, res: Response) => {
   console.log("➡️ loginStudentCtrl");
 
@@ -85,10 +89,27 @@ export const signInRole = (req: Request, res: Response) =>
 
 
 // Route Sign Up ================================================================================================================================================
-export const signUp = (req: Request, res: Response) => {
-  res.render("signUpStudent");
+export const signUpStudentCtrl = (req: Request, res: Response) => {
+  res.render("/Business/signUp");
+};
+export const signUpBusinessCtrl = (req: Request, res: Response) => {
+  res.render("/Business/signUp")
+}
+export const signUpRole = (req: Request, res: Response) => {
+  res.render("sign_up_role");
+};
+//home
+export const studentHome = async (req: AuthRequest, res: Response) => {
+  const student = req.user; // ✅ student từ token
+  if (!student) return res.redirect("/signIn");
+
+  // Lấy dữ liệu student từ DB nếu cần
+  const studentData = await StudentService.getStudentById(student.id);
+
+  res.render("studentHome", { student: studentData });
 };
 
+//create
 export const createStudent = async (req: Request, res: Response) => {
   try {
     const { hoten, email, matkhau, chuyennganh } = req.body;
@@ -112,19 +133,7 @@ export const createStudent = async (req: Request, res: Response) => {
   }
 };
 
-export const studentHome = async (req: AuthRequest, res: Response) => {
-  const student = req.user; // ✅ student từ token
-  if (!student) return res.redirect("/signIn");
 
-  // Lấy dữ liệu student từ DB nếu cần
-  const studentData = await StudentService.getStudentById(student.id);
-
-  res.render("studentHome", { student: studentData });
-};
-
-export const signUpRole = (req: Request, res: Response) => {
-  res.render("sign_up_role");
-};
 
 //coming-soon
 export const comingSoon = (req: Request, res: Response) => {
@@ -141,6 +150,8 @@ export const testCookie = (req: Request, res: Response) => {
 
   res.send("✅ Check console server để xem cookie và payload JWT");
 };
+
+//business
 
 
 

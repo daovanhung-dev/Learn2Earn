@@ -15,12 +15,14 @@ const upload = multer({ storage }); // tạo upload middleware
 web_router.get("/", web_ctrl.homePage);
 
 // Route đăng nhập
-web_router.get("/signIn", web_ctrl.signIn);
+web_router.get("/signInStudent", web_ctrl.signInStudentCtrl);
+web_router.get("/signInBusiness", web_ctrl.signInBusinessCtrl);
 web_router.get("/signInRole", web_ctrl.signInRole);
 web_router.post("/signInPOST", web_ctrl.loginStudentCtrl);
 
 // Route đăng ký
-web_router.get("/signUp", web_ctrl.signUp);
+web_router.get("/signUpStudent", web_ctrl.signUpStudentCtrl);
+web_router.get("/signUpBusiness", web_ctrl.signUpBusinessCtrl);
 web_router.get("/signUpRole", web_ctrl.signUpRole);
 web_router.post("/signUp", upload.single("avt"), web_ctrl.createStudent);
 

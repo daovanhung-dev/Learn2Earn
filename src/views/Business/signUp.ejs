@@ -2,10 +2,9 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Learn2Earn Business - Đăng nhập / Đăng ký</title>
+<title>Learn2Earn Business - Đăng ký</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
 
@@ -14,7 +13,6 @@
     background: #eef2f7;
     font-family: "Inter", sans-serif;
   }
-
   .auth-card {
     width: 420px;
     background: white;
@@ -22,7 +20,6 @@
     padding: 30px 28px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   }
-
   .logo-box {
     width: 48px;
     height: 48px;
@@ -36,66 +33,35 @@
     font-size: 1.1rem;
     margin: 0 auto 10px;
   }
-
   .tab-btn {
     cursor: pointer;
     font-weight: 600;
     padding-bottom: 6px;
     color: #64748b;
   }
-
   .tab-btn.active {
     color: #1e2a44;
     border-bottom: 2px solid #1e2a44;
   }
-
-  .hidden { display: none; }
 </style>
 </head>
 
 <body>
 
 <div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
-
   <div class="auth-card">
-    
-    <!-- LOGO -->
+
     <div class="logo-box">DN</div>
     <h4 class="text-center fw-bold mb-4">Learn2Earn Business</h4>
 
     <!-- TABS -->
     <div class="d-flex justify-content-around mb-4">
-      <div id="tabLogin" class="tab-btn active">Đăng nhập</div>
-      <div id="tabRegister" class="tab-btn">Đăng ký</div>
+      <a href="business_login.html" class="tab-btn">Đăng nhập</a>
+      <a href="business_register.html" class="tab-btn active">Đăng ký</a>
     </div>
 
-    <!-- FORM ĐĂNG NHẬP -->
-    <form id="loginForm">
-      <div class="mb-3">
-        <label class="form-label fw-semibold">Email doanh nghiệp</label>
-        <input type="email" class="form-control" placeholder="company@example.com" required>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label fw-semibold">Mật khẩu</label>
-        <input type="password" class="form-control" placeholder="Nhập mật khẩu" required>
-      </div>
-
-      <div class="d-flex justify-content-between mb-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="rememberMe">
-          <label class="form-check-label small" for="rememberMe">Ghi nhớ đăng nhập</label>
-        </div>
-        <a href="#" class="small text-decoration-none">Quên mật khẩu?</a>
-      </div>
-
-      <button class="btn btn-dark w-100 mb-3" type="submit">
-        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
-      </button>
-    </form>
-
-    <!-- FORM ĐĂNG KÝ -->
-    <form id="registerForm" class="hidden">
+    <!-- FORM REGISTER -->
+    <form>
       <div class="mb-3">
         <label class="form-label fw-semibold">Tên công ty</label>
         <input type="text" class="form-control" placeholder="VD: Công ty Minh Long" required>
@@ -131,29 +97,7 @@
     </div>
 
   </div>
-
 </div>
-
-<script>
-  const tabLogin = document.getElementById("tabLogin");
-  const tabRegister = document.getElementById("tabRegister");
-  const loginForm = document.getElementById("loginForm");
-  const registerForm = document.getElementById("registerForm");
-
-  tabLogin.onclick = () => {
-    tabLogin.classList.add("active");
-    tabRegister.classList.remove("active");
-    loginForm.classList.remove("hidden");
-    registerForm.classList.add("hidden");
-  };
-
-  tabRegister.onclick = () => {
-    tabRegister.classList.add("active");
-    tabLogin.classList.remove("active");
-    registerForm.classList.remove("hidden");
-    loginForm.classList.add("hidden");
-  };
-</script>
 
 </body>
 </html>

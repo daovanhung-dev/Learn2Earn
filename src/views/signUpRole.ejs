@@ -401,7 +401,7 @@
       </div>
       <div class="role-header-right">
         <span>Đã có tài khoản? </span>
-        <a href="/signIn">Đăng nhập</a>
+        <a onclick="navigateTo('/signInRole')">Đăng nhập</a>
       </div>
     </div>
 
@@ -437,8 +437,7 @@
             </ul>
           </div>
           <div class="role-actions">
-            <!-- Sửa href cho đúng route của anh -->
-            <a onclick="window.location.href='/signIn'" class="btn-role-primary">
+            <a onclick="window.location.href='/signUpStudent'" class="btn-role-primary">
               Tôi là sinh viên
               <i class="fas fa-arrow-right"></i>
             </a>
@@ -470,7 +469,7 @@
           </div>
           <div class="role-actions">
             <!-- Sửa href cho đúng route của anh -->
-            <a href="/Business/signUp" class="btn-role-primary">
+            <a onclick="window.location.href='/signInBusiness'" class="btn-role-primary">
               Tôi là doanh nghiệp
               <i class="fas fa-arrow-right"></i>
             </a>

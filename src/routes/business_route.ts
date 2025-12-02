@@ -1,55 +1,47 @@
 // src/routes/business_route.ts
-
 import { Router } from "express";
-
-// 
-import {
-  business_setting,
-  business_update_information,
-  business_update_information_post,
-  business_post_job,
-  business_post_job_post,
-  business_apply_list,
-  business_edit_info_apply,
-  business_edit_info_apply_post,
-  business_link_with_university,
-  business_notification,
-  business_chat,
-  business_home
-} from "../controllers/business_ctrl.js";
+import * as businessCtrl from "../controllers/business_ctrl.js";
 
 const business_router = Router();
 
-/* -------------------------  BUSINESS ROUTES  ------------------------- */
+/* ---------------------------- BUSINESS ROUTES ---------------------------- */
 
-// Trang cài đặt doanh nghiệp
-business_router.get("/Setting", business_setting);
+// Trang chính
+business_router.get("/Home", businessCtrl.business_home);
 
-// Update thông tin
-business_router.get("/UpdateInformation", business_update_information);
-business_router.post("/UpdateInformation", business_update_information_post);
+// Cài đặt doanh nghiệp
+business_router.get("/Setting", businessCtrl.business_setting);
 
-// Đăng tin tuyển dụng
-business_router.get("/PostJob", business_post_job);
-business_router.post("/PostJob", business_post_job_post);
+// Update thông tin doanh nghiệp
+business_router
+  .route("/UpdateInformation")
+  .get(businessCtrl.business_update_information)
+  .post(businessCtrl.business_update_information_post);
+
+// Quản lý tin tuyển dụng
+business_router
+  .route("/PostJob")
+  .get(businessCtrl.business_post_job)
+  .post(businessCtrl.business_post_job_post);
 
 // Danh sách ứng viên apply
-business_router.get("/ApplyList", business_apply_list);
+business_router.get("/ApplyList", businessCtrl.business_apply_list);
 
-// Sửa thông tin apply
-business_router.get("/EditInfoApply", business_edit_info_apply);
-business_router.post("/EditInfoApply", business_edit_info_apply_post);
+// Chỉnh sửa thông tin ứng viên
+business_router
+  .route("/EditInfoApply")
+  .get(businessCtrl.business_edit_info_apply)
+  .post(businessCtrl.business_edit_info_apply_post);
 
-// Kết nối trường học
-business_router.get("/LinkUniversity", business_link_with_university);
+// Kết nối với trường đại học
+business_router.get("/LinkUniversity", businessCtrl.business_link_with_university);
 
 // Thông báo
-business_router.get("/Notification", business_notification);
+business_router.get("/Notification", businessCtrl.business_notification);
 
 // Tin nhắn
-business_router.get("/Chat", business_chat);
+business_router.get("/Chat", businessCtrl.business_chat);
 
-
-/* ------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------ */
 
 export default business_router;
