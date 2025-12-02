@@ -38,17 +38,30 @@ class JDService {
 
   // Lấy tất cả JD, sắp xếp theo ngày tạo mới nhất
   async getAllJD() {
-  try {
-    const jds = await prisma.jD.findMany({
-      orderBy: { ngay_tao: "desc" }, // sắp xếp theo ngày tạo mới nhất
-    });
-    return jds;
-  } catch (error) {
-    console.error("Lỗi khi lấy JD:", error);
-    throw error;
+    try {
+      const jds = await prisma.jD.findMany({
+        orderBy: { ngay_tao: "desc" }, // sắp xếp theo ngày tạo mới nhất
+      });
+      return jds;
+    } catch (error) {
+      console.error("Lỗi khi lấy JD:", error);
+      throw error;
+    }
   }
-}
 
+  // Lấy tổng số job
+  countJD = async () => {
+    return await prisma.jD.count();
+  };
+
+  // Lấy jobs phân trang
+  getJDWithLimit = async (skip: number, take: number) => {
+    return await prisma.jD.findMany({
+      skip,
+      take,
+      include: { DoanhNghiep: true }, // join với doanh nghiệp nếu cần
+    });
+  };
 
   // Lấy JD theo ID
   async getJDById(id: number | bigint) {

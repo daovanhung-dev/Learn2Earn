@@ -13,16 +13,15 @@ const __dirname = path.dirname(__filename);
 // Route Home
 export const homePage = async (req: Request, res: Response) => {
   const jobs = await JDService.getAllJD();
-  console.log();
   return res.render("home", { jobs });
 };
 
 // Route Sign In ================================================================================================================================================
 export const signInStudentCtrl = (req: Request, res: Response) => {
-  res.render("/Student/signIn");
+  res.render("Student/signIn");
 };
 export const signInBusinessCtrl = (req: Request, res: Response) => {
-  res.render("/Busiess/signIn");
+  res.render("Busiess/signIn");
 }
 
 export const loginStudentCtrl = async (req: Request, res: Response) => {
@@ -84,19 +83,19 @@ export const loginStudentCtrl = async (req: Request, res: Response) => {
 };
 export const signInRole = (req: Request, res: Response) =>
 {
-  res.render("sign_in_role");
+  res.render("signInRole");
 };
 
 
 // Route Sign Up ================================================================================================================================================
 export const signUpStudentCtrl = (req: Request, res: Response) => {
-  res.render("/Business/signUp");
+  res.render("Student/signUp");
 };
 export const signUpBusinessCtrl = (req: Request, res: Response) => {
-  res.render("/Business/signUp")
+  res.render("Business/signUp");
 }
 export const signUpRole = (req: Request, res: Response) => {
-  res.render("sign_up_role");
+  res.render("signUpRole");
 };
 //home
 export const studentHome = async (req: AuthRequest, res: Response) => {
@@ -132,8 +131,6 @@ export const createStudent = async (req: Request, res: Response) => {
     res.status(500).send(err.message);
   }
 };
-
-
 
 //coming-soon
 export const comingSoon = (req: Request, res: Response) => {

@@ -1,8 +1,24 @@
 // src/controllers/student_ctrl.ts
 import { Request, Response } from "express";
+import JDService from "../services/jobs_services.js";
 
 // Trang chính và các trang render
-export const student_homeSV = (req: Request, res: Response) => res.render("Student/student_home");
+export const student_homeSV = async (req: Request, res: Response) => {
+  const page = parseInt(req.query.page as string) || 1;
+  const limit = 6; // số jobs mỗi trang
+
+  const allJobs = await JDService.getAllJD(); // lấy tất cả công việc
+  const totalJobs = allJobs.length; // tổng số job
+  const totalPages = Math.ceil(totalJobs / limit); // tổng số trang
+
+  const jobs = allJobs.slice((page - 1) * limit, page * limit); // jobs của trang hiện tại
+
+  // Truyền tất cả biến cần thiết cho EJS
+  res.render("Student/student_home", { jobs, page, totalPages, totalJobs });
+};
+
+
+
 export const student_setting = (req: Request, res: Response) => res.render("Student/student_setting");
 export const student_profile = (req: Request, res: Response) => res.render("Student/student_profile");
 export const student_updateProfile = (req: Request, res: Response) => res.render("Student/student_update_SV");

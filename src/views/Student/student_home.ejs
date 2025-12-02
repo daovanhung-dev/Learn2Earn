@@ -581,7 +581,6 @@
             <li class="nav-item">
               <a class="nav-link" data-route="/Student/Home" onclick="navigateTo('/Student/Home')">Trang chủ</a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" data-route="/Student/Profile" onclick="navigateTo('/Student/Profile')">Hồ sơ</a>
             </li>
@@ -780,97 +779,80 @@
     </div>
   </section>
 
-  <main class="container my-4 my-lg-5">
-    <div class="row g-4">
-      <aside class="col-lg-3">
-        <div class="sidebar-card">
-          <div class="card-header">
-            <span><i class="fas fa-filter me-2"></i>Lọc nâng cao</span>
-            <span class="small text-muted">6 kết quả</span>
+<main class="container my-4 my-lg-5">
+  <div class="row g-4">
+    <aside class="col-lg-3">
+      <div class="sidebar-card">
+        <div class="card-header">
+          <span><i class="fas fa-filter me-2"></i>Lọc nâng cao</span>
+          <span class="small text-muted"><%= totalJobs %> kết quả</span>
+        </div>
+        <div class="card-body">
+          <!-- Filters -->
+          <div class="filter-group">
+            <div class="filter-label">Theo danh mục nghề</div>
+            <% const categories = ['Quản lý kinh doanh','Marketing','Kế toán','Sales Bán lẻ','Kinh doanh/Bán hàng','Nhân sự','Quảng cáo/Sáng tạo']; %>
+            <% categories.forEach((cat, index) => { %>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="dm<%= index+1 %>">
+                <label class="form-check-label" for="dm<%= index+1 %>"><%= cat %></label>
+              </div>
+            <% }) %>
           </div>
-          <div class="card-body">
-            <div class="filter-group">
-              <div class="filter-label">Theo danh mục nghề</div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm1"><label
-                  class="form-check-label" for="dm1">Quản lý kinh doanh</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm2"><label
-                  class="form-check-label" for="dm2">Marketing</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm3"><label
-                  class="form-check-label" for="dm3">Kế toán</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm4"><label
-                  class="form-check-label" for="dm4">Sales Bán lẻ</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm5"><label
-                  class="form-check-label" for="dm5">Kinh doanh/Bán hàng</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm6"><label
-                  class="form-check-label" for="dm6">Nhân sự</label></div>
-              <div class="form-check"><input class="form-check-input" type="checkbox" id="dm7"><label
-                  class="form-check-label" for="dm7">Quảng cáo/Sáng tạo</label></div>
-            </div>
 
-            <div class="filter-group">
-              <div class="filter-label">Cấp bậc</div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb0" checked><label
-                  class="form-check-label" for="cb0">Tất cả</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb1"><label
-                  class="form-check-label" for="cb1">Nhân viên</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb2"><label
-                  class="form-check-label" for="cb2">Trưởng nhóm</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb3"><label
-                  class="form-check-label" for="cb3">Trưởng phòng</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb4"><label
-                  class="form-check-label" for="cb4">Giám đốc</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="capbac" id="cb5"><label
-                  class="form-check-label" for="cb5">Thực tập sinh</label></div>
-            </div>
+          <div class="filter-group">
+            <div class="filter-label">Cấp bậc</div>
+            <% const levels = ['Tất cả','Nhân viên','Trưởng nhóm','Trưởng phòng','Giám đốc','Thực tập sinh']; %>
+            <% levels.forEach((level, index) => { %>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="capbac" id="cb<%= index %>" <%= index===0 ? 'checked' : '' %>>
+                <label class="form-check-label" for="cb<%= index %>"><%= level %></label>
+              </div>
+            <% }) %>
+          </div>
 
-            <div class="filter-group">
-              <div class="filter-label">Mức lương</div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu0" checked><label
-                  class="form-check-label" for="lu0">Tất cả</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu1"><label
-                  class="form-check-label" for="lu1">Dưới 10 triệu</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu2"><label
-                  class="form-check-label" for="lu2">10 – 15 triệu</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu3"><label
-                  class="form-check-label" for="lu3">15 – 20 triệu</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu4"><label
-                  class="form-check-label" for="lu4">20 – 25 triệu</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="luong" id="lu5"><label
-                  class="form-check-label" for="lu5">Trên 25 triệu</label></div>
-            </div>
+          <div class="filter-group">
+            <div class="filter-label">Mức lương</div>
+            <% const salaries = ['Tất cả','Dưới 10 triệu','10 – 15 triệu','15 – 20 triệu','20 – 25 triệu','Trên 25 triệu']; %>
+            <% salaries.forEach((salary, index) => { %>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="luong" id="lu<%= index %>" <%= index===0 ? 'checked' : '' %>>
+                <label class="form-check-label" for="lu<%= index %>"><%= salary %></label>
+              </div>
+            <% }) %>
+          </div>
 
-            <div class="filter-group">
-              <div class="filter-label">Hình thức làm việc</div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht0"
-                  checked><label class="form-check-label" for="ht0">Tất cả</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht1"><label
-                  class="form-check-label" for="ht1">Toàn thời gian</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht2"><label
-                  class="form-check-label" for="ht2">Bán thời gian</label></div>
-              <div class="form-check"><input class="form-check-input" type="radio" name="hinhthuc" id="ht3"><label
-                  class="form-check-label" for="ht3">Thực tập</label></div>
-            </div>
+          <div class="filter-group">
+            <div class="filter-label">Hình thức làm việc</div>
+            <% const workTypes = ['Tất cả','Toàn thời gian','Bán thời gian','Thực tập']; %>
+            <% workTypes.forEach((type, index) => { %>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="hinhthuc" id="ht<%= index %>" <%= index===0 ? 'checked' : '' %>>
+                <label class="form-check-label" for="ht<%= index %>"><%= type %></label>
+              </div>
+            <% }) %>
+          </div>
 
-            <button type="button" class="btn-clear">Xóa lọc</button>
+          <button type="button" class="btn-clear">Xóa lọc</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="col-lg-9">
+      <div class="jobs-header">
+        <div>
+          <div class="jobs-title">Kết quả tìm kiếm <span>(<%= totalJobs %> việc làm)</span></div>
+          <div class="jobs-subtitle">
+            Sắp xếp theo: <strong>Mới nhất</strong> · Bạn có thể thay đổi tiêu chí ở phía trên.
           </div>
         </div>
-      </aside>
-
-      <section class="col-lg-9">
-        <div class="jobs-header">
-          <div>
-            <div class="jobs-title">Kết quả tìm kiếm <span>(6 việc làm Marketing)</span></div>
-            <div class="jobs-subtitle">
-              Sắp xếp theo: <strong>Mới nhất</strong> · Bạn có thể thay đổi tiêu chí ở phía trên.
-            </div>
-          </div>
-          <div class="result-badge">
-            <i class="fa-solid fa-circle-check"></i>
-            Phù hợp với sinh viên &amp; người mới đi làm
-          </div>
+        <div class="result-badge">
+          <i class="fa-solid fa-circle-check"></i>
+          Phù hợp với sinh viên &amp; người mới đi làm
         </div>
+      </div>
 
-        <!-- Job 1 -->
+      <% jobs.forEach(job => { %>
         <div class="card job-card">
           <div class="card-body">
             <div class="row gx-3">
@@ -878,20 +860,18 @@
                 <div class="d-flex align-items-start mb-2">
                   <div class="job-logo"><i class="fas fa-building"></i></div>
                   <div>
-                    <h3 class="job-title">Thực Tập Sinh Content Marketing</h3>
-                    <p class="job-company">CÔNG TY TNHH AVE FACTORY · Đà Nẵng</p>
+                    <h3 class="job-title"><%= job.ten_vi_tri %></h3>
+                    <p class="job-company"><%= job.ten_cong_ty %> · <%= job.dia_diem %></p>
                     <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Đà Nẵng</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Toàn thời gian</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>1–2 triệu</span>
-                      </div>
+                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span><%= job.dia_diem %></span></div>
+                      <div class="job-meta-item"><i class="fas fa-clock"></i><span><%= job.thoi_gian %></span></div>
+                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span><%= job.muc_luong %></span></div>
                     </div>
                     <div class="job-tags">
-                      <span class="job-tag">Intern</span>
-                      <span class="job-tag">Marketing</span>
-                      <span class="job-tag">Content</span>
+                      <% if(job.cap_bac) { %><span class="job-tag"><%= job.cap_bac %></span><% } %>
+                      <% if(job.nganh) { %><span class="job-tag"><%= job.nganh %></span><% } %>
                     </div>
-                    <div class="job-time">Đăng 2 ngày trước · Ưu tiên sinh viên năm 3, 4</div>
+                    <% if(job.uu_tien){ %><div class="job-time"><%= job.uu_tien %></div><% } %>
                   </div>
                 </div>
               </div>
@@ -904,194 +884,20 @@
             </div>
           </div>
         </div>
+      <% }) %>
 
-        <!-- Job 2 -->
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-chart-line"></i></div>
-                  <div>
-                    <h3 class="job-title">Trưởng Phòng Marketing / Marketing Manager</h3>
-                    <p class="job-company">DN TƯ NHÂN ÂM SẮC MỘC · Hồ Chí Minh</p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hồ Chí Minh</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Toàn thời gian</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>Thỏa
-                          thuận</span></div>
-                    </div>
-                    <div class="job-tags">
-                      <span class="job-tag">Manager</span>
-                      <span class="job-tag">Marketing</span>
-                      <span class="job-tag">3+ năm kinh nghiệm</span>
-                    </div>
-                    <div class="job-time">Đăng 1 tuần trước · Yêu cầu kinh nghiệm quản lý đội nhóm</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet()">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Job 3 -->
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-users"></i></div>
-                  <div>
-                    <h3 class="job-title">Marketing Leader</h3>
-                    <p class="job-company">CÔNG TY TNHH KNS INTERNATIONAL · Hồ Chí Minh</p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hồ Chí Minh</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Toàn thời gian</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>Thỏa
-                          thuận</span></div>
-                    </div>
-                    <div class="job-tags">
-                      <span class="job-tag">Leader</span>
-                      <span class="job-tag">Marketing</span>
-                      <span class="job-tag">3+ năm kinh nghiệm</span>
-                    </div>
-                    <div class="job-time">Đăng 3 ngày trước · Làm việc trực tiếp với Ban giám đốc</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet()">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Job 4 -->
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-laptop-code"></i></div>
-                  <div>
-                    <h3 class="job-title">Marketing Moderator Intern (Blockchain)</h3>
-                    <p class="job-company">Cycless Technology · Hà Nội</p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hà Nội</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Remote</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>2–5 triệu</span>
-                      </div>
-                    </div>
-                    <div class="job-tags">
-                      <span class="job-tag">Intern</span>
-                      <span class="job-tag">Remote</span>
-                      <span class="job-tag">Blockchain</span>
-                    </div>
-                    <div class="job-time">Đăng 5 ngày trước · Phỏng vấn online qua Zoom</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet()">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Job 5 -->
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-handshake"></i></div>
-                  <div>
-                    <h3 class="job-title">Cộng Tác Viên Marketing</h3>
-                    <p class="job-company">IMAP Việt Nam · Hà Nội</p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hà Nội</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Bán thời gian</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>2–5 triệu</span>
-                      </div>
-                    </div>
-                    <div class="job-tags">
-                      <span class="job-tag">Part-time</span>
-                      <span class="job-tag">Entry Level</span>
-                      <span class="job-tag">Marketing</span>
-                    </div>
-                    <div class="job-time">Đăng 3 ngày trước · Phù hợp sinh viên có thể làm cuối tuần</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet()">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Job 6 -->
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-flask"></i></div>
-                  <div>
-                    <h3 class="job-title">Thực Tập Sinh R&amp;D &amp; Marketing Y Tế</h3>
-                    <p class="job-company">FPT Smart Tech · Hồ Chí Minh</p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hồ Chí Minh</span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span>Toàn thời gian</span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span>Thỏa
-                          thuận</span></div>
-                    </div>
-                    <div class="job-tags">
-                      <span class="job-tag">Intern</span>
-                      <span class="job-tag">R&amp;D</span>
-                      <span class="job-tag">Y tế</span>
-                    </div>
-                    <div class="job-time">Đăng 1 ngày trước · Có lộ trình trở thành nhân viên chính thức</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet()">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Trước</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-          </ul>
-        </nav>
-      </section>
-    </div>
-  </main>
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item <%= page === 1 ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page-1 %>" tabindex="-1">Trước</a></li>
+          <% for(let i=1; i<=totalPages; i++){ %>
+            <li class="page-item <%= page === i ? 'active' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+          <% } %>
+          <li class="page-item <%= page === totalPages ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page+1 %>">Tiếp</a></li>
+        </ul>
+      </nav>
+    </section>
+  </div>
+</main>
 
   <footer class="footer">
     <div class="container">
