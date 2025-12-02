@@ -34,7 +34,10 @@ business_router
   .post(businessCtrl.business_edit_info_apply_post);
 
 // Kết nối với trường đại học
-business_router.get("/LinkUniversity", businessCtrl.business_link_with_university);
+business_router.get(
+  "/LinkUniversity",
+  businessCtrl.business_link_with_university
+);
 
 // Thông báo
 business_router.get("/Notification", businessCtrl.business_notification);

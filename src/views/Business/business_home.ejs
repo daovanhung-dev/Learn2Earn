@@ -11,6 +11,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <style>
+        .header a {
+            cursor: pointer;
+        }
+
+        /* Thêm cho dropdown item */
+        .header .dropdown-item {
+            cursor: pointer;
+        }
+
         :root {
             --navy: #1e2a44;
             --navy-light: #2d3b57;
@@ -199,16 +208,20 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navMenu">
 
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Quản lý tin tuyển dụng</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Ứng viên</a></li>
+                        <li class="nav-item"><a class="nav-link active"
+                                onclick="window.location.href='/Business/Home'">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="window.location.href='/Business/PostJob'">Quản
+                                lý tin tuyển dụng</a></li>
+                        <li class="nav-item"><a class="nav-link"
+                                onclick="window.location.href='/Business/ApplyList'">Ứng viên</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Chat</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Thống kê</a></li>
                     </ul>
 
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
                         <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-bell"></i></a></li>
-                        <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-comment-dots"></i></a></li>
+                        <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-comment-dots"></i></a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="#">Cài đặt</a></li>
                     </ul>
 
