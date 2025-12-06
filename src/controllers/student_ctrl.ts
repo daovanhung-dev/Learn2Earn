@@ -44,7 +44,14 @@ export const student_createCV_post = (req: Request, res: Response) => {
 };
 
 // Logout
+//logout
 export const student_logOut = (req: Request, res: Response) => {
-  res.clearCookie("jwt", { httpOnly: true, secure: false });
-  res.redirect("/home");
+  req.logout({ keepSessionInfo: false }, (err) => {
+    if (err) {
+      console.error("Logout error:", err);
+      return res.status(500).send("Lỗi khi logout");
+    }
+    // Redirect về trang chính
+    res.redirect("/");
+  });
 };

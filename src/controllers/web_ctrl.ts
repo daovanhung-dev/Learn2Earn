@@ -22,7 +22,7 @@ export const signInStudentCtrl = (req: Request, res: Response) => {
 };
 export const signInBusinessCtrl = (req: Request, res: Response) => {
   res.render("Business/signIn");
-}
+};
 
 export const loginStudentCtrl = async (req: Request, res: Response) => {
   console.log("➡️ loginStudentCtrl");
@@ -81,11 +81,9 @@ export const loginStudentCtrl = async (req: Request, res: Response) => {
     });
   }
 };
-export const signInRole = (req: Request, res: Response) =>
-{
+export const signInRole = (req: Request, res: Response) => {
   res.render("signInRole");
 };
-
 
 // Route Sign Up ================================================================================================================================================
 export const signUpStudentCtrl = (req: Request, res: Response) => {
@@ -93,7 +91,7 @@ export const signUpStudentCtrl = (req: Request, res: Response) => {
 };
 export const signUpBusinessCtrl = (req: Request, res: Response) => {
   res.render("Business/signUp");
-}
+};
 export const signUpRole = (req: Request, res: Response) => {
   res.render("signUpRole");
 };
@@ -148,9 +146,5 @@ export const testCookie = (req: Request, res: Response) => {
   res.send("✅ Check console server để xem cookie và payload JWT");
 };
 
+
 //business
-
-
-
-
-

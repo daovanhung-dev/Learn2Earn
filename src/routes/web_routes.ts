@@ -50,5 +50,13 @@ web_router.post("/signUp", upload.single("avt"), web_ctrl.createStudent);
 // Route coming-soon
 web_router.get("/coming-soon", web_ctrl.comingSoon);
 //test cookie
-web_router.get("/test-cookie", auth, web_ctrl.testCookie);
+web_router.get("/c", (req, res) => {
+  console.log(req.cookies); 
+  console.log(req.user);
+  
+  // { connect.sid: 's%3Axxxxxxxxxxxx' }
+  res.send("Check console");
+});
+
+
 export default web_router;
