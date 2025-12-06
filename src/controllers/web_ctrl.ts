@@ -21,7 +21,7 @@ export const signInStudentCtrl = (req: Request, res: Response) => {
   res.render("Student/signIn");
 };
 export const signInBusinessCtrl = (req: Request, res: Response) => {
-  res.render("Busiess/signIn");
+  res.render("Business/signIn");
 }
 
 export const loginStudentCtrl = async (req: Request, res: Response) => {

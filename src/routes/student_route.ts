@@ -22,4 +22,5 @@ student_router.get("/TopCV", studentCtrl.student_view_topcv);
 student_router.get("/Interview", studentCtrl.student_interview_schedule);
 student_router.get("/Logout", studentCtrl.student_logOut);
 
+
 export default student_router;

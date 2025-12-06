@@ -30,6 +30,7 @@ export const student_noti = (req: Request, res: Response) => res.render("Student
 export const student_chat = (req: Request, res: Response) => res.render("Student/student_chat");
 export const student_view_topcv = (req: Request, res: Response) => res.render("Student/student_view_TopCV");
 export const student_interview_schedule = (req: Request, res: Response) => res.render("Student/student_interview_schedule");
+export const student_signIn = (req: Request, res: Response) => res.render("Student/signIn");
 
 // POST xử lý form
 export const student_updateProfile_post = (req: Request, res: Response) => {
