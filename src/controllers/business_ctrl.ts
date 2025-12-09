@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 /* ===========================
    2. Trang cài đặt doanh nghiệp
 =========================== */
@@ -22,7 +21,10 @@ export const business_update_information = (req: Request, res: Response) => {
   res.render("Business/business_update_information");
 };
 
-export const business_update_information_post = (req: Request, res: Response) => {
+export const business_update_information_post = (
+  req: Request,
+  res: Response
+) => {
   console.log("Update info:", req.body);
   res.redirect("/Business/Setting");
 };
@@ -83,7 +85,9 @@ export const business_chat = (req: Request, res: Response) => {
    10. Trang Home doanh nghiệp
 =========================== */
 export const business_home = (req: Request, res: Response) => {
+  if (req.user && "role" in req.user) {
+    const role = req.user.role;
+    console.log(role);
+  }
   res.render("Business/business_home");
 };
-
-

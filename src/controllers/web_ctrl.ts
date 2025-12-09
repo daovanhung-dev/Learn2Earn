@@ -7,12 +7,15 @@ import student_router from "../routes/student_route.js";
 import { Sign } from "crypto";
 import { signToken } from "../utils/jwt.js";
 import { AuthRequest } from "../middleware/auth.middleware.js";
+import passport from "passport";
 
 const __filename = fileURLToPath(import.meta.url); // lấy đường dẫn file hiện tại
 const __dirname = path.dirname(__filename);
 // Route Home
 export const homePage = async (req: Request, res: Response) => {
   const jobs = await JDService.getAllJD();
+
+
   return res.render("home", { jobs });
 };
 

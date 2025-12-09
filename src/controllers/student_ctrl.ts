@@ -4,6 +4,11 @@ import JDService from "../services/jobs_services.js";
 
 // Trang chính và các trang render
 export const student_homeSV = async (req: Request, res: Response) => {
+ 
+  if (req.user && "role" in req.user) {
+  const role = req.user.role;
+  console.log(role);
+}
   const page = parseInt(req.query.page as string) || 1;
   const limit = 6; // số jobs mỗi trang
 
@@ -17,20 +22,30 @@ export const student_homeSV = async (req: Request, res: Response) => {
   res.render("Student/student_home", { jobs, page, totalPages, totalJobs });
 };
 
-
-
-export const student_setting = (req: Request, res: Response) => res.render("Student/student_setting");
-export const student_profile = (req: Request, res: Response) => res.render("Student/student_profile");
-export const student_updateProfile = (req: Request, res: Response) => res.render("Student/student_update_SV");
-export const student_createCV = (req: Request, res: Response) => res.render("Student/student_create_CV");
-export const student_updateCV = (req: Request, res: Response) => res.render("Student/student_update_CV");
-export const student_posts_jobs = (req: Request, res: Response) => res.render("Student/student_post");
-export const student_apply = (req: Request, res: Response) => res.render("Student/student_apply");
-export const student_noti = (req: Request, res: Response) => res.render("Student/student_noti");
-export const student_chat = (req: Request, res: Response) => res.render("Student/student_chat");
-export const student_view_topcv = (req: Request, res: Response) => res.render("Student/student_view_TopCV");
-export const student_interview_schedule = (req: Request, res: Response) => res.render("Student/student_interview_schedule");
-export const student_signIn = (req: Request, res: Response) => res.render("Student/signIn");
+export const student_setting = (req: Request, res: Response) =>
+  res.render("Student/student_setting");
+export const student_profile = (req: Request, res: Response) =>
+  res.render("Student/student_profile");
+export const student_updateProfile = (req: Request, res: Response) =>
+  res.render("Student/student_update_SV");
+export const student_createCV = (req: Request, res: Response) =>
+  res.render("Student/student_create_CV");
+export const student_updateCV = (req: Request, res: Response) =>
+  res.render("Student/student_update_CV");
+export const student_posts_jobs = (req: Request, res: Response) =>
+  res.render("Student/student_post");
+export const student_apply = (req: Request, res: Response) =>
+  res.render("Student/student_apply");
+export const student_noti = (req: Request, res: Response) =>
+  res.render("Student/student_noti");
+export const student_chat = (req: Request, res: Response) =>
+  res.render("Student/student_chat");
+export const student_view_topcv = (req: Request, res: Response) =>
+  res.render("Student/student_view_TopCV");
+export const student_interview_schedule = (req: Request, res: Response) =>
+  res.render("Student/student_interview_schedule");
+export const student_signIn = (req: Request, res: Response) =>
+  res.render("Student/signIn");
 
 // POST xử lý form
 export const student_updateProfile_post = (req: Request, res: Response) => {

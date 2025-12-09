@@ -4,8 +4,7 @@ import { auth } from "../middleware/auth.middleware.js";
 
 const student_router = Router();
 
-// Áp middleware auth cho tất cả route cần đăng nhập
-student_router.use(auth);
+
 
 // GET routes (viết hoa)
 student_router.get("/Home", studentCtrl.student_homeSV);
