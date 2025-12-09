@@ -6,7 +6,7 @@ import StudentService from "../services/student_service.js";
 import student_router from "../routes/student_route.js";
 import { Sign } from "crypto";
 import { signToken } from "../utils/jwt.js";
-import { AuthRequest } from "../middleware/auth.middleware.js";
+
 import passport from "passport";
 
 const __filename = fileURLToPath(import.meta.url); // lấy đường dẫn file hiện tại
@@ -14,8 +14,6 @@ const __dirname = path.dirname(__filename);
 // Route Home
 export const homePage = async (req: Request, res: Response) => {
   const jobs = await JDService.getAllJD();
-
-
   return res.render("home", { jobs });
 };
 
@@ -98,16 +96,6 @@ export const signUpBusinessCtrl = (req: Request, res: Response) => {
 export const signUpRole = (req: Request, res: Response) => {
   res.render("signUpRole");
 };
-//home
-export const studentHome = async (req: AuthRequest, res: Response) => {
-  const student = req.user; // ✅ student từ token
-  if (!student) return res.redirect("/signIn");
-
-  // Lấy dữ liệu student từ DB nếu cần
-  const studentData = await StudentService.getStudentById(student.id);
-
-  res.render("studentHome", { student: studentData });
-};
 
 //create
 export const createStudent = async (req: Request, res: Response) => {
@@ -137,17 +125,3 @@ export const createStudent = async (req: Request, res: Response) => {
 export const comingSoon = (req: Request, res: Response) => {
   res.render("coming-soon");
 };
-
-//test cookie
-// Route test cookie + JWT payload
-export const testCookie = (req: Request, res: Response) => {
-  const authReq = req as AuthRequest; // cast sang AuthRequest
-  console.log("📦 Cookies:", authReq.cookies);
-  console.log("🔑 JWT cookie:", authReq.cookies?.jwt);
-  console.log("👤 Payload from JWT:", authReq.user);
-
-  res.send("✅ Check console server để xem cookie và payload JWT");
-};
-
-
-//business

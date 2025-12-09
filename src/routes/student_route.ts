@@ -1,6 +1,6 @@
 import { Router } from "express";
 import * as studentCtrl from "../controllers/student_ctrl.js";
-import { auth } from "../middleware/auth.middleware.js";
+
 
 const student_router = Router();
 
