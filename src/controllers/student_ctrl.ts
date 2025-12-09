@@ -4,11 +4,10 @@ import JDService from "../services/jobs_services.js";
 
 // Trang chính và các trang render
 export const student_homeSV = async (req: Request, res: Response) => {
- 
   if (req.user && "role" in req.user) {
-  const role = req.user.role;
-  console.log(role);
-}
+    const role = req.user.role;
+    console.log(role);
+  }
   const page = parseInt(req.query.page as string) || 1;
   const limit = 6; // số jobs mỗi trang
 
@@ -44,8 +43,18 @@ export const student_view_topcv = (req: Request, res: Response) =>
   res.render("Student/student_view_TopCV");
 export const student_interview_schedule = (req: Request, res: Response) =>
   res.render("Student/student_interview_schedule");
-export const student_signIn = (req: Request, res: Response) =>
-  res.render("Student/signIn");
+export const student_signIn = (req: Request, res: Response) => {
+  const { session } = req as any;
+
+  // Passport lưu lỗi vào session.messages (mảng)
+  const errors: string[] = session?.messages ?? [];
+
+  // xóa sau khi lấy để không hiển thị lại lần sau
+  if (session?.messages) session.messages = [];
+
+  res.render("Student/signIn", { errors });
+};
+
 
 // POST xử lý form
 export const student_updateProfile_post = (req: Request, res: Response) => {

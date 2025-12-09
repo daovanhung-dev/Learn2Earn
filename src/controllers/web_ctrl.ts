@@ -22,7 +22,14 @@ export const signInStudentCtrl = (req: Request, res: Response) => {
   res.render("Student/signIn");
 };
 export const signInBusinessCtrl = (req: Request, res: Response) => {
-  res.render("Business/signIn");
+    const { session } = req as any;
+
+  // Passport lưu lỗi vào session.messages (mảng)
+  const errors: string[] = session?.messages ?? [];
+
+  // xóa sau khi lấy để không hiển thị lại lần sau
+  if (session?.messages) session.messages = [];
+  res.render("Business/signIn", {errors});
 };
 
 export const loginStudentCtrl = async (req: Request, res: Response) => {

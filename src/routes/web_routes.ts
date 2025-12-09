@@ -28,7 +28,7 @@ web_router.post(
   passport.authenticate("student-local", {
     successRedirect: "/student/home",
     failureRedirect: "/signInStudent",
-    failureFlash: false
+    failureMessage: true
   })
 );
 
@@ -37,7 +37,7 @@ web_router.post(
   passport.authenticate("business-local", {
     successRedirect: "/business/home",
     failureRedirect: "/signInBusiness",
-    failureFlash: false
+    failureMessage: true
   })
 );
 
