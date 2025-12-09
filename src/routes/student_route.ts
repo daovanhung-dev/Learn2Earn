@@ -1,12 +1,10 @@
 import { Router } from "express";
 import * as studentCtrl from "../controllers/student_ctrl.js";
-
+import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js";
 
 const student_router = Router();
 
-
-
-// GET routes (viết hoa)
+student_router.use(ensureAuthenticated, checkRole("student"));
 student_router.get("/Home", studentCtrl.student_homeSV);
 student_router.get("/Setting", studentCtrl.student_setting);
 student_router.get("/Profile", studentCtrl.student_profile);
@@ -20,6 +18,5 @@ student_router.get("/Chat", studentCtrl.student_chat);
 student_router.get("/TopCV", studentCtrl.student_view_topcv);
 student_router.get("/Interview", studentCtrl.student_interview_schedule);
 student_router.get("/Logout", studentCtrl.student_logOut);
-
 
 export default student_router;

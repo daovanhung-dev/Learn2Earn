@@ -1,11 +1,13 @@
 // src/routes/business_route.ts
 import { Router } from "express";
 import * as businessCtrl from "../controllers/business_ctrl.js";
+import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js";
 
 const business_router = Router();
 
 /* ---------------------------- BUSINESS ROUTES ---------------------------- */
 
+business_router.use(ensureAuthenticated, checkRole("business"));
 // Trang chính
 business_router.get("/Home", businessCtrl.business_home);
 
