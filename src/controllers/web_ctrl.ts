@@ -13,6 +13,15 @@ const __filename = fileURLToPath(import.meta.url); // lấy đường dẫn file
 const __dirname = path.dirname(__filename);
 // Route Home
 export const homePage = async (req: Request, res: Response) => {
+   if (req.user && "role" in req.user) {
+    const role = req.user.role;
+    if(role == "business")
+    {
+     return res.redirect("/business/home");
+    }
+    else return res.redirect("/student/home");
+  }
+  
   const jobs = await JDService.getAllJD();
   return res.render("home", { jobs });
 };
@@ -132,3 +141,9 @@ export const createStudent = async (req: Request, res: Response) => {
 export const comingSoon = (req: Request, res: Response) => {
   res.render("coming-soon");
 };
+
+//error role
+export const errorRole = (req: Request, res: Response) =>
+{
+  res.render("errorRole");
+}

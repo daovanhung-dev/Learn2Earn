@@ -12,6 +12,6 @@ export function checkRole(role: string) {
     if (req.isAuthenticated() && req.user.role === role) {
       return next(); // đúng role → cho qua
     }
-    res.status(403).send("Bạn không có quyền truy cập");
+    res.status(403).redirect("/errorRole");
   };
 }

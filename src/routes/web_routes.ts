@@ -1,13 +1,9 @@
 import { Router } from "express";
 import * as web_ctrl from "../controllers/web_ctrl.js";
 import multer from "multer"; // import multer
-
-
-
 import passport from "passport";
 import * as student_ctrl from "../controllers/student_ctrl.js";
 const web_router = Router();
-
 
 // cấu hình multer
 const storage = multer.diskStorage({
@@ -28,7 +24,7 @@ web_router.post(
   passport.authenticate("student-local", {
     successRedirect: "/student/home",
     failureRedirect: "/signInStudent",
-    failureMessage: true
+    failureMessage: true,
   })
 );
 
@@ -37,7 +33,7 @@ web_router.post(
   passport.authenticate("business-local", {
     successRedirect: "/business/home",
     failureRedirect: "/signInBusiness",
-    failureMessage: true
+    failureMessage: true,
   })
 );
 
@@ -51,12 +47,14 @@ web_router.post("/signUp", upload.single("avt"), web_ctrl.createStudent);
 web_router.get("/coming-soon", web_ctrl.comingSoon);
 //test cookie
 web_router.get("/c", (req, res) => {
-  console.log(req.cookies); 
+  console.log(req.cookies);
   console.log(req.user);
-  
+
   // { connect.sid: 's%3Axxxxxxxxxxxx' }
   res.send("Check console");
 });
 
+//errors
+web_router.get("/errorRole", web_ctrl.errorRole);
 
 export default web_router;

@@ -1,6 +1,8 @@
 import { Router } from "express";
 import * as studentCtrl from "../controllers/student_ctrl.js";
 import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js";
+import JDController from "../controllers/jd_ctrl.js";
+import jd_ctrl from "../controllers/jd_ctrl.js";
 
 const student_router = Router();
 
@@ -18,5 +20,6 @@ student_router.get("/Chat", studentCtrl.student_chat);
 student_router.get("/TopCV", studentCtrl.student_view_topcv);
 student_router.get("/Interview", studentCtrl.student_interview_schedule);
 student_router.get("/Logout", studentCtrl.student_logOut);
+student_router.get("/JobDescription/:id", jd_ctrl.showDetail);
 
 export default student_router;

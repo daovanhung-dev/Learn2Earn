@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Learn2Earn – Tìm Việc Làm Nhanh Chóng & Hiệu Quả</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>
+    <%= jd.ten_vi_tri || "Chi tiết tuyển dụng" %>
+  </title>
 
+  <!-- Fonts & Icons like home.ejs -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -13,15 +16,18 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
+  <!-- ===== STYLES (giữ nguyên các style bạn đặt) ===== -->
   <style>
-     /* Cho phép TẤT CẢ thẻ <a> trong header hiển thị con trỏ dạng chọn */
+    /* Cho phép TẤT CẢ thẻ <a> trong header hiển thị con trỏ dạng chọn */
     .header a {
       cursor: pointer;
     }
+
     /* Thêm cho dropdown item */
     .header .dropdown-item {
       cursor: pointer;
     }
+
     :root {
       --primary: #2563EB;
       --primary-soft: #EFF6FF;
@@ -558,10 +564,162 @@
       }
     }
   </style>
+
+  <style>
+    :root {
+      --primary: #2563EB;
+      --primary-soft: #EFF6FF;
+      --neutral: #64748B;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: #0F172A;
+      margin: 0;
+      padding: 20px
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Poppins', sans-serif
+    }
+
+    .card-job {
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      background: var(--card);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04)
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px
+    }
+
+    .company-name {
+      font-weight: 700;
+      margin-top: 8px
+    }
+
+    .company-meta {
+      color: var(--neutral);
+      font-size: 0.92rem
+    }
+
+    .label {
+      font-weight: 600;
+      color: #0F172A;
+      width: 150px
+    }
+
+    .value {
+      word-break: break-word
+    }
+
+    .job-header {
+      display: flex;
+      align-items: center;
+      gap: 16px
+    }
+
+    .job-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 6px
+    }
+
+    .job-sub {
+      color: var(--neutral);
+      margin-bottom: 8px
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .tag {
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem
+    }
+
+    .job-salary {
+      color: #F97316;
+      font-weight: 700
+    }
+
+    .apply-area {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .btn-apply {
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
+      color: #fff;
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 700
+    }
+
+    .btn-back {
+      border-radius: 999px;
+      padding: 8px 14px
+    }
+
+    .sticky-apply {
+      position: sticky;
+      top: 24px
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: 8px;
+      margin-bottom: 10px
+    }
+
+    .desc {
+      white-space: pre-wrap
+    }
+
+    @media (max-width:992px) {
+      .avatar {
+        width: 110px;
+        height: 110px
+      }
+
+      .label {
+        width: 130px
+      }
+
+      .sticky-apply {
+        position: static;
+        margin-top: 12px
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header class="header">
+  <header class="header">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
 
@@ -585,8 +743,9 @@
               <a class="nav-link" data-route="/Student/Profile" onclick="navigateTo('/Student/Profile')">Hồ sơ</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Profile" onclick="navigateTo('')">CV</a>
+            <!-- DROPDOWN CV -->
+            <li class="nav-item dropdown l2e-dropdown">
+              <a class="nav-link dropdown-toggle" onclick="window.location.href=''" id="cvMenu">CV</a>
             </li>
 
             <li class="nav-item">
@@ -674,277 +833,169 @@
       });
     </script>
   </header>
-  <!-- ===== END HEADER ===== -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto text-center">
-          <div class="hero-badge">
-            <i class="fa-solid fa-bolt"></i>
-            <span>Tìm việc nhanh – Kết nối trực tiếp doanh nghiệp</span>
-          </div>
-          <h1 class="hero-title">Tìm <span>việc làm phù hợp</span> với bạn</h1>
-          <p class="hero-subtitle">
-            Kết nối với hàng ngàn cơ hội việc làm từ các doanh nghiệp hàng đầu trên toàn quốc dành cho sinh viên và
-            người đi làm.
-          </p>
-          <div class="hero-stats">
-            <div class="hero-stat-pill"><span>1.000+</span><span>việc làm mới mỗi tuần</span></div>
-            <div class="hero-stat-pill"><span>500+</span><span>doanh nghiệp đối tác</span></div>
-            <div class="hero-stat-pill"><span>24/7</span><span>theo dõi lịch phỏng vấn</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="search-section">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="search-box">
-            <form class="search-form">
-              <div class="row g-3 align-items-center">
-                <div class="col-md-4">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
-                    <input type="text" class="form-control" placeholder="Vị trí tuyển dụng">
-                  </div>
+  <div class="container">
+    <% 
+      // helpers: định nghĩa trước khi dùng
+      const fmt = (d) => {
+        if (!d) return '';
+        const date = new Date(d);
+        if (isNaN(date.getTime())) return String(d);
+        return date.toLocaleDateString('vi-VN');
+      };
+
+      const show = (v) => (v === null || v === undefined || v === '') ? false : true;
+      const nl2br = (s) => s ? String(s).replace(/\r\n|\r|\n/g, '<br />') : '';
+    %>
+
+    <div class="card card-body card-job mt-4">
+      <div class="row g-3">
+        <div class="col-lg-8">
+          <div class="job-header">
+            <div class="d-flex align-items-center">
+              <% if (show(jd.avt)) { %>
+                <img src="<%= jd.avt.startsWith('http') ? jd.avt : ('/uploads/' + jd.avt) %>" alt="Logo công ty"
+                  class="avatar me-3" />
+              <% } else { %>
+                <div class="avatar d-flex align-items-center justify-content-center bg-white border text-muted me-3">
+                  <i class="fa-solid fa-building fa-2x"></i>
                 </div>
-                <div class="col-md-3">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                    <input type="text" class="form-control" placeholder="Địa điểm">
-                  </div>
+              <% } %>
+            </div>
+
+            <div>
+              <div class="job-title">
+                <%= jd.ten_vi_tri || 'Vị trí' %>
+              </div>
+              <% if (show(jd.ten_cong_ty)) { %>
+                <div class="company-name">
+                  <%= jd.ten_cong_ty %>
                 </div>
-                <div class="col-md-3">
-                  <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                    <select class="form-control">
-                      <option selected>Danh mục nghề</option>
-                      <option>Công nghệ thông tin</option>
-                      <option>Kinh doanh / Bán hàng</option>
-                      <option>Marketing</option>
-                      <option>Kế toán / Tài chính</option>
-                      <option>Nhân sự</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <button type="submit" class="btn-search">
-                    <i class="fas fa-search me-2"></i>Tìm kiếm
-                  </button>
-                </div>
+              <% } %>
+
+              <div class="job-sub">
+                <% if (show(jd.dia_diem)) { %><i class="fa-solid fa-location-dot me-1"></i>
+                  <%= jd.dia_diem %> · <% } %>
+                <% if (show(jd.thoi_gian)) { %><i class="fa-regular fa-clock me-1"></i>
+                  <%= jd.thoi_gian %>
+                <% } %>
               </div>
-              <div class="search-helper">
-                <span>Gợi ý: <strong>Marketing, Thực tập sinh, Bán thời gian,...</strong></span>
-                <span>Hiển thị kết quả theo ưu tiên “<strong>Mới nhất</strong>”</span>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="filter-tabs">
-    <div class="container">
-      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-        <div class="d-flex align-items-center flex-wrap gap-2">
-          <span class="text-muted me-1 filter-meta">Tìm kiếm theo:</span>
-          <ul class="nav nav-pills nav-chips">
-            <li class="nav-item"><a class="nav-link" href="#">Tên việc làm</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Tên công ty</a></li>
-            <li class="nav-item"><a class="nav-link active" href="#">Cả hai</a></li>
-          </ul>
-        </div>
-        <div class="d-inline-flex align-items-center gap-2">
-          <span class="text-muted small">Ưu tiên hiển thị theo:</span>
-          <select class="form-select form-select-sm w-auto rounded-3">
-            <option>Mới nhất</option>
-            <option>Lương cao</option>
-            <option>Gần bạn</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<main class="container my-4 my-lg-5">
-  <div class="row g-4">
-    <aside class="col-lg-3">
-      <div class="sidebar-card">
-        <div class="card-header">
-          <span><i class="fas fa-filter me-2"></i>Lọc nâng cao</span>
-          <span class="small text-muted"><%= totalJobs %> kết quả</span>
-        </div>
-        <div class="card-body">
-          <!-- Filters -->
-          <div class="filter-group">
-            <div class="filter-label">Theo danh mục nghề</div>
-            <% const categories = ['Quản lý kinh doanh','Marketing','Kế toán','Sales Bán lẻ','Kinh doanh/Bán hàng','Nhân sự','Quảng cáo/Sáng tạo']; %>
-            <% categories.forEach((cat, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="dm<%= index+1 %>">
-                <label class="form-check-label" for="dm<%= index+1 %>"><%= cat %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Cấp bậc</div>
-            <% const levels = ['Tất cả','Nhân viên','Trưởng nhóm','Trưởng phòng','Giám đốc','Thực tập sinh']; %>
-            <% levels.forEach((level, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="capbac" id="cb<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="cb<%= index %>"><%= level %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Mức lương</div>
-            <% const salaries = ['Tất cả','Dưới 10 triệu','10 – 15 triệu','15 – 20 triệu','20 – 25 triệu','Trên 25 triệu']; %>
-            <% salaries.forEach((salary, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="luong" id="lu<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="lu<%= index %>"><%= salary %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Hình thức làm việc</div>
-            <% const workTypes = ['Tất cả','Toàn thời gian','Bán thời gian','Thực tập']; %>
-            <% workTypes.forEach((type, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="hinhthuc" id="ht<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="ht<%= index %>"><%= type %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <button type="button" class="btn-clear">Xóa lọc</button>
-        </div>
-      </div>
-    </aside>
-
-    <section class="col-lg-9">
-      <div class="jobs-header">
-        <div>
-          <div class="jobs-title">Kết quả tìm kiếm <span>(<%= totalJobs %> việc làm)</span></div>
-          <div class="jobs-subtitle">
-            Sắp xếp theo: <strong>Mới nhất</strong> · Bạn có thể thay đổi tiêu chí ở phía trên.
-          </div>
-        </div>
-        <div class="result-badge">
-          <i class="fa-solid fa-circle-check"></i>
-          Phù hợp với sinh viên &amp; người mới đi làm
-        </div>
-      </div>
-
-      <% jobs.forEach(job => { %>
-        <div class="card job-card">
-          <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-building"></i></div>
-                  <div>
-                    <h3 class="job-title"><%= job.ten_vi_tri %></h3>
-                    <p class="job-company"><%= job.ten_cong_ty %> · <%= job.dia_diem %></p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span><%= job.dia_diem %></span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span><%= job.thoi_gian %></span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span><%= job.muc_luong %></span></div>
-                    </div>
-                    <div class="job-tags">
-                      <% if(job.cap_bac) { %><span class="job-tag"><%= job.cap_bac %></span><% } %>
-                      <% if(job.nganh) { %><span class="job-tag"><%= job.nganh %></span><% } %>
-                    </div>
-                    <% if(job.uu_tien){ %><div class="job-time"><%= job.uu_tien %></div><% } %>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet(<%= job.id %>)">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
-                </div>
+              <div class="mt-2 tags">
+                <% if (show(jd.cap_bac)) { %><span class="tag"><%= jd.cap_bac %></span><% } %>
+                <% if (show(jd.nganh)) { %><span class="tag"><%= jd.nganh %></span><% } %>
+                <% if (show(jd.muc_luong)) { %><span class="tag job-salary"><%= jd.muc_luong %></span><% } %>
               </div>
             </div>
           </div>
-        </div>
-      <% }) %>
 
-      <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item <%= page === 1 ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page-1 %>" tabindex="-1">Trước</a></li>
-          <% for(let i=1; i<=totalPages; i++){ %>
-            <li class="page-item <%= page === i ? 'active' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+          <hr />
+
+          <% if (show(jd.nhiem_vu)) { %>
+            <div>
+              <div class="section-title">Nhiệm vụ chính</div>
+              <div class="desc mb-3"><%- nl2br(jd.nhiem_vu) %></div>
+            </div>
           <% } %>
-          <li class="page-item <%= page === totalPages ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page+1 %>">Tiếp</a></li>
-        </ul>
-      </nav>
-    </section>
-  </div>
-</main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <h4 class="footer-title">Learn2Earn</h4>
-          <p>Nền tảng tuyển dụng và tìm việc làm tại Việt Nam, kết nối sinh viên – người đi làm với doanh nghiệp một
-            cách nhanh chóng và hiệu quả.</p>
+          <% if (show(jd.trinh_do) || show(jd.kinh_nghiem) || show(jd.ky_nang) || show(jd.ky_nang_mem)) { %>
+            <div>
+              <div class="section-title">Yêu cầu</div>
+              <ul>
+                <% if (show(jd.trinh_do)) { %>
+                  <li>Trình độ: <%= jd.trinh_do %></li>
+                <% } %>
+                <% if (show(jd.kinh_nghiem)) { %>
+                  <li>Kinh nghiệm: <%= jd.kinh_nghiem %></li>
+                <% } %>
+                <% if (show(jd.ky_nang)) { %>
+                  <li>Kỹ năng chuyên môn: <%= jd.ky_nang %></li>
+                <% } %>
+                <% if (show(jd.ky_nang_mem)) { %>
+                  <li>Kỹ năng mềm: <%= jd.ky_nang_mem %></li>
+                <% } %>
+              </ul>
+            </div>
+          <% } %>
+
+          <% if (show(jd.moi_truong)) { %>
+            <div>
+              <div class="section-title">Môi trường làm việc</div>
+              <div class="desc mb-3"><%- nl2br(jd.moi_truong) %></div>
+            </div>
+          <% } %>
+
+          <% if (show(jd.mo_ta)) { %>
+            <div>
+              <div class="section-title">Mô tả chi tiết</div>
+              <div class="desc mb-3"><%- nl2br(jd.mo_ta) %></div>
+            </div>
+          <% } %>
+
+          <div class="text-muted small">Tạo: <%= fmt(jd.ngay_tao) %></div>
+
         </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Về chúng tôi</h4>
-          <ul class="footer-links">
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Tin tức</a></li>
-            <li><a href="#">Tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
-          </ul>
+
+        <div class="col-lg-4">
+          <!-- Right column: apply box + meta -->
+          <div class="sticky-apply">
+            <div class="card p-3 mb-3">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                  <div class="small text-muted">Mức lương</div>
+                  <div class="job-salary">
+                    <%= jd.muc_luong || 'Thương lượng' %>
+                  </div>
+                </div>
+                <div class="text-end">
+                  <div class="small text-muted">Hạn nộp</div>
+                  <div>
+                    <%= jd.han_nop ? fmt(jd.han_nop) : 'Không rõ' %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-grid gap-2">
+                <a href="/jobs/<%= jd.id %>/apply" class="btn btn-apply">Ứng tuyển ngay</a>
+                <a href="/jobs" class="btn btn-outline-secondary btn-back">Quay lại danh sách</a>
+              </div>
+
+              <% if (show(jd.cach_ung_tuyen)) { %>
+                <div class="mt-3 small text-muted">Cách ứng tuyển:</div>
+                <div class="small"><%= jd.cach_ung_tuyen %></div>
+              <% } %>
+
+              <% if (show(jd.uu_tien)) { %>
+                <div class="mt-3 small text-muted">Ưu tiên:</div>
+                <div class="small"><%= jd.uu_tien %></div>
+              <% } %>
+
+            </div>
+
+            <!-- compact info card -->
+            <div class="card p-3">
+              <div class="small text-muted mb-2">Liên hệ</div>
+              <% if (show(jd.ten_cong_ty)) { %>
+                <div class="mb-1"><strong><%= jd.ten_cong_ty %></strong></div>
+              <% } %>
+              <% if (show(jd.dia_chi)) { %>
+                <div class="small mb-1"><i class="fa-solid fa-map-marker-alt me-1"></i><%= jd.dia_chi %></div>
+              <% } %>
+              <% if (show(jd.lien_he)) { %>
+                <div class="small mb-1"><i class="fa-solid fa-phone me-1"></i><%= jd.lien_he %></div>
+              <% } %>
+              <% if (show(jd.email)) { %>
+                <div class="small"><i class="fa-regular fa-envelope me-1"></i><%= jd.email %></div>
+              <% } %>
+            </div>
+          </div>
         </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Dành cho ứng viên</h4>
-          <ul class="footer-links">
-            <li><a href="#">Tìm việc làm</a></li>
-            <li><a href="#">Tạo CV</a></li>
-            <li><a href="#">Tài liệu hướng dẫn</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Dành cho nhà tuyển dụng</h4>
-          <ul class="footer-links">
-            <li><a href="#">Đăng tuyển dụng</a></li>
-            <li><a href="#">Tìm ứng viên</a></li>
-            <li><a href="#">Gói dịch vụ</a></li>
-            <li><a href="#">Hỗ trợ</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Liên hệ</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-phone me-2"></i>+84 123 456 789</a></li>
-            <li><a href="#"><i class="fas fa-envelope me-2"></i>info@learn2earn.vn</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>Hà Nội, Việt Nam</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Learn2Earn. Tất cả các quyền được bảo lưu.</p>
       </div>
     </div>
-  </footer>
+  </div>
 
+  <!-- bootstrap js: cần ở cuối body để collapse hoạt động -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function xemChiTiet(id) { window.location.href = `/student/JobDescription/${id}`; }
-    function ungTuyen() { window.location.href = "UngTuyen.html"; }
-  </script>
 </body>
 
 </html>
