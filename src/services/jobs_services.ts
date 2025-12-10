@@ -75,45 +75,6 @@ class JDService {
     }
   }
 
-  // Cập nhật JD
-  async updateJD(
-    id: number | bigint,
-    data: Partial<{
-      ten_vi_tri: string;
-      phong_ban: string;
-      cap_bac: string;
-      bao_cao_cho: string;
-      nhiem_vu: string;
-      trinh_do: string;
-      kinh_nghiem: string;
-      ky_nang: string;
-      ky_nang_mem: string;
-      uu_tien: string;
-      muc_luong: string;
-      phuc_loi: string;
-      moi_truong: string;
-      dia_diem: string;
-      thoi_gian: string;
-      han_nop: string;
-      cach_ung_tuyen: string;
-      mo_ta: string;
-      doanhnghiep_id: number | bigint;
-      ten_cong_ty: string;
-      nganh: string;
-      avt: string;
-    }>
-  ) {
-    try {
-      const updated = await prisma.jD.update({
-        where: { id: BigInt(id) },
-        data,
-      });
-      return { success: true, data: updated };
-    } catch (err) {
-      console.error(err);
-      return { success: false, error: "Không thể cập nhật JD" };
-    }
-  }
 
   // Xóa JD
   async deleteJD(id: number | bigint) {
@@ -127,6 +88,33 @@ class JDService {
   }
 
   //tim theo id doanh nghiep
+  async getJDByCompany(doanhnghiep_id: number) {
+    try {
+      const data = await prisma.jD.findMany({
+        where: { doanhnghiep_id: doanhnghiep_id },
+        orderBy: { id: "desc" }   // sắp xếp mới nhất trước
+      });
+
+      return data;
+    } catch (error) {
+      console.error("Lỗi lấy JD theo doanh nghiệp:", error);
+      throw error;
+    }
+  }
+
+  async updateJD(id: number, data: any) {
+    // Chuyển hạn nộp sang Date nếu có
+    if (data.han_nop) {
+      data.han_nop = new Date(data.han_nop);
+    }
+
+    const updated = await prisma.jD.update({
+      where: { id },
+      data
+    });
+
+    return updated;
+  }
 
 }
 

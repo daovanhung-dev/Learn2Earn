@@ -5,7 +5,7 @@ import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js
 import JDController from "../controllers/jd_ctrl.js";
 import {upload} from "../config/multer.js";
 import UngVienController from "../controllers/candidate_ctrl.js";
-
+import CVCtrl from "../controllers/cv_ctrl.js";
 
 
 const business_router = Router();
@@ -50,11 +50,22 @@ business_router.get("/Notification", businessCtrl.business_notification);
 // Tin nhắn
 business_router.get("/Chat", businessCtrl.business_chat);
 
-//business_router.get("/ManganerJD", JDController.manageJD);
+business_router.get("/ManganerJD", JDController.manageJD);
+
+//xoa jd
+business_router.get("/DeleteJD/:id", JDController.deleteJD);
+
+//update jd
+business_router.get("/UpdateJD/:id", JDController.showUpdatePage);
+
+business_router.get("/Logout", businessCtrl.business_logOut);
+
 
 /* ------------------------------------------------------------------------ */
 
 //post
 business_router.post("/PostJob", upload.single('avt'),JDController.PostJOB);
+business_router.post("/UpdateJD/:id", JDController.updateJD);
+business_router.get("/CVDetail/:id", CVCtrl.detail);
 
 export default business_router;

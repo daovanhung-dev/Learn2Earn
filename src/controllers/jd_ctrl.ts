@@ -68,7 +68,100 @@ class JDController {
       );
     }
   }
+  async manageJD(req: Request, res: Response): Promise<void> {
+    try {
+      const user = req.user as any;
 
+      if (!user) {
+        res.status(401).send("Không xác thực được doanh nghiệp");
+        return;
+      }
+
+      const doanhnghiep_id = Number(user.id);
+
+      if (isNaN(doanhnghiep_id)) {
+        res.status(400).send("ID doanh nghiệp không hợp lệ");
+        return;
+      }
+
+      const jds = await JDService.getJDByCompany(doanhnghiep_id);
+
+      // ⭐ FIX BIGINT → NUMBER để không lỗi JSON.stringify trong EJS
+      const safeJDs = jds.map((jd) => ({
+        ...jd,
+        id: Number(jd.id),
+        doanhnghiep_id: jd.doanhnghiep_id ? Number(jd.doanhnghiep_id) : null,
+      }));
+
+      res.render("business/business_manager_job", {
+        jds: safeJDs,
+        doanhnghiep_id,
+      });
+    } catch (error) {
+      console.error("Lỗi controller manageJD:", error);
+      res.status(500).send("Lỗi server");
+    }
+  }
+
+  async deleteJD(req: Request, res: Response) {
+    try {
+      const id = Number(req.params.id);
+      const result = await JDService.deleteJD(id);
+
+      if (!result)
+        return res
+          .status(404)
+          .send("Không tìm thấy JD hoặc không thuộc doanh nghiệp");
+
+      return res.redirect("/business/ManganerJD");
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Lỗi server");
+    }
+  }
+
+  async updateJD(req: Request, res: Response): Promise<void> {
+    try {
+      const jd_id = Number(req.params.id);
+
+      if (isNaN(jd_id)) {
+        res.status(400).send("ID JD không hợp lệ");
+        return;
+      }
+
+      const result = await JDService.updateJD(jd_id, req.body);
+
+      res.redirect("/doanhnghiep/manage-jd");
+    } catch (error) {
+      console.error("Lỗi updateJD:", error);
+      res.status(500).send("Lỗi server");
+    }
+  }
+
+  async showUpdatePage(req: Request, res: Response): Promise<void> {
+    try {
+      const jd_id = Number(req.params.id);
+
+      if (isNaN(jd_id)) {
+        res.status(400).send("ID JD không hợp lệ");
+        return;
+      }
+
+      const jd = await JDService.getJDById(jd_id);
+
+      if (!jd) {
+        res.status(404).send("Không tìm thấy JD");
+        return;
+      }
+
+      // Render EJS và truyền dữ liệu ra
+      res.render("business/business_update_jd", { jd });
+
+    } catch (error) {
+      console.error("Lỗi showUpdatePage:", error);
+      res.status(500).send("Lỗi server");
+    }
+  }
 
 }
 

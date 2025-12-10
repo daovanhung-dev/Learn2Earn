@@ -91,3 +91,14 @@ export const business_home = (req: Request, res: Response) => {
   }
   res.render("Business/business_home");
 };
+
+export const business_logOut = (req: Request, res: Response) => {
+  req.logout({ keepSessionInfo: false }, (err) => {
+    if (err) {
+      console.error("Logout error:", err);
+      return res.status(500).send("Lỗi khi logout");
+    }
+    // Redirect về trang chính
+    res.redirect("/");
+  });
+};

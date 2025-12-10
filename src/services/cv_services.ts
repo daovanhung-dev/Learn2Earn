@@ -53,7 +53,7 @@ class CVService {
   async getCvById(id: number | bigint) {
     try {
       const cv = await prisma.cv.findFirst({ where: { sinhvien_id: BigInt(id) } });
-      console.log(cv)
+      
       if (!cv) return { success: false, error: "Không tìm thấy CV" };
       return { success: true, data: cv };
     } catch (err) {

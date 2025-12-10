@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import CVService from "../services/cv_services.js";
-import cv_services from "../services/cv_services.js";
+
 
 class CVCtrl {
   async CV(req: Request, res: Response) {
@@ -114,7 +114,7 @@ class CVCtrl {
   async getCV(req: Request, res: Response) {
     const users = req.user as any;
     const id = users.id;
-    const cv = await cv_services.getCvById(id);
+    const cv = await CVService.getCvById(id);
 
     // chuẩn hoá avatar
     let avatarUrl = "/public/images/default-avatar.png"; // ảnh mặc định
@@ -134,13 +134,39 @@ class CVCtrl {
       if (updateData.ngaysinh) {
         updateData.ngaysinh = new Date(updateData.ngaysinh);
       }
-      await cv_services.updateCv(id, updateData);
+      await CVService.updateCv(id, updateData);
       res.redirect("/student/UpdateCV");
     } catch (err) {
       console.error(err);
       return res.status(500).json({ success: false, error: "Lỗi server" });
     }
   }
+
+  async detail(req: Request, res: Response) {
+  try {
+    const id = Number(req.params.id);
+
+    if (!id) {
+      return res.status(400).send("ID CV không hợp lệ");
+    }
+
+    const result = await CVService.getCvById(id);
+
+    if (!result.success) {
+      return res.status(404).send(result.error || "Không tìm thấy CV");
+    }
+
+    // Lấy thẳng dữ liệu CV để render
+    const cvData = result.data;
+
+    res.render("business/detailCV", { cv: cvData });
+  } catch (error) {
+    console.error("Lỗi xem chi tiết CV:", error);
+    res.status(500).send("Lỗi máy chủ");
+  }
+}
+
+
 }
 
 export default new CVCtrl();
