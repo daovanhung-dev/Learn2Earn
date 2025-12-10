@@ -1,6 +1,8 @@
+import { request } from "http";
 import prisma from "../config/prisma.config.js";
+import { Request, Response } from "express";
 
-class CvService {
+class CVService {
   // Tạo CV mới
   async insertCv(data: {
     avt?: string;
@@ -50,7 +52,8 @@ class CvService {
   // Lấy CV theo ID
   async getCvById(id: number | bigint) {
     try {
-      const cv = await prisma.cv.findUnique({ where: { id: BigInt(id) } });
+      const cv = await prisma.cv.findFirst({ where: { sinhvien_id: BigInt(id) } });
+      console.log(cv)
       if (!cv) return { success: false, error: "Không tìm thấy CV" };
       return { success: true, data: cv };
     } catch (err) {
@@ -109,6 +112,23 @@ class CvService {
       return { success: false, error: "Không thể xóa CV" };
     }
   }
+
+  //kiem tra so luong row theo id
+  async countCV(student_id: number){
+    try {
+      const total = await prisma.cv.count(
+        {
+          where:{
+            sinhvien_id: student_id
+          }
+        }
+      );
+      return total;
+    }
+    catch(err){
+      return {success: true, error:"Lỗi server"};
+    }
+  }
 }
 
-export default new CvService();
+export default new CVService();

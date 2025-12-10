@@ -6,8 +6,10 @@ import JDService from "../services/jobs_services.js";
 export const student_homeSV = async (req: Request, res: Response) => {
   if (req.user && "role" in req.user) {
     const role = req.user.role;
-    console.log(role);
+    const id = (req.user as any).id; // lấy id từ user
+    console.log("Role:", role, " - User ID:", id);
   }
+  
   const page = parseInt(req.query.page as string) || 1;
   const limit = 6; // số jobs mỗi trang
 

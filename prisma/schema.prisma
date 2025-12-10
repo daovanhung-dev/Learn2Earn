@@ -86,7 +86,7 @@ model Cv {
   portfolio     String?
   luongmongmuon String?
   created_at    DateTime? @default(now())
-  sinhvien_id   BigInt?
+  sinhvien_id   BigInt? @unique 
   SinhVien      SinhVien? @relation(fields: [sinhvien_id], references: [id])
 }
 

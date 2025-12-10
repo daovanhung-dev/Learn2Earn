@@ -1,679 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Learn2Earn – Tìm Việc Làm Nhanh Chóng & Hiệu Quả</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <style>
-     /* Cho phép TẤT CẢ thẻ <a> trong header hiển thị con trỏ dạng chọn */
-    .header a {
-      cursor: pointer;
-    }
-    /* Thêm cho dropdown item */
-    .header .dropdown-item {
-      cursor: pointer;
-    }
-    :root {
-      --primary: #2563EB;
-      --primary-soft: #EFF6FF;
-      --primary-strong: #1D4ED8;
-      --neutral: #64748B;
-      --bg: #F8FAFC;
-      --card: #FFFFFF;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: #1E293B;
-      line-height: 1.6;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600
-    }
-
-    a {
-      text-decoration: none
-    }
-
-    /* HEADER */
-    .header {
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, .08);
-      position: sticky;
-      top: 0;
-      z-index: 1000
-    }
-
-    .navbar {
-      padding: .7rem 0
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center
-    }
-
-    .logo-img {
-      display: flex;
-      align-items: center;
-      justify-content: center
-    }
-
-    .brand-logo {
-      height: 60px;
-      width: auto;
-      object-fit: contain;
-      transform: scale(2.2);
-      transform-origin: left center
-    }
-
-    .navbar-nav .nav-link {
-      font-weight: 500;
-      font-size: .95rem;
-      color: #475569;
-      padding: 8px 14px;
-      border-radius: 999px;
-    }
-
-    .navbar-nav .nav-link:hover {
-      background: var(--primary-soft);
-      color: var(--primary)
-    }
-
-    .navbar-nav .nav-link.active {
-      background: #DBEAFE;
-      color: var(--primary-strong)
-    }
-
-    .nav-icon {
-      width: 38px;
-      height: 38px;
-      margin: 0 6px;
-      border-radius: 50%;
-      background: #E2E8F0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #475569;
-      font-size: 18px;
-    }
-
-    .nav-icon:hover {
-      background: #CBD5E1;
-      color: var(--primary)
-    }
-
-    .l2e-dropdown:hover .dropdown-menu {
-      display: block
-    }
-
-    .dropdown-menu {
-      border-radius: 12px;
-      border: 1px solid #E5E7EB
-    }
-
-    .dropdown-item {
-      font-size: .9rem
-    }
-
-    /* HERO */
-    .hero-section {
-      background: radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 50%, #ffffff 100%);
-      padding: 70px 0 45px;
-    }
-
-    .hero-title {
-      font-size: 38px;
-      font-weight: 700;
-      color: #0F172A;
-      margin-bottom: 16px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #3B82F6, #1D4ED8);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid #BFDBFE;
-      background: #EFF6FF;
-      font-size: .85rem;
-      color: var(--primary-strong);
-      margin-bottom: 12px;
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      color: #64748B;
-      max-width: 640px;
-      margin: 0 auto 24px;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: .9rem;
-      color: #475569;
-    }
-
-    .hero-stat-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid #E2E8F0;
-    }
-
-    .hero-stat-pill span:first-child {
-      font-weight: 600;
-      color: var(--primary)
-    }
-
-    /* SEARCH */
-    .search-section {
-      margin-top: -26px
-    }
-
-    .search-box {
-      background: #fff;
-      border-radius: 18px;
-      padding: 20px;
-      border: 1px solid #E2E8F0;
-    }
-
-    .search-form .form-control {
-      border-radius: 12px;
-      border: 1px solid #E2E8F0;
-      font-size: .95rem;
-    }
-
-    .search-form .input-group-text {
-      border-radius: 12px 0 0 12px;
-      border: 1px solid #E2E8F0;
-      border-right: 0;
-      background: #F8FAFC;
-      color: #94A3B8;
-    }
-
-    .search-form .input-group .form-control {
-      border-left: 0;
-      border-radius: 0 12px 12px 0;
-    }
-
-    .btn-search {
-      width: 100%;
-      border: 0;
-      border-radius: 12px;
-      padding: 10px 20px;
-      font-weight: 600;
-      font-size: .95rem;
-      color: #fff;
-      background: linear-gradient(135deg, #3B82F6, #2563EB);
-    }
-
-    .search-helper {
-      margin-top: 8px;
-      font-size: .85rem;
-      color: #64748B;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    .search-helper strong {
-      color: #2563EB
-    }
-
-    /* FILTER TABS */
-    .filter-tabs {
-      margin: 28px 0 16px
-    }
-
-    .filter-meta {
-      font-size: .9rem;
-      color: #64748B
-    }
-
-    .nav-chips .nav-link {
-      background: #E5E7EB;
-      border-radius: 999px;
-      padding: 6px 16px;
-      font-size: .9rem;
-      font-weight: 500;
-      color: #334155;
-      margin: 0 6px 6px 0;
-    }
-
-    .nav-chips .nav-link.active {
-      background: #2563EB;
-      color: #fff;
-    }
-
-    /* SIDEBAR */
-    .sidebar-card {
-      background: #fff;
-      border-radius: 18px;
-      border: 1px solid #E2E8F0;
-      margin-bottom: 20px;
-    }
-
-    .sidebar-card .card-header {
-      border-bottom: 1px solid #E2E8F0;
-      padding: 14px 18px;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .filter-label {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px
-    }
-
-    .filter-group {
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid #E2E8F0
-    }
-
-    .filter-group:last-child {
-      border-bottom: 0;
-      margin-bottom: 0;
-      padding-bottom: 0
-    }
-
-    .form-check {
-      font-size: .9rem;
-      margin-bottom: 6px
-    }
-
-    .btn-clear {
-      width: 100%;
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: .9rem;
-      font-weight: 500;
-      border: 1px solid #E2E8F0;
-      background: #F1F5F9;
-    }
-
-    /* JOB LIST */
-    .jobs-header {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .jobs-title {
-      font-size: 18px;
-      font-weight: 600
-    }
-
-    .jobs-title span {
-      color: #2563EB
-    }
-
-    .jobs-subtitle {
-      font-size: .9rem;
-      color: #64748B
-    }
-
-    .result-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #EFF6FF;
-      color: #2563EB;
-      font-size: .85rem;
-    }
-
-    .job-card {
-      border-radius: 16px;
-      background: #fff;
-      border: 1px solid #E2E8F0;
-      margin-bottom: 14px;
-    }
-
-    .job-card .card-body {
-      padding: 16px
-    }
-
-    .job-logo {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: #EFF6FF;
-      color: #2563EB;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      margin-right: 14px;
-    }
-
-    .job-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 4px
-    }
-
-    .job-company {
-      font-size: .9rem;
-      color: #6B7280;
-      margin-bottom: 8px
-    }
-
-    .job-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 8px
-    }
-
-    .job-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .8rem;
-      background: #F1F5F9;
-      border-radius: 999px;
-      padding: 4px 8px;
-    }
-
-    .job-salary {
-      font-weight: 600;
-      color: #F97316
-    }
-
-    .job-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 6px
-    }
-
-    .job-tag {
-      font-size: .8rem;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: #EFF6FF;
-      color: #2563EB;
-      font-weight: 500;
-    }
-
-    .job-time {
-      font-size: .8rem;
-      color: #6B7280
-    }
-
-    .job-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      justify-content: center;
-      height: 100%
-    }
-
-    .btn-apply,
-    .btn-quick-view {
-      font-size: .9rem
-    }
-
-    .btn-apply {
-      background: linear-gradient(135deg, #3B82F6, #2563EB);
-      color: #fff;
-      border-radius: 999px;
-      border: 0;
-      padding: 8px 16px;
-    }
-
-    .btn-quick-view {
-      border-radius: 999px;
-      border: 1px solid #BFDBFE;
-      padding: 7px 14px;
-      color: #2563EB;
-      background: #fff;
-    }
-
-    /* PAGINATION */
-    .pagination {
-      justify-content: center;
-      margin-top: 22px
-    }
-
-    .page-link {
-      border-radius: 999px;
-      font-size: .9rem;
-      padding: 6px 12px;
-      margin: 0 3px;
-      color: #475569;
-      border: 1px solid #E2E8F0;
-    }
-
-    .page-item.active .page-link {
-      background: #2563EB;
-      border-color: #2563EB;
-      color: #fff;
-    }
-
-    /* FOOTER */
-    .footer {
-      background: #020617;
-      color: #E5E7EB;
-      padding: 40px 0 22px;
-      margin-top: 60px;
-    }
-
-    .footer-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 12px;
-      color: #fff
-    }
-
-    .footer p,
-    .footer-links li {
-      font-size: .9rem
-    }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-      margin: 0
-    }
-
-    .footer-links li {
-      margin-bottom: 6px
-    }
-
-    .footer-links a {
-      color: #E5E7EB
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #111827;
-      margin-top: 20px;
-      padding-top: 14px;
-      text-align: center;
-      font-size: .85rem;
-    }
-
-    @media (max-width:992px) {
-      .hero-title {
-        font-size: 32px
-      }
-    }
-
-    @media (max-width:768px) {
-      .hero-section {
-        padding: 55px 0 32px
-      }
-
-      .job-card .card-body {
-        padding: 14px
-      }
-
-      .job-actions {
-        margin-top: 8px
-      }
-    }
-  </style>
-</head>
+<%- include('../ComponentStudent/head', { title: 'Trang Chủ Learn2Earn', extras: {} }) %>
 
 <body>
-<header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-
-        <!-- Logo -->
-        <a class="navbar-brand" role="button" data-route="/Student/Home" onclick="navigateTo('/Student/Home')">
-          <img src="/img/logo-nobr.png" alt="Logo Learn2Earn" class="brand-logo">
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <!-- MENU CHÍNH -->
-          <ul class="navbar-nav mx-auto d-flex align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Home" onclick="navigateTo('/Student/Home')">Trang chủ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Profile" onclick="navigateTo('/Student/Profile')">Hồ sơ</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Profile" onclick="navigateTo('')">CV</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Interview" onclick="navigateTo('/Student/Interview')">Lịch phỏng
-                vấn</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/PostJobs" onclick="navigateTo('/Student/PostJobs')">Tin tuyển
-                dụng</a>
-            </li>
-          </ul>
-
-          <!-- ICON PHẢI -->
-          <ul class="navbar-nav ms-auto d-flex align-items-center">
-            <li class="nav-item">
-              <a class="nav-icon" role="button" data-route="/Student/Noti" onclick="navigateTo('/Student/Noti')">
-                <i class="bi bi-bell"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-icon" role="button" data-route="/Student/Chat" onclick="navigateTo('/Student/Chat')">
-                <i class="bi bi-chat-dots"></i>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" data-route="/Student/Setting" onclick="navigateTo('/Student/Setting')">Cài đặt</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <script>
-      // chuyển trang với fade-out
-      function navigateTo(url) {
-        // nếu đang ở cùng trang thì không reload
-        if (location.pathname === url || location.pathname.endsWith(url)) {
-          return;
-        }
-        document.body.style.transition = 'opacity 0.25s';
-        document.body.style.opacity = '0';
-        setTimeout(() => { window.location.href = url; }, 220);
-      }
-
-      // tự động highlight menu theo current path (dùng data-route)
-      function setActiveNavByPath() {
-        const links = document.querySelectorAll('[data-route]');
-        const path = location.pathname || '/';
-        // mapping: nếu path là '/' thì treat as '/Student/Home'
-        links.forEach(a => a.classList.remove('active'));
-        // Try exact then contains
-        let found = false;
-        links.forEach(a => {
-          const r = a.getAttribute('data-route');
-          if (!r) return;
-          if (path === r || path.endsWith(r) || path.includes(r)) {
-            a.classList.add('active');
-            found = true;
-          }
-        });
-        if (!found) {
-          // fallback: highlight Trang chủ if on base / or not matched
-          const home = document.querySelector('[data-route="/Student/Home"]');
-          if (home) home.classList.add('active');
-        }
-      }
-
-      // close dropdown on small screens when collapsed by bootstrap automatically,
-      // but ensure hover dropdown doesn't permanently display after window resize
-      function resetDropdownsOnResize() {
-        document.querySelectorAll('.dropdown-menu').forEach(dm => {
-          if (window.innerWidth <= 992) {
-            dm.style.display = '';
-          }
-        });
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        setActiveNavByPath();
-        window.addEventListener('popstate', setActiveNavByPath);
-        window.addEventListener('resize', resetDropdownsOnResize);
-      });
-    </script>
-  </header>
+  <%- include('../ComponentStudent/header') %>
   <!-- ===== END HEADER ===== -->
   <section class="hero-section">
     <div class="container">
@@ -770,177 +101,140 @@
     </div>
   </section>
 
-<main class="container my-4 my-lg-5">
-  <div class="row g-4">
-    <aside class="col-lg-3">
-      <div class="sidebar-card">
-        <div class="card-header">
-          <span><i class="fas fa-filter me-2"></i>Lọc nâng cao</span>
-          <span class="small text-muted"><%= totalJobs %> kết quả</span>
-        </div>
-        <div class="card-body">
-          <!-- Filters -->
-          <div class="filter-group">
-            <div class="filter-label">Theo danh mục nghề</div>
-            <% const categories = ['Quản lý kinh doanh','Marketing','Kế toán','Sales Bán lẻ','Kinh doanh/Bán hàng','Nhân sự','Quảng cáo/Sáng tạo']; %>
-            <% categories.forEach((cat, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="dm<%= index+1 %>">
-                <label class="form-check-label" for="dm<%= index+1 %>"><%= cat %></label>
-              </div>
-            <% }) %>
+  <main class="container my-4 my-lg-5">
+    <div class="row g-4">
+      <aside class="col-lg-3">
+        <div class="sidebar-card">
+          <div class="card-header">
+            <span><i class="fas fa-filter me-2"></i>Lọc nâng cao</span>
+            <span class="small text-muted">
+              <%= totalJobs %> kết quả
+            </span>
           </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Cấp bậc</div>
-            <% const levels = ['Tất cả','Nhân viên','Trưởng nhóm','Trưởng phòng','Giám đốc','Thực tập sinh']; %>
-            <% levels.forEach((level, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="capbac" id="cb<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="cb<%= index %>"><%= level %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Mức lương</div>
-            <% const salaries = ['Tất cả','Dưới 10 triệu','10 – 15 triệu','15 – 20 triệu','20 – 25 triệu','Trên 25 triệu']; %>
-            <% salaries.forEach((salary, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="luong" id="lu<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="lu<%= index %>"><%= salary %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <div class="filter-group">
-            <div class="filter-label">Hình thức làm việc</div>
-            <% const workTypes = ['Tất cả','Toàn thời gian','Bán thời gian','Thực tập']; %>
-            <% workTypes.forEach((type, index) => { %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="hinhthuc" id="ht<%= index %>" <%= index===0 ? 'checked' : '' %>>
-                <label class="form-check-label" for="ht<%= index %>"><%= type %></label>
-              </div>
-            <% }) %>
-          </div>
-
-          <button type="button" class="btn-clear">Xóa lọc</button>
-        </div>
-      </div>
-    </aside>
-
-    <section class="col-lg-9">
-      <div class="jobs-header">
-        <div>
-          <div class="jobs-title">Kết quả tìm kiếm <span>(<%= totalJobs %> việc làm)</span></div>
-          <div class="jobs-subtitle">
-            Sắp xếp theo: <strong>Mới nhất</strong> · Bạn có thể thay đổi tiêu chí ở phía trên.
-          </div>
-        </div>
-        <div class="result-badge">
-          <i class="fa-solid fa-circle-check"></i>
-          Phù hợp với sinh viên &amp; người mới đi làm
-        </div>
-      </div>
-
-      <% jobs.forEach(job => { %>
-        <div class="card job-card">
           <div class="card-body">
-            <div class="row gx-3">
-              <div class="col-md-9">
-                <div class="d-flex align-items-start mb-2">
-                  <div class="job-logo"><i class="fas fa-building"></i></div>
-                  <div>
-                    <h3 class="job-title"><%= job.ten_vi_tri %></h3>
-                    <p class="job-company"><%= job.ten_cong_ty %> · <%= job.dia_diem %></p>
-                    <div class="job-meta">
-                      <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span><%= job.dia_diem %></span></div>
-                      <div class="job-meta-item"><i class="fas fa-clock"></i><span><%= job.thoi_gian %></span></div>
-                      <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span><%= job.muc_luong %></span></div>
+            <!-- Filters -->
+            <div class="filter-group">
+              <div class="filter-label">Theo danh mục nghề</div>
+              <% const categories = ['Quản lý kinh doanh', 'Marketing', 'Kế toán', 'Sales Bán lẻ', 'Kinh doanh/Bán hàng', 'Nhân sự', 'Quảng cáo/Sáng tạo']; %>
+              <% categories.forEach((cat, index) => { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="dm<%= index + 1 %>">
+                  <label class="form-check-label" for="dm<%= index + 1 %>">
+                    <%= cat %>
+                  </label>
+                </div>
+              <% }) %>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Cấp bậc</div>
+              <% const levels = ['Tất cả', 'Nhân viên', 'Trưởng nhóm', 'Trưởng phòng', 'Giám đốc', 'Thực tập sinh']; %>
+              <% levels.forEach((level, index) => { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="capbac" id="cb<%= index %>" <%= index === 0 ? 'checked' : '' %>>
+                  <label class="form-check-label" for="cb<%= index %>">
+                    <%= level %>
+                  </label>
+                </div>
+              <% }) %>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Mức lương</div>
+              <% const salaries = ['Tất cả', 'Dưới 10 triệu', '10 – 15 triệu', '15 – 20 triệu', '20 – 25 triệu', 'Trên 25 triệu']; %>
+              <% salaries.forEach((salary, index) => { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="luong" id="lu<%= index %>" <%= index === 0 ? 'checked' : '' %>>
+                  <label class="form-check-label" for="lu<%= index %>">
+                    <%= salary %>
+                  </label>
+                </div>
+              <% }) %>
+            </div>
+
+            <div class="filter-group">
+              <div class="filter-label">Hình thức làm việc</div>
+              <% const workTypes = ['Tất cả', 'Toàn thời gian', 'Bán thời gian', 'Thực tập']; %>
+              <% workTypes.forEach((type, index) => { %>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="hinhthuc" id="ht<%= index %>" <%= index === 0 ? 'checked' : '' %>>
+                  <label class="form-check-label" for="ht<%= index %>">
+                    <%= type %>
+                  </label>
+                </div>
+              <% }) %>
+            </div>
+
+            <button type="button" class="btn-clear">Xóa lọc</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="col-lg-9">
+        <div class="jobs-header">
+          <div>
+            <div class="jobs-title">Kết quả tìm kiếm <span>(<%= totalJobs %> việc làm)</span></div>
+            <div class="jobs-subtitle">
+              Sắp xếp theo: <strong>Mới nhất</strong> · Bạn có thể thay đổi tiêu chí ở phía trên.
+            </div>
+          </div>
+          <div class="result-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            Phù hợp với sinh viên &amp; người mới đi làm
+          </div>
+        </div>
+
+        <% jobs.forEach(job => { %>
+          <div class="card job-card">
+            <div class="card-body">
+              <div class="row gx-3">
+                <div class="col-md-9">
+                  <div class="d-flex align-items-start mb-2">
+                    <div class="job-logo"><i class="fas fa-building"></i></div>
+                    <div>
+                      <h3 class="job-title"><%= job.ten_vi_tri %></h3>
+                      <p class="job-company"><%= job.ten_cong_ty %> · <%= job.dia_diem %></p>
+                      <div class="job-meta">
+                        <div class="job-meta-item"><i class="fas fa-map-marker-alt"></i><span><%= job.dia_diem %></span></div>
+                        <div class="job-meta-item"><i class="fas fa-clock"></i><span><%= job.thoi_gian %></span></div>
+                        <div class="job-meta-item job-salary"><i class="fas fa-money-bill-wave"></i><span><%= job.muc_luong %></span></div>
+                      </div>
+                      <div class="job-tags">
+                        <% if (job.cap_bac) { %><span class="job-tag"><%= job.cap_bac %></span><% } %>
+                        <% if (job.nganh) { %><span class="job-tag"><%= job.nganh %></span><% } %>
+                      </div>
+                      <% if (job.uu_tien) { %>
+                        <div class="job-time"><%= job.uu_tien %></div>
+                      <% } %>
                     </div>
-                    <div class="job-tags">
-                      <% if(job.cap_bac) { %><span class="job-tag"><%= job.cap_bac %></span><% } %>
-                      <% if(job.nganh) { %><span class="job-tag"><%= job.nganh %></span><% } %>
-                    </div>
-                    <% if(job.uu_tien){ %><div class="job-time"><%= job.uu_tien %></div><% } %>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3">
-                <div class="job-actions">
-                  <button class="btn-quick-view" onclick="xemChiTiet(<%= job.id %>)">Xem chi tiết</button>
-                  <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
+                <div class="col-md-3">
+                  <div class="job-actions">
+                    <button class="btn-quick-view" onclick="xemChiTiet(<%= job.id %>)">Xem chi tiết</button>
+                    <button class="btn-apply" onclick="ungTuyen()">Ứng tuyển</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <% }) %>
+        <% }) %>
 
-      <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li class="page-item <%= page === 1 ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page-1 %>" tabindex="-1">Trước</a></li>
-          <% for(let i=1; i<=totalPages; i++){ %>
-            <li class="page-item <%= page === i ? 'active' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
-          <% } %>
-          <li class="page-item <%= page === totalPages ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page+1 %>">Tiếp</a></li>
-        </ul>
-      </nav>
-    </section>
-  </div>
-</main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-4">
-          <h4 class="footer-title">Learn2Earn</h4>
-          <p>Nền tảng tuyển dụng và tìm việc làm tại Việt Nam, kết nối sinh viên – người đi làm với doanh nghiệp một
-            cách nhanh chóng và hiệu quả.</p>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Về chúng tôi</h4>
-          <ul class="footer-links">
-            <li><a href="#">Giới thiệu</a></li>
-            <li><a href="#">Tin tức</a></li>
-            <li><a href="#">Tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item <%= page === 1 ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page - 1 %>" tabindex="-1">Trước</a></li>
+            <% for (let i = 1; i <= totalPages; i++) { %>
+              <li class="page-item <%= page === i ? 'active' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+            <% } %>
+            <li class="page-item <%= page === totalPages ? 'disabled' : '' %>"><a class="page-link" href="?page=<%= page + 1 %>">Tiếp</a></li>
           </ul>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Dành cho ứng viên</h4>
-          <ul class="footer-links">
-            <li><a href="#">Tìm việc làm</a></li>
-            <li><a href="#">Tạo CV</a></li>
-            <li><a href="#">Tài liệu hướng dẫn</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Dành cho nhà tuyển dụng</h4>
-          <ul class="footer-links">
-            <li><a href="#">Đăng tuyển dụng</a></li>
-            <li><a href="#">Tìm ứng viên</a></li>
-            <li><a href="#">Gói dịch vụ</a></li>
-            <li><a href="#">Hỗ trợ</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-2 col-md-4 mb-4">
-          <h4 class="footer-title">Liên hệ</h4>
-          <ul class="footer-links">
-            <li><a href="#"><i class="fas fa-phone me-2"></i>+84 123 456 789</a></li>
-            <li><a href="#"><i class="fas fa-envelope me-2"></i>info@learn2earn.vn</a></li>
-            <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>Hà Nội, Việt Nam</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Learn2Earn. Tất cả các quyền được bảo lưu.</p>
-      </div>
+        </nav>
+      </section>
     </div>
-  </footer>
+  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <%- include('../ComponentStudent/footer') %>
+
   <script>
     function xemChiTiet(id) { window.location.href = `/student/JobDescription/${id}`; }
     function ungTuyen() { window.location.href = "UngTuyen.html"; }
