@@ -91,10 +91,12 @@ class CVService {
     }>
   ) {
     try {
+      console.log("cap nhat cv")
       const updated = await prisma.cv.update({
         where: { id: BigInt(id) },
         data,
       });
+
       return { success: true, data: updated };
     } catch (err) {
       console.error(err);
@@ -126,7 +128,7 @@ class CVService {
       return total;
     }
     catch(err){
-      return {success: true, error:"Lỗi server"};
+      return {success: false, error:"Lỗi server"};
     }
   }
 }

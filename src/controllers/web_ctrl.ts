@@ -13,15 +13,13 @@ const __filename = fileURLToPath(import.meta.url); // lấy đường dẫn file
 const __dirname = path.dirname(__filename);
 // Route Home
 export const homePage = async (req: Request, res: Response) => {
-   if (req.user && "role" in req.user) {
+  if (req.user && "role" in req.user) {
     const role = req.user.role;
-    if(role == "business")
-    {
-     return res.redirect("/business/home");
-    }
-    else return res.redirect("/student/home");
+    if (role == "business") {
+      return res.redirect("/business/home");
+    } else return res.redirect("/student/home");
   }
-  
+
   const jobs = await JDService.getAllJD();
   return res.render("home", { jobs });
 };
@@ -31,14 +29,14 @@ export const signInStudentCtrl = (req: Request, res: Response) => {
   res.render("Student/signIn");
 };
 export const signInBusinessCtrl = (req: Request, res: Response) => {
-    const { session } = req as any;
+  const { session } = req as any;
 
   // Passport lưu lỗi vào session.messages (mảng)
   const errors: string[] = session?.messages ?? [];
 
   // xóa sau khi lấy để không hiển thị lại lần sau
   if (session?.messages) session.messages = [];
-  res.render("Business/signIn", {errors});
+  res.render("Business/signIn", { errors });
 };
 
 export const loginStudentCtrl = async (req: Request, res: Response) => {
@@ -131,7 +129,9 @@ export const createStudent = async (req: Request, res: Response) => {
       avt
     );
 
-    res.redirect("/signIn");
+    return res.send(
+      `<script>alert("Bạn đã tạo tài khoản thành công!"); window.location.href="/";</script>`
+    );
   } catch (err: any) {
     res.status(500).send(err.message);
   }
@@ -143,7 +143,6 @@ export const comingSoon = (req: Request, res: Response) => {
 };
 
 //error role
-export const errorRole = (req: Request, res: Response) =>
-{
+export const errorRole = (req: Request, res: Response) => {
   res.render("errorRole");
-}
+};

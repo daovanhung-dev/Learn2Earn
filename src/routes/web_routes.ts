@@ -41,7 +41,7 @@ web_router.post(
 web_router.get("/signUpStudent", web_ctrl.signUpStudentCtrl);
 web_router.get("/signUpBusiness", web_ctrl.signUpBusinessCtrl);
 web_router.get("/signUpRole", web_ctrl.signUpRole);
-web_router.post("/signUp", upload.single("avt"), web_ctrl.createStudent);
+web_router.post("/signUpStudent", upload.single("avt"), web_ctrl.createStudent);
 
 // Route coming-soon
 web_router.get("/coming-soon", web_ctrl.comingSoon);

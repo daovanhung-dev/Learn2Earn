@@ -19,99 +19,97 @@ class CVCtrl {
   }
 
   async createCV(req: Request, res: Response) {
-  try {
-    console.log("Tạo CV");
+    try {
+      console.log("Tạo CV");
 
-    const user = req.user as any;
-    if (!user) return res.status(400).send("Không xác thực được người dùng");
+      const user = req.user as any;
+      if (!user) return res.status(400).send("Không xác thực được người dùng");
 
-    const sinhvien_id = Number(user.id);
+      const sinhvien_id = Number(user.id);
 
-    // Kiểm tra đã có CV chưa
-    const count = await CVService.countCV(sinhvien_id);
-    if (typeof count === "number" && count >= 1) {
-      return res.status(400).send("Bạn đã có CV rồi, không thể tạo thêm.");
-    }
-
-    // Nếu có file upload, lấy tên file
-    let avtFile = undefined;
-    if (req.file) {
-      avtFile = req.file.filename;
-    }
-
-    const {
-      hoten,
-      ngaysinh,
-      gioitinh,
-      email,
-      sdt,
-      diachi,
-      vitri,
-      nganh,
-      muctieunghiep,
-      hocvan,
-      kinhnghiem,
-      kynang,
-      ngoaingu,
-      chungchi,
-      duan,
-      giaithuong,
-      hoatdong,
-      social, 
-      portfolio,
-      luongmongmuon,
-    } = req.body;
-
-    // Parse social an toàn
-    let socialData = undefined;
-    if (social) {
-      try {
-        socialData = JSON.parse(social);
-      } catch {
-        socialData = social;
+      // Kiểm tra đã có CV chưa
+      const count = await CVService.countCV(sinhvien_id);
+      if (typeof count === "number" && count >= 1) {
+        return res.status(400).send("Bạn đã có CV rồi, không thể tạo thêm.");
       }
+
+      // Nếu có file upload, lấy tên file
+      let avtFile = undefined;
+      if (req.file) {
+        avtFile = req.file.filename;
+      }
+
+      const {
+        hoten,
+        ngaysinh,
+        gioitinh,
+        email,
+        sdt,
+        diachi,
+        vitri,
+        nganh,
+        muctieunghiep,
+        hocvan,
+        kinhnghiem,
+        kynang,
+        ngoaingu,
+        chungchi,
+        duan,
+        giaithuong,
+        hoatdong,
+        social,
+        portfolio,
+        luongmongmuon,
+      } = req.body;
+
+      // Parse social an toàn
+      let socialData = undefined;
+      if (social) {
+        try {
+          socialData = JSON.parse(social);
+        } catch {
+          socialData = social;
+        }
+      }
+
+      const data = {
+        avt: avtFile, // lưu tên file
+        hoten,
+        ngaysinh: ngaysinh ? new Date(ngaysinh) : undefined,
+        gioitinh,
+        email,
+        sdt,
+        diachi,
+        vitri,
+        nganh,
+        muctieunghiep,
+        hocvan,
+        kinhnghiem,
+        kynang,
+        ngoaingu,
+        chungchi,
+        duan,
+        giaithuong,
+        hoatdong,
+        social: socialData,
+        portfolio,
+        luongmongmuon,
+        sinhvien_id,
+      };
+
+      const result = await CVService.insertCv(data);
+
+      if (!result.success) {
+        return res.status(500).send("Lỗi khi tạo CV");
+      }
+
+      console.log("Tạo CV thành công!");
+      return res.redirect("/Student/CV");
+    } catch (err) {
+      console.error("Lỗi tạo CV:", err);
+      return res.status(500).send("Lỗi server");
     }
-
-    const data = {
-      avt: avtFile, // lưu tên file
-      hoten,
-      ngaysinh: ngaysinh ? new Date(ngaysinh) : undefined,
-      gioitinh,
-      email,
-      sdt,
-      diachi,
-      vitri,
-      nganh,
-      muctieunghiep,
-      hocvan,
-      kinhnghiem,
-      kynang,
-      ngoaingu,
-      chungchi,
-      duan,
-      giaithuong,
-      hoatdong,
-      social: socialData,
-      portfolio,
-      luongmongmuon,
-      sinhvien_id,
-    };
-
-    const result = await CVService.insertCv(data);
-
-    if (!result.success) {
-      return res.status(500).send("Lỗi khi tạo CV");
-    }
-
-    console.log("Tạo CV thành công!");
-    return res.redirect("/Student/CV");
-  } catch (err) {
-    console.error("Lỗi tạo CV:", err);
-    return res.status(500).send("Lỗi server");
   }
-}
-
-
 
   async getCV(req: Request, res: Response) {
     const users = req.user as any;
@@ -128,8 +126,21 @@ class CVCtrl {
     res.render("Student/student_update_CV", { cv: cv.data, avatarUrl });
   }
 
-  
-  
+  async updateCV(req: Request, res: Response) {
+    try {
+      //khai bao user
+      const id = Number(req.params.id);
+      const updateData = req.body;
+      if (updateData.ngaysinh) {
+        updateData.ngaysinh = new Date(updateData.ngaysinh);
+      }
+      await cv_services.updateCv(id, updateData);
+      res.redirect("/student/UpdateCV");
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ success: false, error: "Lỗi server" });
+    }
+  }
 }
 
 export default new CVCtrl();

@@ -5,6 +5,7 @@ import jd_ctrl from "../controllers/jd_ctrl.js";
 import CVCtrl from "../controllers/cv_ctrl.js";
 import cv_ctrl from "../controllers/cv_ctrl.js";
 import {upload} from "../config/multer.js";
+import candidate_ctrl from "../controllers/candidate_ctrl.js";
 const student_router = Router();
 
 student_router.use(ensureAuthenticated, checkRole("student"));
@@ -27,6 +28,8 @@ student_router.get("/CV", CVCtrl.CV);
 
 //post
 student_router.post("/CreateCV",upload.single("avt"), cv_ctrl.createCV);
+student_router.post("/UpdateCV/:id",upload.single("avt"), cv_ctrl.updateCV);
+student_router.post("/CandidateJD/:id",candidate_ctrl.CandidateJD);
 
 
 export default student_router;

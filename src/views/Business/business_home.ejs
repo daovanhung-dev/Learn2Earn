@@ -193,133 +193,56 @@
 <body>
 
     <!-- HEADER -->
-    <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container">
+    <%- include('../ComponentBusiness/header') %>
 
-                <a class="navbar-brand" href="#">
-                    <img src="/img/logo-nobr.png" alt="Logo Learn2Earn">
-                </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <!-- HERO -->
+        <section class="hero-section">
+            <h1 class="hero-title">
+                Chào mừng đến với <span>Learn2Earn Business</span>
+            </h1>
+            <p class="hero-sub">
+                Nền tảng hỗ trợ doanh nghiệp đăng tuyển – quản lý ứng viên – tối ưu tuyển dụng nhanh chóng và hiệu quả.
+            </p>
+        </section>
 
-                <div class="collapse navbar-collapse justify-content-between" id="navMenu">
+        <!-- FEATURES -->
+        <div class="container my-4">
+            <div class="row g-4">
 
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item"><a class="nav-link active"
-                                onclick="window.location.href='/Business/Home'">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link" onclick="window.location.href='/Business/PostJob'">Quản
-                                lý tin tuyển dụng</a></li>
-                        <li class="nav-item"><a class="nav-link"
-                                onclick="window.location.href='/Business/ApplyList'">Ứng viên</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Chat</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Thống kê</a></li>
-                    </ul>
-
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-bell"></i></a></li>
-                        <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-comment-dots"></i></a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Cài đặt</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero-section">
-        <h1 class="hero-title">
-            Chào mừng đến với <span>Learn2Earn Business</span>
-        </h1>
-        <p class="hero-sub">
-            Nền tảng hỗ trợ doanh nghiệp đăng tuyển – quản lý ứng viên – tối ưu tuyển dụng nhanh chóng và hiệu quả.
-        </p>
-    </section>
-
-    <!-- FEATURES -->
-    <div class="container my-4">
-        <div class="row g-4">
-
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="bi bi-file-earmark-plus"></i></div>
-                    <h5>Đăng tin tuyển dụng</h5>
-                    <p class="text-muted">Tạo tin tuyển dụng chỉ với vài bước đơn giản.</p>
-                    <button class="btn-main">Bắt đầu ngay</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
-                    <h5>Quản lý ứng viên</h5>
-                    <p class="text-muted">Xem CV – lọc ứng viên – liên hệ nhanh chóng.</p>
-                    <button class="btn-main">Xem danh sách</button>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="bi bi-bar-chart-line"></i></div>
-                    <h5>Thống kê tuyển dụng</h5>
-                    <p class="text-muted">Theo dõi hiệu quả chiến dịch tuyển dụng.</p>
-                    <button class="btn-main">Xem thống kê</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-4 mb-4">
-                    <h4 class="footer-title">Learn2Earn</h4>
-                    <p>Nền tảng hỗ trợ tuyển dụng và tìm kiếm ứng viên chất lượng cao.</p>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-file-earmark-plus"></i></div>
+                        <h5>Đăng tin tuyển dụng</h5>
+                        <p class="text-muted">Tạo tin tuyển dụng chỉ với vài bước đơn giản.</p>
+                        <button class="btn-main" onclick="window.location.href='/Business/PostJob'">Bắt đầu ngay</button>
+                    </div>
                 </div>
 
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h4 class="footer-title">Về chúng tôi</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Tin tức</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
-                        <li><a href="#">Liên hệ</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+                        <h5>Quản lý ứng viên</h5>
+                        <p class="text-muted">Xem CV – lọc ứng viên – liên hệ nhanh chóng.</p>
+                        <button class="btn-main">Xem danh sách</button>
+                    </div>
                 </div>
 
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h4 class="footer-title">Doanh nghiệp</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Đăng tin</a></li>
-                        <li><a href="#">Quản lý ứng viên</a></li>
-                        <li><a href="#">Gói dịch vụ</a></li>
-                        <li><a href="#">Hỗ trợ</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-bar-chart-line"></i></div>
+                        <h5>Thống kê tuyển dụng</h5>
+                        <p class="text-muted">Theo dõi hiệu quả chiến dịch tuyển dụng.</p>
+                        <button class="btn-main">Xem thống kê</button>
+                    </div>
                 </div>
 
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h4 class="footer-title">Liên hệ</h4>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-phone me-2"></i>+84 123 456 789</a></li>
-                        <li><a href="#"><i class="fas fa-envelope me-2"></i>support@learn2earn.vn</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>Hà Nội, Việt Nam</a></li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="footer-bottom">
-                &copy; 2024 Learn2Earn. All rights reserved.
             </div>
         </div>
-    </footer>
+
+        <!-- FOOTER -->
+        <%- include('../ComponentBusiness/footer') %>
+
 
 </body>
 

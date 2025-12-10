@@ -2,6 +2,9 @@
 import { Router } from "express";
 import * as businessCtrl from "../controllers/business_ctrl.js";
 import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js";
+import JDController from "../controllers/jd_ctrl.js";
+import {upload} from "../config/multer.js";
+
 
 const business_router = Router();
 
@@ -23,8 +26,7 @@ business_router
 // Quản lý tin tuyển dụng
 business_router
   .route("/PostJob")
-  .get(businessCtrl.business_post_job)
-  .post(businessCtrl.business_post_job_post);
+  .get(businessCtrl.business_post_job);
 
 // Danh sách ứng viên apply
 business_router.get("/ApplyList", businessCtrl.business_apply_list);
@@ -48,5 +50,8 @@ business_router.get("/Notification", businessCtrl.business_notification);
 business_router.get("/Chat", businessCtrl.business_chat);
 
 /* ------------------------------------------------------------------------ */
+
+//post
+business_router.post("/PostJob", upload.single('avt'),JDController.PostJOB);
 
 export default business_router;

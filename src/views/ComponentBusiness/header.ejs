@@ -1,0 +1,38 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/img/logo-nobr.png" alt="Logo Learn2Earn" class="l2e-logo">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navMenu">
+
+        <% const activeTab = typeof active !== 'undefined' ? active : ''; %>
+
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link <%= activeTab === 'home' ? 'active' : '' %>" onclick="window.location.href='/Business/Home'">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= activeTab === 'jobs' ? 'active' : '' %>" onclick="window.location.href='/Business/PostJob'">Quản lý tin tuyển dụng</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%= activeTab === 'candidates' ? 'active' : '' %>" onclick="window.location.href='/Business/ApplyList'">Ứng viên</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Chat</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Thống kê</a></li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto d-flex align-items-center">
+          <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-bell"></i></a></li>
+          <li class="nav-item"><a class="nav-icon" href="#"><i class="fa-regular fa-comment-dots"></i></a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Cài đặt</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
