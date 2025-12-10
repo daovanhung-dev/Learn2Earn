@@ -1,6 +1,8 @@
 // controllers/ungvien_controller.ts
 import { Request, Response } from "express";
 import CandidateService from "../services/candidate_services.js";
+import CVService from "../services/cv_services.js";
+import JDService from "../services/jobs_services.js";
 
 class UngVienController {
   async CandidateJD(req: Request, res: Response) {
@@ -11,12 +13,12 @@ class UngVienController {
       const count = await CandidateService.count(studentID, businessID);
 
       //kiem tra
-        if(count != 0){
-            console.log("Ban da ung tuyen roi");
-            return res.send(
-        `<script>alert("Bạn đã ứng tuyển vị trí của công ty này rồi!"); window.location.href="/student/home";</script>`
-      );
-        }
+      if (count != 0) {
+        console.log("Ban da ung tuyen roi");
+        return res.send(
+          `<script>alert("Bạn đã ứng tuyển vị trí của công ty này rồi!"); window.location.href="/student/home";</script>`
+        );
+      }
 
       //goi ham
       await CandidateService.create(studentID, businessID);
@@ -30,35 +32,26 @@ class UngVienController {
     }
   }
 
-  /**
-   * Lấy danh sách tất cả ứng viên
-   */
-  async getAllUngVien(req: Request, res: Response) {
+  async showCandidate(req: Request, res: Response) {
     try {
-      const list = await CandidateService.getAllUngVien();
-      res.json(list);
-    } catch (error) {
-      console.error("Lỗi lấy danh sách ứng viên:", error);
-      res.status(500).json({ error: "Lỗi server" });
-    }
-  }
-
-  /**
-   * Lấy 1 ứng viên theo ID
-   */
-  async getUngVienById(req: Request, res: Response) {
-    try {
-      const { id } = req.params;
-      if (!id) return res.status(400).json({ error: "Thiếu ID" });
-
-      const ungvien = await CandidateService.getUngVienById(Number(id));
-      if (!ungvien)
-        return res.status(404).json({ error: "Không tìm thấy ứng viên" });
-
-      res.json(ungvien);
-    } catch (error) {
-      console.error("Lỗi lấy ứng viên:", error);
-      res.status(500).json({ error: "Lỗi server" });
+      const users = req.user as any;
+      const businessID = users.id;
+      const data = await CandidateService.getStudentIdByBusinessId(businessID);
+      if (!data || data.length === 0) {
+        return res.render("Business/business_apply_list", {
+          title: "Danh sách ứng viên",
+          applicants: [],
+          message: "Hiện chưa có ứng viên nào ứng tuyển!",
+        });
+      }
+      return res.render("Business/business_apply_list", {
+        title: "Danh sách ứng viên",
+        applicants: data,
+        message: null,
+      });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send("Lỗi server khi lấy danh sách ứng viên");
     }
   }
 }

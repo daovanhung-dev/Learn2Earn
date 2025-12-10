@@ -125,6 +125,9 @@ class JDService {
       return { success: false, error: "Không thể xóa JD" };
     }
   }
+
+  //tim theo id doanh nghiep
+
 }
 
 export default new JDService();

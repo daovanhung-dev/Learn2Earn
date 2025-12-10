@@ -39,28 +39,20 @@ class CandidateService {
       return { success: false, error: "Lỗi server" };
     }
   }
-  /**
-   * Lấy tất cả ứng viên
-   */
-  async getAllUngVien() {
-    return prisma.ungVien.findMany({
-      include: {
-        SinhVien: true,
-        DoanhNghiep: true,
-        JD: true,
-      },
-    });
-  }
 
-  /**
-   * Lấy ứng viên theo ID
-   */
-  async getUngVienById(id: number) {
-    return prisma.ungVien.findUnique({
-      where: { id },
-      include: { SinhVien: true, DoanhNghiep: true, JD: true },
-    });
-  }
+  //lay ung vien theo id doanh nghiep
+  async getStudentIdByBusinessId(businessID: number) {
+  return prisma.ungVien.findMany({
+    where: {
+      doanhnghiep_id: businessID
+    },
+    include: {
+      SinhVien: true,   // lấy full thông tin sinh viên
+      JD: true          // lấy full thông tin Job
+    }
+  });
+}
+
 }
 
 export default new CandidateService();

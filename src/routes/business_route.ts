@@ -4,6 +4,8 @@ import * as businessCtrl from "../controllers/business_ctrl.js";
 import { ensureAuthenticated, checkRole } from "../middleware/auth.middleware.js";
 import JDController from "../controllers/jd_ctrl.js";
 import {upload} from "../config/multer.js";
+import UngVienController from "../controllers/candidate_ctrl.js";
+
 
 
 const business_router = Router();
@@ -29,7 +31,7 @@ business_router
   .get(businessCtrl.business_post_job);
 
 // Danh sách ứng viên apply
-business_router.get("/ApplyList", businessCtrl.business_apply_list);
+business_router.get("/ApplyList", UngVienController.showCandidate);
 
 // Chỉnh sửa thông tin ứng viên
 business_router
@@ -43,11 +45,12 @@ business_router.get(
   businessCtrl.business_link_with_university
 );
 
-// Thông báo
 business_router.get("/Notification", businessCtrl.business_notification);
 
 // Tin nhắn
 business_router.get("/Chat", businessCtrl.business_chat);
+
+//business_router.get("/ManganerJD", JDController.manageJD);
 
 /* ------------------------------------------------------------------------ */
 

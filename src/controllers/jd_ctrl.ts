@@ -68,6 +68,8 @@ class JDController {
       );
     }
   }
+
+
 }
 
 export default new JDController();

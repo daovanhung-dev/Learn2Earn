@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý JD</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { background: #f4faff; }
+    .card { border-radius: 12px; }
+    .btn-blue { background: #0d6efd; color: #fff; }
+  </style>
+</head>
+
+<body>
+
+<div class="container my-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="fw-bold">Quản lý JD</h3>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">+ Thêm JD</button>
+  </div>
+
+  <!-- Bảng danh sách JD -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>Vị trí</th>
+            <th>Phòng ban</th>
+            <th>Lương</th>
+            <th>Địa điểm</th>
+            <th>Hạn nộp</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if (jds && jds.length > 0) { %>
+            <% jds.forEach(jd => { %>
+              <tr>
+                <td><%= jd.id %></td>
+                <td><%= jd.ten_vi_tri %></td>
+                <td><%= jd.phong_ban %></td>
+                <td><%= jd.muc_luong %></td>
+                <td><%= jd.dia_diem %></td>
+                <td><%= jd.han_nop %></td>
+
+                <td>
+                  <button 
+                    class="btn btn-warning btn-sm"
+                    onclick="editJD(<%= JSON.stringify(jd) %>)"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#editModal"
+                  >Sửa</button>
+
+                  <a 
+                    href="/company/jd/delete/<%= jd.id %>" 
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Bạn chắc muốn xóa JD này?');"
+                  >Xóa</a>
+                </td>
+              </tr>
+            <% }); %>
+
+          <% } else { %>
+            <tr>
+              <td colspan="7" class="text-center text-muted">Chưa có JD nào</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- Modal Thêm JD -->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <form action="/company/jd/create" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm JD mới</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <input type="hidden" name="doanhnghiep_id" value="<%= doanhnghiep_id %>">
+
+          <div class="row mb-3">
+            <div class="col">
+              <label class="form-label">Tên vị trí</label>
+              <input name="ten_vi_tri" class="form-control" required>
+            </div>
+
+            <div class="col">
+              <label class="form-label">Phòng ban</label>
+              <input name="phong_ban" class="form-control">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label class="form-label">Mức lương</label>
+              <input name="muc_luong" class="form-control">
+            </div>
+
+            <div class="col">
+              <label class="form-label">Địa điểm</label>
+              <input name="dia_diem" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mô tả</label>
+            <textarea name="mo_ta" class="form-control" rows="3"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button class="btn btn-success" type="submit">Thêm</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal Sửa JD -->
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <form action="/company/jd/update" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa JD</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <input type="hidden" name="id" id="edit_id">
+
+          <div class="row mb-3">
+            <div class="col">
+              <label class="form-label">Tên vị trí</label>
+              <input name="ten_vi_tri" id="edit_ten_vi_tri" class="form-control">
+            </div>
+
+            <div class="col">
+              <label class="form-label">Phòng ban</label>
+              <input name="phong_ban" id="edit_phong_ban" class="form-control">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label class="form-label">Lương</label>
+              <input name="muc_luong" id="edit_muc_luong" class="form-control">
+            </div>
+
+            <div class="col">
+              <label class="form-label">Địa điểm</label>
+              <input name="dia_diem" id="edit_dia_diem" class="form-control">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mô tả</label>
+            <textarea name="mo_ta" id="edit_mo_ta" class="form-control" rows="3"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button class="btn btn-primary" type="submit">Lưu</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function editJD(jd) {
+    document.getElementById('edit_id').value = jd.id;
+    document.getElementById('edit_ten_vi_tri').value = jd.ten_vi_tri;
+    document.getElementById('edit_phong_ban').value = jd.phong_ban;
+    document.getElementById('edit_muc_luong').value = jd.muc_luong;
+    document.getElementById('edit_dia_diem').value = jd.dia_diem;
+    document.getElementById('edit_mo_ta').value = jd.mo_ta;
+  }
+</script>
+
+</body>
+</html>
