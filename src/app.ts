@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
 import student_router from "./routes/student_route.js";
 import business_router from "./routes/business_route.js";
@@ -17,15 +18,22 @@ import configPassportBusiness from "./middleware/passportBusiness.js";
 
 
 
+dotenv.config();
+
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const sessionSecret = process.env.SESSION_SECRET || process.env.JWT_SECRET;
+
+if (!sessionSecret) {
+  throw new Error("SESSION_SECRET or JWT_SECRET must be configured.");
+}
 
 // ---------------------- SESSION ----------------------
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 }, // 1h

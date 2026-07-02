@@ -24,7 +24,7 @@ student_router.get("/Interview", studentCtrl.student_interview_schedule);
 student_router.get("/Logout", studentCtrl.student_logOut);
 student_router.get("/JobDescription/:id", jd_ctrl.showDetail);
 student_router.get("/CV", CVCtrl.CV);
-
+student_router.get("/Result",candidate_ctrl.ketQuaUngTuyen);
 
 //post
 student_router.post("/CreateCV",upload.single("avt"), cv_ctrl.createCV);

@@ -1,16 +1,26 @@
-# Node modules
+# Dependencies
 node_modules/
+jspm_packages/
+bower_components/
 
 # Build output
 dist/
 build/
 out/
+src/generated/
+/src/generated/prisma/
 
-# VSCode
-.vscode/
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Runtime uploads
+uploads/*
+!uploads/.gitkeep
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -19,41 +29,38 @@ yarn-error.log*
 # Coverage
 coverage/
 .lcov
-.nyc_output
+.nyc_output/
 
 # TypeScript cache
 *.tsbuildinfo
 
-# Dependency directories
-jspm_packages/
-bower_components/
-
-# Caches
-.npm
+# Tool caches
+.npm/
+.cache/
 .eslintcache
 .stylelintcache
-.cache
-.parcel-cache
+.parcel-cache/
 
-# dotenv environment variable files
-.env
-.env.*
-!.env.example
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
 
-# Framework-specific
-.next
-.nuxt
-.vuepress/dist
+# Framework-specific output
+.next/
+.nuxt/
+.vuepress/dist/
 .svelte-kit/
-**/.vitepress/dist
-**/.vitepress/cache
-.docusaurus
+**/.vitepress/dist/
+**/.vitepress/cache/
+.docusaurus/
 .serverless/
 .fusebox/
 .dynamodb/
 .firebase/
 
-# Misc
+# Package manager artifacts
 *.tgz
 .node_repl_history
 .tern-port
@@ -68,75 +75,3 @@ bower_components/
 # Vite logs
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-# Node modules
-node_modules/
-
-# Build output
-dist/
-build/
-out/
-
-# VSCode
-.vscode/
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Coverage
-coverage/
-.lcov
-.nyc_output
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Dependency directories
-jspm_packages/
-bower_components/
-
-# Caches
-.npm
-.eslintcache
-.stylelintcache
-.cache
-.parcel-cache
-
-# dotenv environment variable files
-.env
-.env.*
-!.env.example
-
-# Framework-specific
-.next
-.nuxt
-.vuepress/dist
-.svelte-kit/
-**/.vitepress/dist
-**/.vitepress/cache
-.docusaurus
-.serverless/
-.fusebox/
-.dynamodb/
-.firebase/
-
-# Misc
-*.tgz
-.node_repl_history
-.tern-port
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
-# Vite logs
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-
-/src/generated/prisma
