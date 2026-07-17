@@ -7,17 +7,36 @@ bower_components/
 dist/
 build/
 out/
-src/generated/
-/src/generated/prisma/
+coverage/
+.nyc_output/
+.lcov
 
-# Environment variables
+# Generated code and caches
+src/generated/
+**/src/generated/
+**/src/generated/prisma/
+*.tsbuildinfo
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+pubspec.lock
+!apps/flutter_*/pubspec.lock
+
+# Environment variables and local config
 .env
 .env.*
 !.env.example
+local.properties
+**/android/local.properties
 
 # Runtime uploads
 uploads/*
+**/uploads/*
 !uploads/.gitkeep
+!**/uploads/.gitkeep
 
 # Logs
 logs/
@@ -25,14 +44,6 @@ logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Coverage
-coverage/
-.lcov
-.nyc_output/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Tool caches
 .npm/
@@ -44,10 +55,11 @@ coverage/
 # Editor and OS files
 .vscode/
 .idea/
+*.iml
 .DS_Store
 Thumbs.db
 
-# Framework-specific output
+# Node and frontend framework output
 .next/
 .nuxt/
 .vuepress/dist/
@@ -59,6 +71,20 @@ Thumbs.db
 .fusebox/
 .dynamodb/
 .firebase/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Flutter and Android artifacts
+**/android/.gradle/
+**/android/app/build/
+**/android/build/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Pods/
+**/ios/.symlinks/
+**/macos/Flutter/ephemeral/
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
 
 # Package manager artifacts
 *.tgz
@@ -72,6 +98,5 @@ Thumbs.db
 !.yarn/sdks
 !.yarn/versions
 
-# Vite logs
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+# Legacy local folder kept only if old ignored artifacts remain after migration
+WebSite/
